@@ -2,11 +2,19 @@ import React from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 
-function Router(props) {
+function Router({ displayFullScreenMsg, setDisplayFullScreenMsg }) {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              displayFullScreenMsg={displayFullScreenMsg}
+              setDisplayFullScreenMsg={setDisplayFullScreenMsg}
+            />
+          }
+        />
       </Routes>
     </HashRouter>
   );
