@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
@@ -84,6 +84,7 @@ const FullScreenMsg = ({ displayFullScreenMsg, setDisplayFullScreenMsg }) => {
 };
 
 function Home({ displayFullScreenMsg, setDisplayFullScreenMsg }) {
+  const [showInstructions, setShowInstructions] = useState(false);
   useEffect(() => {
     let tippyInstances = [];
 
@@ -105,11 +106,15 @@ function Home({ displayFullScreenMsg, setDisplayFullScreenMsg }) {
       duration: [0, 1000],
       offset: [10, 30],
     });
+
+    setTimeout(() => {
+      setShowInstructions(true);
+    }, 1000);
   }, []);
 
   return (
     <HomeStyle>
-      <MouseInstructions />
+      {showInstructions && <MouseInstructions />}
       <Collapsible>
         <HomePageDetailsStyle>
           <div className="tag-line">2, 2.5 and 3 BHK Premium Apartments</div>

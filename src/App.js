@@ -24,45 +24,45 @@ function App() {
   useEffect(() => {
     if (!displayFullScreenMsg && !document.fullscreen)
       setDisplayFullScreenMsg(true);
-    storeJson();
+    // storeJson();
   }, []);
 
-  useEffect(() => {
-    if (isInventoriesDataStored) {
-      console.log(
-        "A",
-        getAllFlatsInTower("A").length,
-        getAllFloorsInTower("A").length,
-        getAllUnitTypesInTower("A"),
-        Math.min(...getAllDifferentUnitsSizesInBlock("A")),
-        Math.max(...getAllDifferentUnitsSizesInBlock("A"))
-      );
-      console.log(
-        "B",
-        getAllFlatsInTower("B").length,
-        getAllFloorsInTower("B").length,
-        getAllUnitTypesInTower("B"),
-        Math.min(...getAllDifferentUnitsSizesInBlock("B")),
-        Math.max(...getAllDifferentUnitsSizesInBlock("B"))
-      );
-      console.log(
-        "C",
-        getAllFlatsInTower("C").length,
-        getAllFloorsInTower("C").length,
-        getAllUnitTypesInTower("C"),
-        Math.min(...getAllDifferentUnitsSizesInBlock("C")),
-        Math.max(...getAllDifferentUnitsSizesInBlock("C"))
-      );
-      console.log(
-        "D",
-        getAllFlatsInTower("D").length,
-        getAllFloorsInTower("D").length,
-        getAllUnitTypesInTower("D"),
-        Math.min(...getAllDifferentUnitsSizesInBlock("D")),
-        Math.max(...getAllDifferentUnitsSizesInBlock("D"))
-      );
-    }
-  }, [isInventoriesDataStored]);
+  // useEffect(() => {
+  //   if (isInventoriesDataStored) {
+  //     console.log(
+  //       "A",
+  //       getAllFlatsInTower("A").length,
+  //       getAllFloorsInTower("A").length,
+  //       getAllUnitTypesInTower("A"),
+  //       Math.min(...getAllDifferentUnitsSizesInBlock("A")),
+  //       Math.max(...getAllDifferentUnitsSizesInBlock("A"))
+  //     );
+  //     console.log(
+  //       "B",
+  //       getAllFlatsInTower("B").length,
+  //       getAllFloorsInTower("B").length,
+  //       getAllUnitTypesInTower("B"),
+  //       Math.min(...getAllDifferentUnitsSizesInBlock("B")),
+  //       Math.max(...getAllDifferentUnitsSizesInBlock("B"))
+  //     );
+  //     console.log(
+  //       "C",
+  //       getAllFlatsInTower("C").length,
+  //       getAllFloorsInTower("C").length,
+  //       getAllUnitTypesInTower("C"),
+  //       Math.min(...getAllDifferentUnitsSizesInBlock("C")),
+  //       Math.max(...getAllDifferentUnitsSizesInBlock("C"))
+  //     );
+  //     console.log(
+  //       "D",
+  //       getAllFlatsInTower("D").length,
+  //       getAllFloorsInTower("D").length,
+  //       getAllUnitTypesInTower("D"),
+  //       Math.min(...getAllDifferentUnitsSizesInBlock("D")),
+  //       Math.max(...getAllDifferentUnitsSizesInBlock("D"))
+  //     );
+  //   }
+  // }, [isInventoriesDataStored]);
 
   return (
     <AppStyle>
