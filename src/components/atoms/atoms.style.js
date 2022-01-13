@@ -8,9 +8,9 @@ export const PathStyle = styled.path`
   transition: all 150ms linear;
 
   :hover {
-    fill: dodgerblue;
-    fill-opacity: 0.36;
-    stroke: navy;
+    fill: var(--clr-orange);
+    fill-opacity: 0.46;
+    stroke: black;
   }
 `;
 
@@ -34,7 +34,8 @@ export const MouseInstructionsStyle = styled.div`
   width: 100%;
 
   .instruction {
-    background-color: #0c5958cc;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
     width: fit-content;
     height: 40px;
     /* text-align: center; */
@@ -42,7 +43,6 @@ export const MouseInstructionsStyle = styled.div`
     margin: auto;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    color: white;
     font-size: 1.3rem;
     transform: scaleX(0);
     font-weight: 600;
