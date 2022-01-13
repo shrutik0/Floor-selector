@@ -14,7 +14,11 @@ const Trigger = ({ open }) => (
 function CustomCollapsible(props) {
   return (
     <CustomCollapsibleStyle>
-      <Collapsible trigger={<Trigger />} triggerWhenOpen={<Trigger open />}>
+      <Collapsible
+        open
+        trigger={<Trigger />}
+        triggerWhenOpen={<Trigger open />}
+      >
         {props.children}
       </Collapsible>
     </CustomCollapsibleStyle>
