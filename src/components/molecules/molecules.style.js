@@ -37,6 +37,7 @@ export const CustomCollapsibleStyle = styled.div`
   background-color: var(--clr-light);
   color: black;
   border-radius: 10px;
+  z-index: 4;
 
   .trigger {
     right: 30px;
@@ -153,11 +154,11 @@ export const CarouselStyle = styled.section`
     background: green;
   }
 
-  .trigger {
+  .carousel-trigger {
     z-index: 2;
     position: absolute;
     height: fit-content;
-    background: var(--clr-light);
+    background: rgb(53 53 53 / 10%);
     top: 50%;
     transform: translateY(-50%);
     border-radius: 10px;
@@ -165,6 +166,9 @@ export const CarouselStyle = styled.section`
     padding: 0.4rem 0.2rem;
     place-items: center;
     cursor: pointer;
+    :hover {
+      background: rgb(53 53 53 / 20%);
+    }
   }
 
   .prev-btn {
@@ -178,6 +182,97 @@ export const CarouselStyle = styled.section`
     right: 5px;
     img {
       transform: rotate(90deg);
+    }
+  }
+`;
+
+export const SvgStyle = styled.section`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const TowerStyle = styled.section`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  .trigger {
+    top: 20px;
+  }
+`;
+
+export const TowerPageDetailsStyle = styled.div`
+  width: 400px;
+  height: 100%;
+  padding: 1rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    .icon-wrapper {
+      width: 35px;
+      height: 35px;
+      margin-right: 0.7rem;
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .highlights {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: 5px;
+    div {
+      margin-top: 2rem;
+      padding-left: 0.7rem;
+      border-left: 3px solid var(--clr-orange);
+      margin-right: 0.7rem;
+    }
+  }
+
+  .features {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .feature {
+      margin: 0.8rem;
+      display: flex;
+      font-size: 1.2rem;
+      border: 2.3px solid #ec6e227a;
+      border-radius: 8px;
+      padding: 0.7rem 0;
+      div {
+        padding: 0rem 1rem;
+      }
+
+      .left {
+        padding-right: 1rem;
+      }
+      .right {
+        border-left: 3px solid var(--clr-orange);
+        padding-left: 1rem;
+      }
     }
   }
 `;

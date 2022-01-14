@@ -13,6 +13,7 @@ import MouseInstructions from "../components/atoms/MouseInstructions";
 import HomePageDetails from "../components/molecules/HomePageDetails";
 import { TOWER_NAMES_LIST, TOWER_PATHS } from "../data/paths";
 import { Link } from "react-router-dom";
+import Svg from "../components/molecules/Svg";
 
 const blocks = [
   {
@@ -91,7 +92,7 @@ function Home() {
     let tippyInstances = [];
 
     blocks.forEach((block, index) => {
-      const tippyInstance = tippy(`#path-${index}`, {
+      const tippyInstance = tippy(`#tower-path-${index}`, {
         content: ReactDOMServer.renderToStaticMarkup(
           <HoverInfo title={block.title} features={block.features} />
         ),
@@ -125,24 +126,16 @@ function Home() {
         displayFullScreenMsg={displayFullScreenMsg}
         setDisplayFullScreenMsg={setDisplayFullScreenMsg}
       /> */}
-      <svg
-        height="100%"
-        width="100%"
-        preserveAspectRatio="xMidYMid slice"
-        viewBox="0 0 1512 982"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-      >
+
+      <Svg Bgsrc={"master-plan.jpg"} viewBox={"0 0 1512 982"}>
         <g>
-          <BGImage />
           {TOWER_NAMES_LIST.map((tower, index) => (
             <Link className="no-dec" to={`/tower/${tower}`} key={tower}>
-              <Path d={TOWER_PATHS[tower]} id={`path-${index}`} />
+              <Path d={TOWER_PATHS[tower]} id={`tower-path-${index}`} />
             </Link>
           ))}
         </g>
-      </svg>
+      </Svg>
     </HomeStyle>
   );
 }

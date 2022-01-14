@@ -9,6 +9,8 @@ import {
 } from "./functions/inventory";
 import { getInventories } from "./data/inventories";
 import Home from "./pages/Home";
+import Carousel from "./components/molecules/Carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function App() {
   const [displayFullScreenMsg, setDisplayFullScreenMsg] = useState(false);

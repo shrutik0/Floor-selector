@@ -8,15 +8,34 @@ export const HomeStyle = styled.section`
   align-items: center;
 `;
 
-export const TowersStyle = styled.section`
+export const TowersPageStyle = styled.section`
   background: var(--grd-orange-white);
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  svg {
-    width: fit-content;
-    height: 100%;
+
+  .carousel-trigger {
+    top: 90% !important;
+  }
+
+  .home-btn {
+    position: absolute;
+    z-index: 2;
+    left: 20px;
+    top: 20px;
+    background: white;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0.89;
+    transition: all 100ms linear;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    :hover {
+      opacity: 1;
+    }
   }
 `;

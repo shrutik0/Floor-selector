@@ -2,31 +2,45 @@ import React from "react";
 import { Carousel as ReactCarousel } from "react-responsive-carousel";
 import { CarouselStyle } from "./molecules.style";
 
-const PrevArrow = (onClick) => (
-  <div onClick={onClick} className="trigger prev-btn">
-    <img
-      alt="prev-arrow"
-      src={`${process.env.PUBLIC_URL}/icons/${"up_arrow"}.svg`}
-    />
-  </div>
-);
+const PrevArrow = (onClick, hasPrev) =>
+  hasPrev && (
+    <div
+      onClick={onClick}
+      className="carousel-trigger prev-btn disable-text-selection"
+    >
+      <img
+        alt="prev-arrow"
+        src={`${process.env.PUBLIC_URL}/icons/${"up_arrow"}.svg`}
+      />
+    </div>
+  );
 
-const NextArrow = (onClick) => (
-  <div onClick={onClick} className="trigger next-btn">
-    <img
-      alt="next-arrow"
-      src={`${process.env.PUBLIC_URL}/icons/${"up_arrow"}.svg`}
-    />
-  </div>
-);
+const NextArrow = (onClick, hasNext) =>
+  hasNext && (
+    <div
+      onClick={onClick}
+      className="carousel-trigger next-btn disable-text-selection"
+    >
+      <img
+        alt="next-arrow"
+        src={`${process.env.PUBLIC_URL}/icons/${"up_arrow"}.svg`}
+      />
+    </div>
+  );
 
-function Carousel(props) {
+function Carousel({ selectedItem = 0, children, onChange }) {
   return (
     <CarouselStyle>
-      <ReactCarousel renderArrowNext={NextArrow} renderArrowPrev={PrevArrow}>
-        <div className="item">one</div>
-        <div className="item">two</div>
-        <div className="item">three</div>
+      <ReactCarousel
+        renderArrowNext={NextArrow}
+        renderArrowPrev={PrevArrow}
+        showIndicators={false}
+        showThumbs={false}
+        showStatus={false}
+        selectedItem={selectedItem}
+        onChange={onChange}
+      >
+        {children}
       </ReactCarousel>
     </CarouselStyle>
   );
