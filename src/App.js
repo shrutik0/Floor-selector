@@ -15,10 +15,12 @@ import { getInventories } from "./data/inventories";
 function App() {
   const [displayFullScreenMsg, setDisplayFullScreenMsg] = useState(false);
   const [isInventoriesDataStored, setIsInventoriesDataStored] = useState(false);
+
   async function storeJson() {
-    const data = await getJsonFromCsv();
-    setInventories(data.data);
-    setIsInventoriesDataStored(true);
+    await getJsonFromCsv((data) => {
+      setInventories(data);
+      setIsInventoriesDataStored(true);
+    });
   }
 
   useEffect(() => {
