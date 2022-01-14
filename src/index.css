@@ -1,6 +1,7 @@
 :root {
   --clr-orange: #f37021;
   --clr-orange-light: #f37221d3;
+  --grd-orange-white: linear-gradient(315deg, #fff, #f3702173);
 }
 
 * {

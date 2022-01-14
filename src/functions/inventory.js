@@ -1,10 +1,11 @@
-let inventories = [];
+import { getInventories, storeInventories } from "../data/inventories";
 
 export const setInventories = (_inventories) => {
-  inventories = _inventories;
+  storeInventories(_inventories);
 };
 
 export const getAllFlatsInTower = (towerName) => {
+  const inventories = getInventories();
   if (inventories.length == 0) {
     console.log("inventories are empty");
     return;

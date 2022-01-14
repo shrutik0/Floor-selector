@@ -11,6 +11,9 @@ import FullScreenModeAlert from "../components/atoms/FullScreenModeAlert";
 import { Collapsible } from "../components/molecules/CustomCollapsible";
 import { HomePageDetailsStyle } from "../components/molecules/molecules.style";
 import MouseInstructions from "../components/atoms/MouseInstructions";
+import HomePageDetails from "../components/molecules/HomePageDetails";
+import { TOWER_NAMES_LIST, TOWER_PATHS } from "../data/paths";
+import { Link } from "react-router-dom";
 
 const blocks = [
   {
@@ -83,7 +86,7 @@ const FullScreenMsg = ({ displayFullScreenMsg, setDisplayFullScreenMsg }) => {
   );
 };
 
-function Home({ displayFullScreenMsg, setDisplayFullScreenMsg }) {
+function Home() {
   const [showInstructions, setShowInstructions] = useState(false);
   useEffect(() => {
     let tippyInstances = [];
@@ -116,33 +119,7 @@ function Home({ displayFullScreenMsg, setDisplayFullScreenMsg }) {
     <HomeStyle>
       {showInstructions && <MouseInstructions />}
       <Collapsible>
-        <HomePageDetailsStyle>
-          <div className="tag-line">2, 2.5 and 3 BHK Premium Apartments</div>
-          <div className="title">
-            <Logo />
-          </div>
-          <div className="address-wrapper">
-            <div className="address">your, address, goes here</div>
-            <div className="btn">View Map</div>
-          </div>
-          <div className="specs">
-            <div className="specs-title">We brings you</div>
-            <div className="items">
-              <div className="item">
-                <div className="key">4</div>
-                <div className="value">Towers</div>
-              </div>
-              <div className="item">
-                <div className="key">334</div>
-                <div className="value">Flats</div>
-              </div>
-              <div className="item">
-                <div className="key">16</div>
-                <div className="value">Floors</div>
-              </div>
-            </div>
-          </div>
-        </HomePageDetailsStyle>
+        <HomePageDetails />
       </Collapsible>
       <Logo />
       {/* <FullScreenMsg
@@ -160,8 +137,10 @@ function Home({ displayFullScreenMsg, setDisplayFullScreenMsg }) {
       >
         <g>
           <BGImage />
-          {blocks.map((block, index) => (
-            <Path d={block.d} key={block.title} id={`path-${index}`} />
+          {TOWER_NAMES_LIST.map((tower, index) => (
+            <Link className="no-dec" to={`/tower/${tower}`} key={tower}>
+              <Path d={TOWER_PATHS[tower]} id={`path-${index}`} />
+            </Link>
           ))}
         </g>
       </svg>

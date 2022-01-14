@@ -1,22 +1,16 @@
 import React from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Towers from "./pages/Towers";
 
-function Router({ displayFullScreenMsg, setDisplayFullScreenMsg }) {
+function Router() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              displayFullScreenMsg={displayFullScreenMsg}
-              setDisplayFullScreenMsg={setDisplayFullScreenMsg}
-            />
-          }
-        />
+        <Route path="/tower/:towerId" element={<Towers />} />
+        <Route path="/" element={<Home />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
