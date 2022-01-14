@@ -1,7 +1,8 @@
 import Papa from "papaparse";
 
 async function fetchCsv(file) {
-  const response = await fetch(file);
+  const response = await fetch(file, { mode: "no-cors" });
+  console.log(response);
   const reader = response.body.getReader();
   const result = await reader.read();
   const decoder = new TextDecoder("utf-8");
@@ -10,7 +11,10 @@ async function fetchCsv(file) {
 }
 
 export const getJsonFromCsv = async (file) => {
-  const data = Papa.parse(await fetchCsv(file), { header: true });
+  const data = Papa.parse(file, {
+    download: true,
+    header: true,
+  });
   console.log(data);
   return data;
 };

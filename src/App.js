@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AppStyle } from "./App.style";
 import Router from "./Router";
 import Papa from "papaparse";
-import file from "./data/Inventory-Belair.csv";
+// import file from "./data/Inventory-Belair.csv";
 import { getJsonFromCsv } from "./functions/readCsv";
 import {
   getAllDifferentUnitsSizesInBlock,
@@ -17,7 +17,9 @@ function App() {
   const [displayFullScreenMsg, setDisplayFullScreenMsg] = useState(false);
   const [isInventoriesDataStored, setIsInventoriesDataStored] = useState(false);
   async function storeJson() {
-    const data = await getJsonFromCsv(file);
+    const data = await getJsonFromCsv(
+      "https://bel-air-data.s3.ap-south-1.amazonaws.com/Inventory-Belair_VR.xlsx"
+    );
     setInventories(data.data);
     setIsInventoriesDataStored(true);
   }
