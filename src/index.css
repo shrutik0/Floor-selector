@@ -1,6 +1,7 @@
 :root {
   --clr-orange: #f37021;
   --clr-orange-light: #f37221d3;
+  --clr-light: rgba(255, 255, 255, 0.9);
   --grd-orange-white: linear-gradient(315deg, #fff, #f3702173);
 }
 
@@ -36,18 +37,29 @@
   }
 }
 
-@keyframes linear-exit {
+@keyframes linear-exit-left {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-100vw);
+    display: none;
   }
 }
 
-@keyframes linear-enter {
+@keyframes linear-exit-right {
   from {
-    transform: translateX(-100%);
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100vw);
+    display: none;
+  }
+}
+
+@keyframes linear-enter-left {
+  from {
+    transform: translateX(-100vw);
   }
   to {
     transform: translateX(0);

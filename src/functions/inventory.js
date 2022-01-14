@@ -1,8 +1,4 @@
-import { getInventories, storeInventories } from "../data/inventories";
-
-export const setInventories = (_inventories) => {
-  storeInventories(_inventories);
-};
+import { getInventories } from "../data/inventories";
 
 export const getAllFlatsInTower = (towerName) => {
   const inventories = getInventories();

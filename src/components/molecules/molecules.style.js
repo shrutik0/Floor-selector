@@ -34,7 +34,7 @@ export const CustomCollapsibleStyle = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--clr-light);
   color: black;
   border-radius: 10px;
 
@@ -143,42 +143,41 @@ export const HomePageDetailsStyle = styled.div`
   }
 `;
 
-export const SliderStyle = styled.section`
-  width: 100vw;
+export const CarouselStyle = styled.section`
+  width: 100%;
   height: 100vh;
-  .body {
-    background: var(--clr-orange);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: all 2s;
+  position: relative;
+  .item {
+    width: 100%;
+    height: 100vh;
+    background: green;
   }
 
-  .leaving {
-    animation: linear-exit 200ms;
-  }
-
-  .visible {
-    transform: translateX(0px);
-  }
-  .outside {
-    transform: translateX(-100%);
-  }
-
-  .btn {
-    position: absolute;
+  .trigger {
     z-index: 2;
+    position: absolute;
+    height: fit-content;
+    background: var(--clr-light);
     top: 50%;
-    padding: 1rem;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    display: grid;
+    padding: 0.4rem 0.2rem;
+    place-items: center;
     cursor: pointer;
-    background: yellow;
   }
-  .next {
-    right: 0;
+
+  .prev-btn {
+    left: 5px;
+    img {
+      transform: rotate(-90deg);
+    }
   }
-  .prev {
-    left: 0;
+
+  .next-btn {
+    right: 5px;
+    img {
+      transform: rotate(90deg);
+    }
   }
 `;

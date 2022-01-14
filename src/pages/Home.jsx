@@ -9,7 +9,6 @@ import { HomeScreenLogo as Logo } from "../components/atoms/HomeScreenLogo";
 import HoverInfo from "../components/molecules/HoverInfo";
 import FullScreenModeAlert from "../components/atoms/FullScreenModeAlert";
 import { Collapsible } from "../components/molecules/CustomCollapsible";
-import { HomePageDetailsStyle } from "../components/molecules/molecules.style";
 import MouseInstructions from "../components/atoms/MouseInstructions";
 import HomePageDetails from "../components/molecules/HomePageDetails";
 import { TOWER_NAMES_LIST, TOWER_PATHS } from "../data/paths";
