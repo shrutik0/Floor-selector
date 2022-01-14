@@ -1,7 +1,9 @@
 import Papa from "papaparse";
 
-async function fetchCsv(file) {
-  const response = await fetch(file, { mode: "no-cors" });
+async function fetchCsv() {
+  const response = await fetch(
+    `${process.env.PUBLIC_URL}/Inventory-Belair.csv`
+  );
   console.log(response);
   const reader = response.body.getReader();
   const result = await reader.read();
@@ -10,11 +12,8 @@ async function fetchCsv(file) {
   return csv;
 }
 
-export const getJsonFromCsv = async (file) => {
-  const data = Papa.parse(file, {
-    download: true,
-    header: true,
-  });
+export const getJsonFromCsv = async () => {
+  const data = Papa.parse(await fetchCsv(), { header: true });
   console.log(data);
   return data;
 };
