@@ -142,3 +142,9 @@ export const HomePageDetailsStyle = styled.div`
     }
   }
 `;
+
+export const SliderStyle = styled.section`
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+`;

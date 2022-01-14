@@ -60,9 +60,6 @@ function Towers() {
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <BGImage />
-        {/* {blocks.map((block, index) => (
-              <Path d={block.d} key={block.title} id={`path-${index}`} />
-            ))} */}
         <g id="floors">
           {Object.keys(FLOOR_PATHS[towerId]).map((floor_no) => (
             <Path d={FLOOR_PATHS[towerId][floor_no]} key={floor_no} />
