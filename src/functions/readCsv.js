@@ -17,6 +17,9 @@ export const getJsonFromCsv = async (onLoad) => {
   Papa.parse(`${process.env.PUBLIC_URL}/Inventory-Belair.csv`, {
     download: true,
     header: true,
-    complete: (response) => onLoad(response.data),
+    complete: (response) => {
+      console.log(response);
+      onLoad(response.data);
+    },
   });
 };
