@@ -14,8 +14,7 @@ async function fetchCsv() {
 }
 
 export const getJsonFromCsv = async (onLoad) => {
-  Papa.parse(fetchCsv(), {
-    download: true,
+  Papa.parse(await fetchCsv(), {
     header: true,
     complete: (response) => {
       console.log(response);

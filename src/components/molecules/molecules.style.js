@@ -146,5 +146,39 @@ export const HomePageDetailsStyle = styled.div`
 export const SliderStyle = styled.section`
   width: 100vw;
   height: 100vh;
-  background-color: red;
+  .body {
+    background: var(--clr-orange);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 2s;
+  }
+
+  .leaving {
+    animation: linear-exit 200ms;
+  }
+
+  .visible {
+    transform: translateX(0px);
+  }
+  .outside {
+    transform: translateX(-100%);
+  }
+
+  .btn {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    padding: 1rem;
+    cursor: pointer;
+    background: yellow;
+  }
+  .next {
+    right: 0;
+  }
+  .prev {
+    left: 0;
+  }
 `;

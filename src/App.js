@@ -12,6 +12,7 @@ import {
 } from "./functions/inventory";
 import { getInventories } from "./data/inventories";
 import Slider from "./components/molecules/Slider";
+import Home from "./pages/Home";
 
 function App() {
   const [displayFullScreenMsg, setDisplayFullScreenMsg] = useState(false);
@@ -70,7 +71,7 @@ function App() {
 
   return (
     <AppStyle>
-      <Slider />
+      <Router />
     </AppStyle>
   );
 }

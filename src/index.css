@@ -35,3 +35,21 @@
     margin-bottom: 4px;
   }
 }
+
+@keyframes linear-exit {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes linear-enter {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
