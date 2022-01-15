@@ -13,9 +13,13 @@ const Tower = ({ towerId }) => (
       svgWidth="fit-content"
       viewBox="0 0 950 1189"
     >
-      <g id="floors">
-        {Object.keys(FLOOR_PATHS[towerId]).map((floor_no) => (
-          <Path d={FLOOR_PATHS[towerId][floor_no]} key={floor_no} />
+      <g className="floors-svg">
+        {Object.keys(FLOOR_PATHS[towerId]).map((floor_no, index) => (
+          <Path
+            d={FLOOR_PATHS[towerId][floor_no]}
+            key={floor_no}
+            id={`${towerId}-tower-floor-path-${index}`}
+          />
         ))}
       </g>
     </Svg>

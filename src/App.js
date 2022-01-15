@@ -21,6 +21,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    return;
     console.log(
       "A",
       getAllFlatsInTower("A").length,

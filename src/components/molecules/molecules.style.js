@@ -156,18 +156,38 @@ export const CarouselStyle = styled.section`
 
   .carousel-trigger {
     z-index: 2;
+    height: 50px;
+    width: fit-content;
     position: absolute;
-    height: fit-content;
-    background: rgb(53 53 53 / 10%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255 255 255 / 90%);
+    box-shadow: 0px 0px 2px var(--clr-orange);
     top: 50%;
     transform: translateY(-50%);
     border-radius: 10px;
-    display: grid;
-    padding: 0.4rem 0.2rem;
-    place-items: center;
+    /* padding: 0.6rem 0.2rem; */
     cursor: pointer;
+    .btn-label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--clr-orange);
+      width: 0;
+      overflow: hidden;
+      transition: all 100ms linear;
+      padding: 0;
+    }
     :hover {
-      background: rgb(53 53 53 / 20%);
+      .btn-label {
+        padding: 0 0.8rem;
+        width: fit-content;
+      }
+    }
+    img {
+      width: 100%;
+      height: 70%;
+      object-fit: contain;
     }
   }
 
@@ -175,6 +195,9 @@ export const CarouselStyle = styled.section`
     left: 5px;
     img {
       transform: rotate(-90deg);
+    }
+    .btn-label {
+      transform: translateX(-8px);
     }
   }
 
@@ -222,7 +245,7 @@ export const TowerPageDetailsStyle = styled.div`
   .header {
     display: flex;
     align-items: center;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
     .icon-wrapper {
       width: 35px;
@@ -247,6 +270,9 @@ export const TowerPageDetailsStyle = styled.div`
       padding-left: 0.7rem;
       border-left: 3px solid var(--clr-orange);
       margin-right: 0.7rem;
+    }
+    .separate {
+      margin: 0 2rem;
     }
   }
 

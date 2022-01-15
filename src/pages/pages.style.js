@@ -9,7 +9,6 @@ export const HomeStyle = styled.section`
 `;
 
 export const TowersPageStyle = styled.section`
-  background: var(--grd-orange-white);
   width: 100vw;
   height: 100vh;
 
