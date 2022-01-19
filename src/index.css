@@ -3,6 +3,7 @@
   --clr-orange-light: #f37221d3;
   --clr-light: rgba(255, 255, 255, 0.9);
   --grd-orange-white: linear-gradient(315deg, #fff, #f3702173);
+  --grd-blue-white: linear-gradient(325deg, #fff, #76fcf46b);
 }
 
 * {

@@ -8,8 +8,8 @@ export const PathStyle = styled.path`
   transition: all 150ms linear;
 
   :hover {
-    fill: var(--clr-orange);
-    fill-opacity: 0.46;
+    fill: rgba(0, 255, 0, 1);
+    fill-opacity: 0.2;
     stroke: black;
   }
 `;
