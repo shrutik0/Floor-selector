@@ -20,6 +20,7 @@ export const HoverInfoStyle = styled.div`
   }
 
   .features {
+    /* temp comment remove this */
     font-family: "Lato", sans-serif;
     margin-top: 0.6rem;
     font-size: 1rem;
