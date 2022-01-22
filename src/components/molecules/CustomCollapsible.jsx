@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Collapsible from "react-collapsible";
 import { CustomCollapsibleStyle } from "./molecules.style";
 
@@ -11,15 +11,15 @@ const Trigger = ({ open }) => (
   </div>
 );
 
-function CustomCollapsible(props) {
+function CustomCollapsible({ children, collapsible }) {
   return (
     <CustomCollapsibleStyle>
       <Collapsible
         open
-        trigger={<Trigger />}
-        triggerWhenOpen={<Trigger open />}
+        trigger={collapsible ? <Trigger /> : <></>}
+        triggerWhenOpen={collapsible ? <Trigger open /> : <></>}
       >
-        {props.children}
+        {children}
       </Collapsible>
     </CustomCollapsibleStyle>
   );

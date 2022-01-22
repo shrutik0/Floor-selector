@@ -16,12 +16,14 @@ export const HoverInfoStyle = styled.div`
     font-size: 1.4rem;
     font-weight: 600;
     border-left: 4px solid var(--clr-orange);
+    font-family: "Marcellus", serif;
   }
 
   .features {
+    font-family: "Lato", sans-serif;
     margin-top: 0.6rem;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     display: flex;
     flex-direction: column;
     div {
@@ -81,11 +83,12 @@ export const HomePageDetailsStyle = styled.div`
   padding: 1rem;
   padding-top: 3rem;
   width: 300px;
+  font-family: "Marcellus", serif;
 
   .tag-line {
     font-size: 1.1rem;
     border-left: 4px solid var(--clr-orange);
-    font-weight: 600;
+    font-weight: 500;
     padding: 0 1rem;
   }
 
@@ -120,6 +123,7 @@ export const HomePageDetailsStyle = styled.div`
   .specs {
     display: flex;
     flex-direction: column;
+
     .specs-title {
       border-left: 4px solid var(--clr-orange);
       font-size: 1.1rem;
@@ -127,6 +131,7 @@ export const HomePageDetailsStyle = styled.div`
       padding: 0 1rem;
     }
     .items {
+      font-family: "Lato", serif;
       display: flex;
       padding: 1rem;
       .item {
@@ -213,7 +218,7 @@ export const SvgStyle = styled.section`
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-end;
 
   svg {
@@ -227,7 +232,7 @@ export const TowerStyle = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 
   .trigger {
     top: 20px;
@@ -245,6 +250,7 @@ export const TowerPageDetailsStyle = styled.div`
   .header {
     display: flex;
     align-items: center;
+    font-family: "Marcellus", serif;
     font-size: 1.6rem;
     font-weight: 500;
     .icon-wrapper {
@@ -262,6 +268,7 @@ export const TowerPageDetailsStyle = styled.div`
   .highlights {
     display: flex;
     flex-wrap: wrap;
+    font-family: "Lato", serif;
     font-size: 1.2rem;
     font-weight: 500;
     margin-left: 5px;
@@ -282,6 +289,7 @@ export const TowerPageDetailsStyle = styled.div`
     flex-direction: column;
 
     .feature {
+      font-family: "Marcellus", serif;
       margin: 0.8rem;
       display: flex;
       font-size: 1.2rem;

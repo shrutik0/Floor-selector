@@ -12,13 +12,14 @@ const BGImage = ({ Bgsrc, onLoad, show }) => (
   />
 );
 
-function Svg({ Bgsrc, children, svgWidth = "100%", viewBox }) {
+function Svg({ Bgsrc, children, svgWidth = "100%", viewBox, style }) {
   const [loading, setLoading] = useState(true);
+  console.log(viewBox);
   return (
     <SvgStyle>
       {loading && <Loading />}
       <svg
-        style={{ width: svgWidth }}
+        style={{ width: svgWidth, ...style }}
         preserveAspectRatio="xMidYMid slice"
         viewBox={viewBox}
         fill="none"

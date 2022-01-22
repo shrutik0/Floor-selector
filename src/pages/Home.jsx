@@ -104,7 +104,7 @@ function Home() {
   return (
     <HomeStyle>
       {showInstructions && <MouseInstructions />}
-      <Collapsible>
+      <Collapsible collapsible>
         <HomePageDetails />
       </Collapsible>
       <Logo />

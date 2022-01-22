@@ -1,17 +1,19 @@
 import React from "react";
+import { TOWERS_VIEWPORTS } from "../../data";
 import { FLOOR_PATHS } from "../../data/paths";
 import Path from "../atoms/Path";
-import { Collapsible } from "./CustomCollapsible";
 import { TowerStyle } from "./molecules.style";
 import Svg from "./Svg";
-import TowerPageDetails from "./TowerPageDetails";
 
 const Tower = ({ towerId }) => (
   <TowerStyle>
     <Svg
-      Bgsrc={"towers/tower-a.png"}
+      Bgsrc={`towers/tower-${towerId}.png`}
       svgWidth="fit-content"
-      viewBox="0 0 950 1189"
+      viewBox={TOWERS_VIEWPORTS[towerId]}
+      style={{
+        paddingLeft: towerId === "A" || towerId == "D" ? "30vw" : "10vw",
+      }}
     >
       <g className="floors-svg">
         {Object.keys(FLOOR_PATHS[towerId]).map((floor_no, index) => (
