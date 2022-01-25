@@ -1,8 +1,10 @@
 import React from "react";
 import { FormStyle } from "./form.style";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormField } from "../../components/atoms/FormField";
+import { PhoneField } from "../../components/atoms/PhoneField";
+import CountryCityFields from "./CountryCityFields";
 
 const initialValues = {
   first_name: "",
@@ -90,40 +92,21 @@ export const BookingDetailsForm = () => {
                     type="email"
                     placeholder="Enter email address"
                   />
-                  <FormField
+                  <PhoneField
                     className={
-                      errors.phone && touched.phone ? "input-error" : null
+                      errors.phone && touched.phone
+                        ? "input-error phone"
+                        : "phone"
                     }
                     key="phone"
                     name="phone"
                     title="Phone No.*"
                     type="text"
                     placeholder="Enter Phone No."
-                  />
+                  ></PhoneField>
                 </div>
 
-                <div className="inline-fields">
-                  <FormField
-                    className={
-                      errors.country && touched.country ? "input-error" : null
-                    }
-                    key="country"
-                    name="country"
-                    title="Country*"
-                    type="text"
-                    placeholder="Select your country"
-                  />
-                  <FormField
-                    className={
-                      errors.city && touched.city ? "input-error" : null
-                    }
-                    key="city"
-                    name="city"
-                    title="City*"
-                    type="text"
-                    placeholder="Select your city"
-                  />
-                </div>
+                <CountryCityFields errors={errors} touched={touched} />
 
                 <div className="inline-fields">
                   <FormField

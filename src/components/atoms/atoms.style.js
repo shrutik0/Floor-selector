@@ -97,3 +97,17 @@ export const MouseInstructionsStyle = styled.div`
     }
   }
 `;
+
+export const PhoneFieldStyle = styled.div`
+  .input-wrapper {
+    display: flex;
+    .phone-input {
+      margin-left: 1rem;
+    }
+  }
+  .country-code {
+    width: 60px !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+`;

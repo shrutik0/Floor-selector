@@ -30,7 +30,7 @@ export const FormStyle = styled.section`
 
     .inline-fields {
       display: grid;
-      grid-template-columns: auto auto;
+      grid-template-columns: 1fr 1fr;
       width: 100%;
       flex-wrap: wrap;
       .form-row {
@@ -99,6 +99,9 @@ export const FormStyle = styled.section`
           opacity: 1;
         }
       }
+    }
+
+    .phone {
     }
 
     .desc {
