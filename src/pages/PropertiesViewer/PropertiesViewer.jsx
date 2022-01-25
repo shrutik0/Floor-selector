@@ -40,7 +40,10 @@ function PropertiesViewer(props) {
     const data = [];
 
     Object.keys(properties[0]).forEach((key) =>
-      columns.push({ title: key, field: key })
+      columns.push({
+        title: key,
+        field: key,
+      })
     );
     setTableColumns(columns);
 

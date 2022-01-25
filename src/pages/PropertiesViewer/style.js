@@ -6,11 +6,12 @@ export const PropertiesViewerStyle = styled.section`
   table {
     position: relative;
     overflow: visible;
+    font-family: "Lato";
   }
 
   .MuiToolbar-gutters {
     .MTableToolbar-spacer-7 {
-      display: none;
+      display: none !important;
     }
   }
 
