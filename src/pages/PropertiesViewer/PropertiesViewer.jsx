@@ -8,6 +8,7 @@ function PropertiesViewer(props) {
   const [tableColumns, setTableColumns] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const url = "https://bel-air.herokuapp.com/api/v1/allinventory";
@@ -24,7 +25,6 @@ function PropertiesViewer(props) {
       return;
     }
 
-    console.log(response);
     if (response.ok) {
       // if HTTP-status is 200-299
       // get the response body (the method explained below)
@@ -36,7 +36,7 @@ function PropertiesViewer(props) {
   };
 
   const tableSetup = () => {
-    const columns = [];
+    let columns = [];
     const data = [];
 
     Object.keys(properties[0]).forEach((key) =>
@@ -45,6 +45,13 @@ function PropertiesViewer(props) {
         field: key,
       })
     );
+
+    if (!showProjectDetails) {
+      columns = columns.filter(
+        (column) =>
+          column.title !== "ProjectId" && column.title !== "ProjectName"
+      );
+    }
     setTableColumns(columns);
 
     properties.forEach((property, index) => {
@@ -61,32 +68,42 @@ function PropertiesViewer(props) {
 
   useEffect(() => {
     if (properties.length > 0) tableSetup();
-  }, [properties]);
+  }, [properties, showProjectDetails]);
 
   return (
     <PropertiesViewerStyle>
       {loading ? (
         <Loading />
       ) : tableData.length > 1 ? (
-        <MaterialTable
-          columns={tableColumns}
-          data={tableData}
-          onRowClick={(evt, selectedRow) =>
-            setSelectedRow(selectedRow.tableData.id)
-          }
-          options={{
-            columnsButton: true,
-            filtering: true,
-            search: true,
-            pageSize: 10,
-            showTitle: false,
-            searchFieldAlignment: "left",
-            rowStyle: (rowData) => ({
-              backgroundColor:
-                selectedRow === rowData.tableData.id ? "#67aeae" : "#FFF",
-            }),
-          }}
-        />
+        <>
+          <button
+            className="toogle-btn"
+            onClick={() => setShowProjectDetails((old) => !old)}
+          >
+            {showProjectDetails
+              ? "Hide Project Details"
+              : "Show Project Details"}
+          </button>
+          <MaterialTable
+            columns={tableColumns}
+            data={tableData}
+            onRowClick={(evt, selectedRow) =>
+              setSelectedRow(selectedRow.tableData.id)
+            }
+            options={{
+              columnsButton: true,
+              filtering: true,
+              search: true,
+              pageSize: 10,
+              showTitle: false,
+              searchFieldAlignment: "left",
+              rowStyle: (rowData) => ({
+                backgroundColor:
+                  selectedRow === rowData.tableData.id ? "#67aeae" : "#FFF",
+              }),
+            }}
+          />
+        </>
       ) : (
         <div className="error">
           <h1>Something Terrible Happened !</h1>
