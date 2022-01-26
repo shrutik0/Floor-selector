@@ -82,7 +82,7 @@ export const FormStyle = styled.section`
       }
 
       .input-error {
-        /* border: 2px solid tomato; */
+        border: 1px solid tomato;
       }
 
       .error {
@@ -131,36 +131,37 @@ export const FormStyle = styled.section`
       margin-top: 2rem;
       background-color: #f37021;
       cursor: pointer;
+      border-radius: 3px;
+      outline: transparent;
+      border-color: transparent;
       img {
         width: 20px;
         height: 20px;
         margin-left: 1rem;
       }
-    }
 
-    .submit-btn {
-      font-family: "Roboto", sans-serif;
-      max-width: 700px;
-      font-size: 1.2rem;
-      color: white;
-      border-radius: 1rem;
-      border-color: transparent;
-      background: transparent;
-      width: 100%;
-      box-shadow: none;
-
-      :hover {
-        opacity: 0.9;
+      span {
+        font-family: "Roboto", sans-serif;
+        max-width: 700px;
+        font-size: 1.2rem;
+        color: white;
+        background: transparent;
+        width: 100%;
+        box-shadow: none;
+        pointer-events: none;
+        :hover {
+          opacity: 0.9;
+        }
       }
     }
 
-    /* .disabled-btn {
+    .disabled-btn {
       opacity: 0.5;
       filter: grayscale (100%);
-      cursor: not-allowed;
+      cursor: unset;
       :hover {
         opacity: 0.5;
       }
-    } */
+    }
   }
 `;

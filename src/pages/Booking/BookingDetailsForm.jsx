@@ -1,6 +1,6 @@
 import React from "react";
 import { FormStyle } from "./form.style";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { FormField } from "../../components/atoms/FormField";
 import { PhoneField } from "../../components/atoms/PhoneField";
@@ -16,26 +16,64 @@ const initialValues = {
   address: "",
   pincode: "",
   pan: "",
-  aadhaar: "",
+  aadhar: "",
+  terms_and_condition: false,
 };
 
 const ProductUploadSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Product Name is required")
-    .min(3, "Product Name is too short"),
+  first_name: Yup.string().required("Please enter your first name"),
+  last_name: Yup.string().required("Please enter your last name"),
+  email: Yup.string()
+    .email("Please enter valid email address")
+    .required("Please enter your email"),
+  phone: Yup.string()
+    .required("Please enter your phone no.")
+    .matches(/^[6-9]\d{9}$/, {
+      message: "Please enter valid phone no.",
+      excludeEmptyString: false,
+    }),
+
+  address: Yup.string()
+    .required("Please enter your address")
+    .min(5, "Address is too short"),
+
+  pincode: Yup.string().matches(/^[1-9]\d{5}$/, {
+    message: "Please enter valid pincode",
+    excludeEmptyString: false,
+  }),
+
+  pan: Yup.string()
+    .required("Please enter your pan card no.")
+    .matches(/[A-Z]{3}[ABCFGHLJPTK]{1}[A-Z]{1}[0-9]{4}[A-Z]{1}/, {
+      message: "Please enter valid pan card no.",
+      excludeEmptyString: false,
+    })
+    .max(12, "Please enter valid pan card no."),
+
+  aadhar: Yup.string().matches(/^\d{4}\d{4}\d{4}$/, {
+    message: "Please enter valid aadhar card no.",
+    excludeEmptyString: false,
+  }),
+
+  terms_and_condition: Yup.boolean().oneOf(
+    [true],
+    "You must accept the pricing policy terms and conditions"
+  ),
 });
 
-const SubmitButton = ({ dirty, isValid }) => (
-  <div className="submit-wrapper">
-    <button
-      type="submit"
-      className={!(dirty && isValid) ? "disabled-btn submit-btn" : "submit-btn"}
-      disabled={!(dirty && isValid)}
-    >
-      Continue to booking
-    </button>
+const SubmitButton = ({ dirty, isValid, coutryCityError }) => (
+  <button
+    type="submit"
+    className={
+      !(dirty && isValid) || coutryCityError
+        ? "disabled-btn submit-wrapper"
+        : "submit-wrapper"
+    }
+    disabled={!(dirty && isValid) || coutryCityError}
+  >
+    <span>Continue to booking</span>
     <img alt="right" src={`${process.env.PUBLIC_URL}/icons/right.svg`} />
-  </div>
+  </button>
 );
 
 export const BookingDetailsForm = () => {
@@ -49,7 +87,7 @@ export const BookingDetailsForm = () => {
         }}
       >
         {(formik) => {
-          const { errors, touched, isValid, dirty } = formik;
+          const { errors, touched, isValid, dirty, setValues, values } = formik;
           return (
             <div className="container">
               <div className="title">enter your details</div>
@@ -106,7 +144,11 @@ export const BookingDetailsForm = () => {
                   ></PhoneField>
                 </div>
 
-                <CountryCityFields errors={errors} touched={touched} />
+                <CountryCityFields
+                  errors={errors}
+                  touched={touched}
+                  setFormValues={setValues}
+                />
 
                 <div className="inline-fields">
                   <FormField
@@ -142,13 +184,13 @@ export const BookingDetailsForm = () => {
                   />
                   <FormField
                     className={
-                      errors.aadhaar && touched.aadhaar ? "input-error" : null
+                      errors.aadhar && touched.aadhar ? "input-error" : null
                     }
-                    key="aadhaar"
-                    name="aadhaar"
-                    title="Aadhaar Card"
+                    key="aadhar"
+                    name="aadhar"
+                    title="Aadhar Card"
                     type="text"
-                    placeholder="Enter your Aadhaar no."
+                    placeholder="Enter your Aadhar no."
                   />
                 </div>
                 <div className="desc ft-lt">
@@ -157,10 +199,20 @@ export const BookingDetailsForm = () => {
                   any payment card information on our systems.
                 </div>
                 <div className="tnc">
-                  <input type="checkbox" />
+                  <Field
+                    type="checkbox"
+                    name="terms_and_condition"
+                    className="checkbox disable-team team_values"
+                  />
                   <span>I Agree to the Terms & Conditions of sale</span>
                 </div>
-                <SubmitButton dirty={dirty} isValid={isValid} />
+                <SubmitButton
+                  dirty={dirty}
+                  isValid={isValid}
+                  coutryCityError={
+                    values.country.length === 0 || values.city.length === 0
+                  }
+                />
               </Form>
             </div>
           );

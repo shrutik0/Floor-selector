@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SelectInput } from "../../components/atoms/Select";
 import COUNTRY_CITY from "../../data/countries.json";
 
-function CountryCityFields({ errors, touched }) {
+function CountryCityFields({ errors, touched, setFormValues }) {
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(false);
@@ -30,10 +30,6 @@ function CountryCityFields({ errors, touched }) {
       );
   }, [selectedCountry]);
 
-  useEffect(() => {
-    if (cities.length > 1) console.log(cities);
-  }, [cities]);
-
   return (
     <div className="inline-fields">
       {countries.length > 1 && (
@@ -42,7 +38,11 @@ function CountryCityFields({ errors, touched }) {
           title="Country*"
           className={errors.country && touched.country ? "input-error" : null}
           options={countries}
-          onChange={(e) => setSelectedCountry(e.label)}
+          onChange={(e) => {
+            // setFormErrors(errors=>())
+            setSelectedCountry(e.label);
+            setFormValues((values) => ({ ...values, country: e.label }));
+          }}
         />
       )}
       <SelectInput
@@ -51,6 +51,9 @@ function CountryCityFields({ errors, touched }) {
         name="city"
         className={errors.city && touched.city ? "input-error" : null}
         options={cities}
+        onChange={(e) =>
+          setFormValues((values) => ({ ...values, city: e.label }))
+        }
       />
     </div>
   );
