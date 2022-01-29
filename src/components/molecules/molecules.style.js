@@ -13,7 +13,7 @@ export const HoverInfoStyle = styled.div`
 
   .title {
     padding-left: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 600;
     border-left: 4px solid var(--clr-orange);
     font-family: "Marcellus", serif;
@@ -216,20 +216,21 @@ export const CarouselStyle = styled.section`
 `;
 
 export const SvgStyle = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-end;
-
+  margin: auto;
   svg {
     width: 100%;
     height: 100%;
   }
 `;
 
-export const TowerStyle = styled.section`
+export const CarouselItemStyle = styled.section`
   height: 100%;
+  max-width: 85vw;
   width: 100%;
   display: flex;
   justify-content: center;

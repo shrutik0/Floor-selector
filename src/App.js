@@ -3,6 +3,7 @@ import { AppStyle } from "./App.style";
 import Router from "./Router";
 import {
   getAllDifferentUnitsSizesInBlock,
+  getAllFlatsInFloor,
   getAllFlatsInTower,
   getAllFloorsInTower,
   getAllUnitTypesInTower,

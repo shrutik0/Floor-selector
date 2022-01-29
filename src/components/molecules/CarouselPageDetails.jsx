@@ -1,7 +1,7 @@
 import React from "react";
 import { TowerPageDetailsStyle } from "./molecules.style";
 
-function TowerPageDetails({ title, highlights = [], features = [] }) {
+function CarouselPageDetails({ title, highlights = [], features = [] }) {
   return (
     <TowerPageDetailsStyle>
       <div className="header">
@@ -11,13 +11,13 @@ function TowerPageDetails({ title, highlights = [], features = [] }) {
         <div>{title}</div>
       </div>
       <div className="highlights">
-        {highlights.map((highlight) => (
-          <div>{highlight}</div>
+        {highlights.map((highlight, index) => (
+          <div key={index}>{highlight}</div>
         ))}
       </div>
       <div className="features">
-        {features.map((feature) => (
-          <div className="feature">
+        {features.map((feature, index) => (
+          <div className="feature" key={index}>
             <div className="left">{feature.key}</div>
             <div className="right">{feature.value}</div>
           </div>
@@ -27,4 +27,4 @@ function TowerPageDetails({ title, highlights = [], features = [] }) {
   );
 }
 
-export default TowerPageDetails;
+export default CarouselPageDetails;

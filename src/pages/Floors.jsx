@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import { Link, useParams } from "react-router-dom";
 import tippy, { createSingleton } from "tippy.js";
+import { string } from "yup";
 import Carousel from "../components/molecules/Carousel";
 import { Collapsible } from "../components/molecules/CustomCollapsible";
+import Floor from "../components/molecules/Floor";
 import HoverInfo from "../components/molecules/HoverInfo";
 import Tower from "../components/molecules/Tower";
 import CarouselPageDetails from "../components/molecules/CarouselPageDetails";
-import { TOWER_NAMES_LIST } from "../data/paths";
+import { FLOORS } from "../data/paths";
 import {
   getFormalNameFromNumber,
   getFormalUnitType,
@@ -33,35 +35,40 @@ const HomeButton = () => (
   </Link>
 );
 
-const tippySetup = (towerId) => {
+const tippySetup = (towerId, floorNo) => {
   if (!towerId) return;
-  const floors = getAllFloorsInTower(towerId);
-  console.log(floors);
+  const flats = getAllFlatsInFloor(towerId, floorNo);
+  const flatFeatures = [];
 
-  const floorFeatures = [];
-
-  floors.forEach((floor) => {
-    floorFeatures.push({
-      title: `${getFormalNameFromNumber(floor)} floor`,
+  flats.forEach((flat) => {
+    flatFeatures.push({
+      title: `${flat["Flat Number"]}`,
       features: [
-        `${getAllFlatsInFloor(towerId, floor).length} Flats`,
-        `${[getAllUnitTypesInTower(towerId).join(" and ")]}`,
-        `${getFormatedMinMaxUnitSize(
-          getAllDifferentUnitsSizesInFloor(towerId, floor)
-        )} Sq.fts`,
-        `${getAllAvailableFlatsInFloor(towerId, floor).length} Available`,
+        // `${getAllFlatsInFloor(towerId, floor).length} Flats`,
+        // `${[getAllUnitTypesInTower(towerId).join(" and ")]}`,
+        // `${getFormatedMinMaxUnitSize(
+        //   getAllDifferentUnitsSizesInFloor(towerId, floor)
+        // )} Sq.fts`,
+        // `${getAllAvailableFlatsInFloor(towerId, floor).length} Available`,
+        // `${flat["Unit Status"]}`,
+        `${flat["Unit Type"]} `,
+        `${parseInt(flat["Total Carpet Area (sq.ft)"]).toFixed(0)} Sq.fts`,
+        `${flat["Direction"]} `,
       ],
     });
   });
 
   setTimeout(() => {
     let tippyInstances = [];
-    floorFeatures.forEach((floor, index) => {
-      const tippyInstance = tippy(`#${towerId}-tower-floor-path-${index}`, {
-        content: ReactDOMServer.renderToStaticMarkup(
-          <HoverInfo title={floor.title} features={floor.features} />
-        ),
-      });
+    flatFeatures.forEach((flat, index) => {
+      const tippyInstance = tippy(
+        `#${towerId}-tower${floorNo}-floor-flat-path-${index}`,
+        {
+          content: ReactDOMServer.renderToStaticMarkup(
+            <HoverInfo title={flat.title} features={flat.features} />
+          ),
+        }
+      );
       tippyInstances.push(tippyInstance[0]);
     });
 
@@ -77,11 +84,11 @@ const tippySetup = (towerId) => {
   }, 50);
 };
 
-function Towers() {
-  const [currentTower, setCurrentTower] = useState(useParams().towerId);
-
+function Floors() {
+  const { floorId, towerId } = useParams();
+  const [currentFloor, setCurrentFloor] = useState(floorId);
   useEffect(() => {
-    TOWER_NAMES_LIST.forEach((tower) => tippySetup(tower));
+    FLOORS.forEach((floor) => tippySetup(towerId, floor.toString()));
   }, []);
 
   return (
@@ -89,25 +96,26 @@ function Towers() {
       <HomeButton />
       <Collapsible>
         <CarouselPageDetails
-          title={`${currentTower} Block`}
+          title={`${getFormalNameFromNumber(currentFloor)} Floor`}
           highlights={[
             <>
-              {getAllFlatsInTower(currentTower).length} Units{" "}
+              {getAllFlatsInFloor(towerId, currentFloor).length} Units{" "}
               {
                 <span className="separate">
-                  {getAllAvailableFlatsInTower(currentTower).length} Available
+                  {getAllAvailableFlatsInFloor(towerId, currentFloor).length}{" "}
+                  Available
                 </span>
               }
             </>,
             `${getFormatedMinMaxUnitSize(
-              getAllDifferentUnitsSizesInBlock(currentTower)
+              getAllDifferentUnitsSizesInFloor(towerId, currentFloor)
             )} Sq fts`,
           ]}
           features={[
-            ...getAllUnitTypesInTower(currentTower).map((type) => ({
+            ...getAllUnitTypesInTower(towerId).map((type) => ({
               key: `${type} Apartments`,
               value: `${
-                getAllFlatsInTower(currentTower).filter(
+                getAllFlatsInFloor(towerId, currentFloor).filter(
                   (flat) => getFormalUnitType(flat["Unit Type"]) === type
                 ).length
               } units`,
@@ -116,18 +124,18 @@ function Towers() {
         />
       </Collapsible>
       <Carousel
-        titleList={TOWER_NAMES_LIST}
+        titleList={FLOORS}
         onChange={(changedItemIndex) =>
-          setCurrentTower(TOWER_NAMES_LIST[changedItemIndex])
+          setCurrentFloor(FLOORS.indexOf(changedItemIndex).toString())
         }
-        currentItemIndex={TOWER_NAMES_LIST.indexOf(currentTower)}
+        currentItemIndex={FLOORS.indexOf(parseInt(currentFloor))}
       >
-        {TOWER_NAMES_LIST.map((tower) => (
-          <Tower towerId={tower} key={tower} />
+        {FLOORS.map((floor) => (
+          <Floor towerId={towerId} key={floor} floorId={floor} />
         ))}
       </Carousel>
     </TowersPageStyle>
   );
 }
 
-export default Towers;
+export default Floors;
