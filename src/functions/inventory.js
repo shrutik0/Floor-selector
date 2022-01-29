@@ -11,7 +11,12 @@ export const getAllFlatsInFloor = (towerName, floorNumber) => {
 
   return inventories
     .filter((inventory) => inventory["Tower Name"] === towerName)
-    .filter((inventory) => inventory["Floor Number"] === floorNumber);
+    .filter((inventory) => inventory["Floor Number"] === floorNumber)
+    .sort(
+      (a, b) =>
+        a["Flat Number"].substring(2, a["Flat Number"].length) -
+        b["Flat Number"].substring(2, b["Flat Number"].length)
+    );
 };
 
 export const getAllDifferentUnitsSizesInFloor = (towerName, floorNumber) => {

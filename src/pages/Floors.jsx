@@ -38,6 +38,7 @@ const HomeButton = () => (
 const tippySetup = (towerId, floorNo) => {
   if (!towerId) return;
   const flats = getAllFlatsInFloor(towerId, floorNo);
+  console.log(flats.map((flat) => flat["Flat Number"]));
   const flatFeatures = [];
 
   flats.forEach((flat) => {
