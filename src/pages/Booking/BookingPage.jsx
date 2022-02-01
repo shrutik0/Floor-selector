@@ -65,6 +65,8 @@ function BookingPage(props) {
       return;
     }
     console.log(orderResponse);
+
+    // in case any other errors like property is already booked
     if (orderResponse.msg) {
       alert(orderResponse.msg);
       setLoading(false);
@@ -79,10 +81,10 @@ function BookingPage(props) {
       name: "Property Booking",
       description: "Please pay amount",
       image: `${process.env.PUBLIC_URL}/logos/assl-payment-logo.png`,
+      theme: {
+        color: "#f37021",
+      },
       handler: async function (response) {
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-        // alert(response.razorpay_signature);
         console.log(response, orderResponse.id);
         const res = await validatePayment(
           orderResponse.id,

@@ -71,7 +71,7 @@ const SubmitButton = ({ dirty, isValid, coutryCityError }) => (
     }
     disabled={!(dirty && isValid) || coutryCityError}
   >
-    <span>Continue to booking</span>
+    <span>Continue to payment</span>
     <img alt="right" src={`${process.env.PUBLIC_URL}/icons/right.svg`} />
   </button>
 );

@@ -2,6 +2,7 @@ import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import Loading from "../../components/atoms/Loading";
 import { useLoading } from "../../contexts/LoadingContext";
+import { baseUrl } from "../../data";
 import { PropertiesViewerStyle } from "./style";
 
 function PropertiesViewer(props) {
@@ -12,7 +13,7 @@ function PropertiesViewer(props) {
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const { loading, setLoading } = useLoading();
 
-  const url = "https://bel-air.herokuapp.com/api/v1/allinventory";
+  const url = baseUrl + "/api/v1/allinventory";
 
   const fetchProperties = async () => {
     let response;
