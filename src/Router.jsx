@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import Loading from "./components/atoms/Loading";
+import { useLoading } from "./contexts/LoadingContext";
 import BookingPage from "./pages/Booking/BookingPage";
 import Floors from "./pages/Floors";
 import Home from "./pages/Home";

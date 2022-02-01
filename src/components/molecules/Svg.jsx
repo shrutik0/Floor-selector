@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Loading from "../atoms/Loading";
+import React, { useEffect, useState } from "react";
+import { useLoading } from "../../contexts/LoadingContext";
 import { SvgStyle } from "./molecules.style";
 
 const BGImage = ({ Bgsrc, onLoad, show }) => (
@@ -13,10 +13,12 @@ const BGImage = ({ Bgsrc, onLoad, show }) => (
 );
 
 function Svg({ Bgsrc, children, svgWidth = "100%", viewBox, style }) {
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useLoading();
+  useEffect(() => {
+    setLoading(true);
+  }, []);
   return (
     <SvgStyle>
-      {loading && <Loading />}
       <svg
         style={{ width: svgWidth, ...style }}
         preserveAspectRatio="xMidYMid slice"

@@ -10,6 +10,11 @@ import {
 } from "./functions/inventory";
 import { getInventories } from "./data/inventories";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import {
+  LoadingContext,
+  LoadingContextProvider,
+} from "./contexts/LoadingContext";
+import Loading from "./components/atoms/Loading";
 
 function App() {
   const [displayFullScreenMsg, setDisplayFullScreenMsg] = useState(false);
@@ -57,9 +62,12 @@ function App() {
   }, []);
 
   return (
-    <AppStyle>
-      <Router />
-    </AppStyle>
+    <LoadingContextProvider>
+      <AppStyle>
+        <Loading />
+        <Router />
+      </AppStyle>
+    </LoadingContextProvider>
   );
 }
 

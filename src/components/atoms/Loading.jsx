@@ -1,7 +1,9 @@
 import React from "react";
+import { useLoading } from "../../contexts/LoadingContext";
 
 function Loading(props) {
-  return (
+  const { loading } = useLoading();
+  return loading ? (
     <div className="loading-wrapper">
       <div className="lds-ellipsis">
         <div></div>
@@ -10,6 +12,8 @@ function Loading(props) {
         <div></div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 }
 

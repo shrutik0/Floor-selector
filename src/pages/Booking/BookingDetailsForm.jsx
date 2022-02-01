@@ -20,7 +20,7 @@ const initialValues = {
   terms_and_condition: false,
 };
 
-const ProductUploadSchema = Yup.object().shape({
+const BookingFormSchema = Yup.object().shape({
   first_name: Yup.string().required("Please enter your first name"),
   last_name: Yup.string().required("Please enter your last name"),
   email: Yup.string()
@@ -76,15 +76,13 @@ const SubmitButton = ({ dirty, isValid, coutryCityError }) => (
   </button>
 );
 
-export const BookingDetailsForm = () => {
+export const BookingDetailsForm = ({ onSubmit }) => {
   return (
     <FormStyle>
       <Formik
         initialValues={initialValues}
-        validationSchema={ProductUploadSchema}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
+        validationSchema={BookingFormSchema}
+        onSubmit={onSubmit}
       >
         {(formik) => {
           const { errors, touched, isValid, dirty, setValues, values } = formik;

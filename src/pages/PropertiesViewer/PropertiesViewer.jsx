@@ -1,6 +1,7 @@
 import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import Loading from "../../components/atoms/Loading";
+import { useLoading } from "../../contexts/LoadingContext";
 import { PropertiesViewerStyle } from "./style";
 
 function PropertiesViewer(props) {
@@ -9,7 +10,7 @@ function PropertiesViewer(props) {
   const [tableData, setTableData] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
   const [showProjectDetails, setShowProjectDetails] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useLoading();
 
   const url = "https://bel-air.herokuapp.com/api/v1/allinventory";
 
@@ -63,6 +64,7 @@ function PropertiesViewer(props) {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchProperties();
   }, []);
 
@@ -72,9 +74,7 @@ function PropertiesViewer(props) {
 
   return (
     <PropertiesViewerStyle>
-      {loading ? (
-        <Loading />
-      ) : tableData.length > 1 ? (
+      {!loading && tableData.length > 1 ? (
         <>
           <button
             className="toogle-btn"
@@ -105,10 +105,12 @@ function PropertiesViewer(props) {
           />
         </>
       ) : (
-        <div className="error">
-          <h1>Something Terrible Happened !</h1>
-          <h3>Try contacting support team</h3>
-        </div>
+        !loading && (
+          <div className="error">
+            <h1>Something Terrible Happened !</h1>
+            <h3>Try contacting support team</h3>
+          </div>
+        )
       )}
     </PropertiesViewerStyle>
   );
