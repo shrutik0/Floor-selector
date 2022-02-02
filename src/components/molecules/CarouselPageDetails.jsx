@@ -1,15 +1,11 @@
 import React from "react";
 import { TowerPageDetailsStyle } from "./molecules.style";
 
-function CarouselPageDetails({ title, highlights = [], features = [] }) {
+function CarouselPageDetails({ Header, highlights = [], features = [] }) {
+  console.log(Header);
   return (
     <TowerPageDetailsStyle>
-      <div className="header">
-        <div className="icon-wrapper center">
-          <img src={`${process.env.PUBLIC_URL}/icons/building.svg`} />
-        </div>
-        <div>{title}</div>
-      </div>
+      <div className="header">{Header}</div>
       <div className="highlights">
         {highlights.map((highlight, index) => (
           <div key={index}>{highlight}</div>

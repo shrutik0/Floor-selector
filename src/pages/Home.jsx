@@ -11,7 +11,7 @@ import FullScreenModeAlert from "../components/atoms/FullScreenModeAlert";
 import { Collapsible } from "../components/molecules/CustomCollapsible";
 import MouseInstructions from "../components/atoms/MouseInstructions";
 import HomePageDetails from "../components/molecules/HomePageDetails";
-import { TOWER_NAMES_LIST, TOWER_PATHS } from "../data/paths";
+import { TOWER_NAMES_LIST } from "../data";
 import { Link } from "react-router-dom";
 import Svg from "../components/molecules/Svg";
 import {
@@ -21,6 +21,7 @@ import {
   getAllUnitTypesInTower,
 } from "../functions/inventory";
 import { getFormatedMinMaxUnitSize } from "../functions/helpers";
+import { TOWER_PATHS } from "../data/paths";
 
 const towerFeatures = [];
 TOWER_NAMES_LIST.forEach((tower) => {

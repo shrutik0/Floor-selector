@@ -7,7 +7,7 @@ import { Collapsible } from "../components/molecules/CustomCollapsible";
 import HoverInfo from "../components/molecules/HoverInfo";
 import Tower from "../components/molecules/Tower";
 import CarouselPageDetails from "../components/molecules/CarouselPageDetails";
-import { TOWER_NAMES_LIST } from "../data/paths";
+import { TOWER_NAMES_LIST } from "../data";
 import {
   getFormalNameFromNumber,
   getFormalUnitType,
@@ -24,6 +24,8 @@ import {
   getAllUnitTypesInTower,
 } from "../functions/inventory";
 import { TowersPageStyle } from "./pages.style";
+import Dropdown from "../components/atoms/Navigator";
+import Navigator from "../components/atoms/Navigator";
 
 const HomeButton = () => (
   <Link to={"/"}>
@@ -89,7 +91,13 @@ function Towers() {
       <HomeButton />
       <Collapsible>
         <CarouselPageDetails
-          title={`${currentTower} Block`}
+          Header={
+            <Header
+              onChange={(e) => setCurrentTower(e.label)}
+              title={`Block`}
+              defaultOption={currentTower}
+            />
+          }
           highlights={[
             <>
               {getAllFlatsInTower(currentTower).length} Units{" "}
@@ -131,3 +139,13 @@ function Towers() {
 }
 
 export default Towers;
+
+const Header = ({ title, defaultOption, onChange }) => (
+  <Navigator
+    defaultOption={defaultOption}
+    title={title}
+    icon={"building"}
+    options={TOWER_NAMES_LIST.map((tower) => ({ label: tower, value: tower }))}
+    onChange={onChange}
+  />
+);

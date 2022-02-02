@@ -111,3 +111,34 @@ export const PhoneFieldStyle = styled.div`
     padding-right: 0;
   }
 `;
+
+export const NavigatorStyle = styled.div`
+  display: flex;
+  align-items: center;
+
+  .dropdown {
+    margin: 0 0.5rem;
+    .control {
+      border: none;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      transition: all 200ms linear;
+      .Dropdown-arrow-wrapper {
+        padding: 0 0.5rem;
+      }
+      .arrow {
+        position: unset;
+      }
+    }
+    .menu {
+      width: fit-content;
+      min-width: 100%;
+      div {
+        padding: 0.2rem;
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+  }
+`;

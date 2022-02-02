@@ -253,11 +253,11 @@ export const TowerPageDetailsStyle = styled.div`
     display: flex;
     align-items: center;
     font-family: "Marcellus", serif;
-    font-size: 1.6rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 400;
     .icon-wrapper {
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
       margin-right: 0.7rem;
       img {
         object-fit: contain;
