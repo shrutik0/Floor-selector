@@ -2,7 +2,6 @@ import React from "react";
 import { TowerPageDetailsStyle } from "./molecules.style";
 
 function CarouselPageDetails({ Header, highlights = [], features = [] }) {
-  console.log(Header);
   return (
     <TowerPageDetailsStyle>
       <div className="header">{Header}</div>

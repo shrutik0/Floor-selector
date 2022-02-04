@@ -1,17 +1,25 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { is_touch_enabled } from "../functions/helpers";
 
-export const loadingContext = createContext();
+export const AppContext = createContext();
 
-export const LoadingContextProvider = ({ children }) => {
+export const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(is_touch_enabled());
+
   return (
-    <loadingContext.Provider value={{ loading, setLoading }}>
+    <AppContext.Provider value={{ loading, setLoading, isMobile, setIsMobile }}>
       {children}
-    </loadingContext.Provider>
+    </AppContext.Provider>
   );
 };
 
 export const useLoading = () => {
-  const { loading, setLoading } = useContext(loadingContext);
+  const { loading, setLoading } = useContext(AppContext);
   return { loading, setLoading };
+};
+
+export const useViewport = () => {
+  const { isMobile, setIsMobile } = useContext(AppContext);
+  return { isMobile, setIsMobile };
 };

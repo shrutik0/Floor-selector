@@ -21,6 +21,7 @@ function Svg({ Bgsrc, children, svgWidth = "100%", viewBox, style }) {
     <SvgStyle>
       <svg
         style={{ width: svgWidth, ...style }}
+        id="svg"
         preserveAspectRatio="xMidYMid slice"
         viewBox={viewBox}
         fill="none"

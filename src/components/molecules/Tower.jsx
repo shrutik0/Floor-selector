@@ -18,7 +18,7 @@ const Tower = ({ towerId }) => (
     >
       <g className="floors-svg">
         {Object.keys(FLOOR_PATHS[towerId]).map((floor_no, index) => (
-          <Link to={`/tower/${towerId}/floor/${floor_no - 1}`}>
+          <Link to={`/tower/${towerId}/floor/${floor_no}`}>
             <Path
               d={FLOOR_PATHS[towerId][floor_no]}
               key={floor_no}

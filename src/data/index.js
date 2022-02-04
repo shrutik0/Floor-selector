@@ -1,8 +1,8 @@
 export const TOWERS_VIEWPORTS = {
-  A: "0 0 950 1189",
-  B: "0 0 1452 1189",
-  C: "0 0 1452 1189",
-  D: "0 0 1452 1189",
+  A: "0 0 960 1200",
+  B: "0 0 1417 1200",
+  C: "0 0 1417 1200",
+  D: "0 0 904 1189",
 };
 
 export const FLOORS_VIEWPORTS = {

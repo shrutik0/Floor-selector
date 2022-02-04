@@ -54,6 +54,19 @@ body {
   background: #555;
 }
 
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.no-select:focus {
+  outline: none !important;
+}
+
 /* animations */
 @keyframes up-down-animation {
   0% {

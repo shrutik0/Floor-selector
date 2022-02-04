@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PathStyle = styled.path`
   fill: transparent;
-  outline: 0px solid transparent;
+  outline: none;
   cursor: pointer;
   fill-opacity: 0;
   transition: all 150ms linear;

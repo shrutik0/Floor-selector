@@ -12,7 +12,7 @@ import { Collapsible } from "../components/molecules/CustomCollapsible";
 import MouseInstructions from "../components/atoms/MouseInstructions";
 import HomePageDetails from "../components/molecules/HomePageDetails";
 import { TOWER_NAMES_LIST } from "../data";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Svg from "../components/molecules/Svg";
 import {
   getAllDifferentUnitsSizesInBlock,
@@ -22,6 +22,7 @@ import {
 } from "../functions/inventory";
 import { getFormatedMinMaxUnitSize } from "../functions/helpers";
 import { TOWER_PATHS } from "../data/paths";
+import { useViewport } from "../contexts/LoadingContext";
 
 const towerFeatures = [];
 TOWER_NAMES_LIST.forEach((tower) => {
@@ -69,7 +70,7 @@ const FullScreenMsg = ({ displayFullScreenMsg, setDisplayFullScreenMsg }) => {
   );
 };
 
-const tippySetup = () => {
+const tippySetup = (gotoTower) => {
   let tippyInstances = [];
 
   towerFeatures.forEach((tower, index) => {
@@ -89,14 +90,22 @@ const tippySetup = () => {
     placement: "left-start",
     duration: [0, 1000],
     offset: [10, 30],
+    appendTo: document.body,
   });
 };
 
 function Home() {
   const [showInstructions, setShowInstructions] = useState(false);
+  const [showFullScreenMsg, setShowFullScreenMsg] = useState(true);
+  const { isMobile } = useViewport();
+  const navigate = useNavigate();
+
+  const gotoTower = (index) => {
+    navigate(`tower-path-${index}`);
+  };
 
   useEffect(() => {
-    tippySetup();
+    tippySetup(gotoTower);
     setTimeout(() => {
       setShowInstructions(true);
     }, 1000);
@@ -109,19 +118,24 @@ function Home() {
         <HomePageDetails />
       </Collapsible>
       <Logo />
-      {/* <FullScreenMsg
-        displayFullScreenMsg={displayFullScreenMsg}
-        setDisplayFullScreenMsg={setDisplayFullScreenMsg}
-      /> */}
+      {isMobile && (
+        <FullScreenMsg
+          displayFullScreenMsg={showFullScreenMsg}
+          setDisplayFullScreenMsg={setShowFullScreenMsg}
+        />
+      )}
 
       <Svg Bgsrc={"master-plan.jpg"} viewBox={"0 0 1512 982"}>
-        <g>
-          {TOWER_NAMES_LIST.map((tower, index) => (
-            <Link className="no-dec" to={`/tower/${tower}`} key={tower}>
-              <Path d={TOWER_PATHS[tower]} id={`tower-path-${index}`} />
-            </Link>
-          ))}
-        </g>
+        {TOWER_NAMES_LIST.map((tower, index) => (
+          <Link
+            className="no-dec no-select"
+            to={!isMobile && `/tower/${tower}`}
+            key={tower}
+            onClick={() => console.log("clicked")}
+          >
+            <Path d={TOWER_PATHS[tower]} id={`tower-path-${index}`} />
+          </Link>
+        ))}
       </Svg>
     </HomeStyle>
   );

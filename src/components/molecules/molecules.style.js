@@ -8,7 +8,7 @@ export const HoverInfoStyle = styled.div`
   /* background-color: var(--clr-orange-light); */
   color: black;
   padding: 1rem;
-  padding-right: 2.5rem;
+  /* padding-right: 2.5rem; */
   border-radius: 8px;
 
   .title {
@@ -30,6 +30,17 @@ export const HoverInfoStyle = styled.div`
     div {
       padding: 0.2rem 0.5rem;
     }
+  }
+
+  .view-btn {
+    background-color: var(--clr-orange);
+    color: white;
+    padding: 0.2rem 1rem;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.2rem 0;
   }
 `;
 
