@@ -11,7 +11,7 @@ function FullScreenModeAlert({ handleYes, handleNo }) {
           position: "absolute",
           top: "0px",
           left: "0px",
-          zIndex: "10",
+          zIndex: "200",
         }}
       ></div>
       <div
@@ -25,7 +25,7 @@ function FullScreenModeAlert({ handleYes, handleNo }) {
           justifyContent: "center",
           alignItems: "flex-start",
           paddingTop: "10vh",
-          zIndex: "10",
+          zIndex: "200",
         }}
       >
         <div
