@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoading } from "../../contexts/LoadingContext";
+import { useLoading } from "../../contexts/AppContext";
 import {
   initiateOrder,
   loadScript,

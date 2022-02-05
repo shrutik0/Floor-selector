@@ -11,6 +11,7 @@ function FullScreenModeAlert({ handleYes, handleNo }) {
           position: "absolute",
           top: "0px",
           left: "0px",
+          zIndex: "10",
         }}
       ></div>
       <div
@@ -22,8 +23,9 @@ function FullScreenModeAlert({ handleYes, handleNo }) {
           left: "0px",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
-          zIndex: "9999",
+          alignItems: "flex-start",
+          paddingTop: "10vh",
+          zIndex: "10",
         }}
       >
         <div
@@ -61,7 +63,7 @@ function FullScreenModeAlert({ handleYes, handleNo }) {
           >
             <div
               style={{
-                backgroundColor: "#0c5958cc",
+                backgroundColor: "var(--clr-orange)",
                 color: "white",
                 padding: "5px 10px",
                 cursor: "pointer",
@@ -73,12 +75,12 @@ function FullScreenModeAlert({ handleYes, handleNo }) {
             </div>
             <div
               style={{
-                backgroundColor: "#0c5958cc",
+                backgroundColor: "var(--clr-orange)",
                 color: "white",
                 padding: "5px 10px",
                 cursor: "pointer",
                 borderRadius: "3px",
-                marginLeft: "40px",
+                marginLeft: "20px",
               }}
               onClick={handleNo}
             >

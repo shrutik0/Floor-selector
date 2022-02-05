@@ -15,6 +15,7 @@ export const PathStyle = styled.path`
 `;
 
 export const HomeScreenLogoStyle = styled.div`
+  width: fit-content;
   position: absolute;
   top: 0;
   left: 0;
@@ -24,6 +25,10 @@ export const HomeScreenLogoStyle = styled.div`
   border-radius: 5px;
   margin: 0.5rem;
   cursor: pointer;
+
+  @media screen and (max-height: 480px) {
+    height: 40px;
+  }
 `;
 
 export const MouseInstructionsStyle = styled.div`
@@ -140,5 +145,40 @@ export const NavigatorStyle = styled.div`
         text-align: center;
       }
     }
+  }
+`;
+
+export const RotateInstructionStyle = styled.section`
+  @media screen and (max-height: 480px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 480px) {
+    display: none;
+  }
+  z-index: 100;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  .img-wrapper {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    img {
+      width: 70%;
+      height: auto;
+    }
+  }
+
+  .instruction {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    font-weight: 500;
   }
 `;

@@ -11,6 +11,7 @@ import Tower from "../components/molecules/Tower";
 import CarouselPageDetails from "../components/molecules/CarouselPageDetails";
 import { FLOORS, TOWER_NAMES_LIST } from "../data";
 import {
+  getFlatInfo,
   getFormalNameFromNumber,
   getFormalUnitType,
   getFormatedMinMaxUnitSize,
@@ -27,6 +28,8 @@ import {
 } from "../functions/inventory";
 import { TowersPageStyle } from "./pages.style";
 import Navigator from "../components/atoms/Navigator";
+import { useViewport } from "../contexts/AppContext";
+import OnClickInfo from "../components/molecules/OnClickInfo";
 
 const HomeButton = () => (
   <Link to={"/"}>
@@ -37,20 +40,12 @@ const HomeButton = () => (
 );
 
 const tippySetup = (towerId, floorNo) => {
+  const flatFeatures = [];
   if (!towerId) return;
   const flats = getAllFlatsInFloor(towerId, floorNo);
-  const flatFeatures = [];
 
-  flats.forEach((flat) => {
-    flatFeatures.push({
-      title: `${flat["Flat Number"]}`,
-      features: [
-        `${flat["Unit Type"]} `,
-        `${parseInt(flat["Total Carpet Area (sq.ft)"]).toFixed(0)} Sq.fts`,
-        `${flat["Direction"]} `,
-      ],
-    });
-  });
+  for (let i = 0; i < flats.length; i++)
+    flatFeatures.push(getFlatInfo(towerId, floorNo, i));
 
   setTimeout(() => {
     let tippyInstances = [];
@@ -81,15 +76,22 @@ const tippySetup = (towerId, floorNo) => {
 function Floors() {
   const { floorId, towerId } = useParams();
   const [currentFloor, setCurrentFloor] = useState(floorId);
+  const [clickedFlat, setClickedFlat] = useState(false);
   const navigate = useNavigate();
+  const { isMobile } = useViewport();
+
+  console.log(clickedFlat);
+
   useEffect(() => {
-    FLOORS.forEach((floor) => tippySetup(towerId, floor.toString()));
+    !isMobile &&
+      FLOORS.forEach((floor) => tippySetup(towerId, floor.toString()));
   }, []);
 
   return (
     <TowersPageStyle>
       <HomeButton />
-      <Collapsible>
+
+      <Collapsible collapsible={isMobile} open={!isMobile}>
         <CarouselPageDetails
           title={`${getFormalNameFromNumber(currentFloor)} Floor`}
           Header={
@@ -128,13 +130,21 @@ function Floors() {
       </Collapsible>
       <Carousel
         titleList={FLOORS}
-        onChange={(changedItemIndex) =>
-          setCurrentFloor(FLOORS.indexOf(changedItemIndex).toString())
-        }
+        onChange={(changedItemIndex) => {
+          setCurrentFloor(FLOORS.indexOf(changedItemIndex).toString());
+          setClickedFlat(false);
+        }}
         currentItemIndex={FLOORS.indexOf(parseInt(currentFloor))}
       >
         {FLOORS.map((floor) => (
-          <Floor towerId={towerId} key={floor} floorId={floor} />
+          <Floor
+            towerId={towerId}
+            key={floor}
+            floorId={floor}
+            setClickedFlat={setClickedFlat}
+            clickedFlat={clickedFlat}
+            currentFloor={currentFloor}
+          />
         ))}
       </Carousel>
     </TowersPageStyle>

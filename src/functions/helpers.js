@@ -1,5 +1,14 @@
 import { sha256 } from "js-sha256";
 import { baseUrl } from "../data";
+import {
+  getAllAvailableFlatsInFloor,
+  getAllDifferentUnitsSizesInBlock,
+  getAllDifferentUnitsSizesInFloor,
+  getAllFlatsInFloor,
+  getAllFlatsInTower,
+  getAllFloorsInTower,
+  getAllUnitTypesInTower,
+} from "./inventory";
 
 export const getFormatedMinMaxUnitSize = (sizes) =>
   [Math.min(...sizes), Math.max(...sizes)].join(" - ");
@@ -153,4 +162,59 @@ export function is_touch_enabled() {
       navigator.msMaxTouchPoints > 0) &&
     window.matchMedia("(pointer: coarse)").matches
   );
+}
+
+export const getTowerInfo = (towerId) => ({
+  id: towerId,
+  title: `${towerId} Block`,
+  features: [
+    `${getAllUnitTypesInTower(towerId).join(" - ")}`,
+    `${getAllFloorsInTower(towerId).length} Floors`,
+    `${getAllFlatsInTower(towerId).length} Flats`,
+    `${getFormatedMinMaxUnitSize(
+      getAllDifferentUnitsSizesInBlock(towerId)
+    )} Sq. ft`,
+  ],
+});
+
+export const getFloorInfo = (towerId, floor) => ({
+  title: `${getFormalNameFromNumber(floor)} floor`,
+  features: [
+    `${getAllFlatsInFloor(towerId, floor).length} Flats`,
+    `${[getAllUnitTypesInTower(towerId).join(" and ")]}`,
+    `${getFormatedMinMaxUnitSize(
+      getAllDifferentUnitsSizesInFloor(towerId, floor)
+    )} Sq.fts`,
+    `${getAllAvailableFlatsInFloor(towerId, floor).length} Available`,
+  ],
+});
+
+export const getFlatInfo = (towerId, floorNo, flatIndex) => {
+  const flats = getAllFlatsInFloor(towerId, floorNo);
+  const flat = flats[flatIndex];
+  return {
+    title: `${flat["Flat Number"]}`,
+    features: [
+      `${flat["Unit Type"]} `,
+      `${parseInt(flat["Total Carpet Area (sq.ft)"]).toFixed(0)} Sq.fts`,
+      `${flat["Direction"]} `,
+    ],
+  };
+};
+
+export function getFullscreenElement() {
+  return (
+    document.fullscreenElement || //standard property
+    document.webkitFullscreenElement || //safari/opera support
+    document.mozFullscreenElement || //firefox support
+    document.msFullscreenElement
+  ); //ie/edge support
+}
+
+export function toggleFullscreen() {
+  if (getFullscreenElement()) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen().catch(console.log);
+  }
 }

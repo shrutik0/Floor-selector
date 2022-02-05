@@ -1,7 +1,7 @@
 import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import Loading from "../../components/atoms/Loading";
-import { useLoading } from "../../contexts/LoadingContext";
+import { useLoading } from "../../contexts/AppContext";
 import { baseUrl } from "../../data";
 import { PropertiesViewerStyle } from "./style";
 

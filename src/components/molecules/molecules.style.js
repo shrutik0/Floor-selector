@@ -35,12 +35,12 @@ export const HoverInfoStyle = styled.div`
   .view-btn {
     background-color: var(--clr-orange);
     color: white;
-    padding: 0.2rem 1rem;
+    padding: 0.2rem 2rem;
     border-radius: 3px;
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    margin: 0.2rem 0;
+    margin-top: 1rem;
   }
 `;
 
@@ -104,14 +104,6 @@ export const HomePageDetailsStyle = styled.div`
     padding: 0 1rem;
   }
 
-  .title {
-    position: relative;
-    margin-top: 2rem;
-    div {
-      position: relative;
-    }
-  }
-
   .address-wrapper {
     padding: 1.4rem;
     display: flex;
@@ -155,6 +147,28 @@ export const HomePageDetailsStyle = styled.div`
         .value {
           opacity: 0.9;
           padding: 0.3rem 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-height: 480px) {
+    padding-left: 25%;
+    padding-top: 0rem;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .address-wrapper {
+      width: fit-content;
+    }
+    .specs {
+      width: fit-content;
+      .items {
+        .item {
+          margin: 0 1rem;
         }
       }
     }
@@ -224,6 +238,9 @@ export const CarouselStyle = styled.section`
       transform: rotate(90deg);
     }
   }
+
+  @media screen and (max-height: 480px) {
+  }
 `;
 
 export const SvgStyle = styled.section`
@@ -246,7 +263,6 @@ export const CarouselItemStyle = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-
   .trigger {
     top: 20px;
   }
@@ -320,6 +336,43 @@ export const TowerPageDetailsStyle = styled.div`
         border-left: 3px solid var(--clr-orange);
         padding-left: 1rem;
       }
+    }
+  }
+
+  @media screen and (max-height: 480px) {
+    height: 100vh;
+    .header {
+      font-size: 1.2rem;
+    }
+    .highlights {
+      font-size: 1rem;
+    }
+
+    .features {
+      .feature {
+        font-size: 1rem;
+      }
+    }
+  }
+`;
+
+export const OnClickInfoStyle = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  .info-body {
+    background-color: white;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.6);
+    width: 180px;
+    margin: 0.5rem;
+    .title {
+      font-size: 1rem;
+      text-align: left;
+    }
+    .features {
+      font-size: 0.9rem;
+      text-align: left;
     }
   }
 `;

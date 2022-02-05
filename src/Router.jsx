@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Loading from "./components/atoms/Loading";
-import { useLoading, useViewport } from "./contexts/LoadingContext";
+import { useLoading, useViewport } from "./contexts/AppContext";
 import BookingPage from "./pages/Booking/BookingPage";
 import Floors from "./pages/Floors";
 import Home from "./pages/Home";

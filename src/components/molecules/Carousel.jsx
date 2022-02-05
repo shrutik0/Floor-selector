@@ -6,7 +6,7 @@ function Carousel({ children, titleList = [], onChange, currentItemIndex }) {
   const PrevArrow = (onClick, hasPrev) => (
     <div
       onClick={onClick}
-      className="carousel-trigger prev-btn disable-text-selection"
+      className="carousel-trigger prev-btn disable-text-selection no-select"
       style={{
         // this style requires to prevent tippy to show up while sliding to next carousel
         opacity: hasPrev ? "1" : "0",
@@ -29,7 +29,7 @@ function Carousel({ children, titleList = [], onChange, currentItemIndex }) {
     return (
       <div
         onClick={onClick}
-        className="carousel-trigger next-btn disable-text-selection"
+        className="carousel-trigger next-btn disable-text-selection no-select"
         style={{
           // this style requires to prevent tippy to show up while sliding to next carousel
           opacity: hasNext ? "1" : "0",

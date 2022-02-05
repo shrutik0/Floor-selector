@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoading } from "../../contexts/LoadingContext";
+import { useLoading } from "../../contexts/AppContext";
 import { SvgStyle } from "./molecules.style";
 
 const BGImage = ({ Bgsrc, onLoad, show }) => (
@@ -12,13 +12,13 @@ const BGImage = ({ Bgsrc, onLoad, show }) => (
   />
 );
 
-function Svg({ Bgsrc, children, svgWidth = "100%", viewBox, style }) {
+function Svg({ Bgsrc, children, svgWidth = "100%", viewBox, style, onClick }) {
   const { loading, setLoading } = useLoading();
   useEffect(() => {
     setLoading(true);
   }, []);
   return (
-    <SvgStyle>
+    <SvgStyle onClick={onClick}>
       <svg
         style={{ width: svgWidth, ...style }}
         id="svg"

@@ -6,9 +6,6 @@ function HomePageDetails(props) {
   return (
     <HomePageDetailsStyle>
       <div className="tag-line">2, 2.5 and 3 BHK Premium Apartments</div>
-      <div className="title">
-        <HomeScreenLogo />
-      </div>
       <div className="address-wrapper">
         <div className="address">your, address, goes here</div>
         <div className="btn">View Map</div>

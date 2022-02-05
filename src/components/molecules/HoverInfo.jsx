@@ -14,7 +14,7 @@ const Features = ({ features }) => (
 
 function HoverInfo({ title = "", features = [], onViewClick }) {
   return (
-    <HoverInfoStyle>
+    <HoverInfoStyle className="info-body">
       <Title title={title} />
       <Features features={features} />
       {onViewClick && <ViewButton onClick={onViewClick} />}

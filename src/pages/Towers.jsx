@@ -9,9 +9,11 @@ import Tower from "../components/molecules/Tower";
 import CarouselPageDetails from "../components/molecules/CarouselPageDetails";
 import { TOWER_NAMES_LIST } from "../data";
 import {
+  getFloorInfo,
   getFormalNameFromNumber,
   getFormalUnitType,
   getFormatedMinMaxUnitSize,
+  getTowerInfo,
 } from "../functions/helpers";
 import {
   getAllAvailableFlatsInFloor,
@@ -26,6 +28,8 @@ import {
 import { TowersPageStyle } from "./pages.style";
 import Dropdown from "../components/atoms/Navigator";
 import Navigator from "../components/atoms/Navigator";
+import { useViewport } from "../contexts/AppContext";
+import OnClickInfo from "../components/molecules/OnClickInfo";
 
 const HomeButton = () => (
   <Link to={"/"}>
@@ -38,30 +42,14 @@ const HomeButton = () => (
 const tippySetup = (towerId) => {
   if (!towerId) return;
   const floors = getAllFloorsInTower(towerId);
-  console.log(floors);
-
-  const floorFeatures = [];
-
-  floors.forEach((floor) => {
-    floorFeatures.push({
-      title: `${getFormalNameFromNumber(floor)} floor`,
-      features: [
-        `${getAllFlatsInFloor(towerId, floor).length} Flats`,
-        `${[getAllUnitTypesInTower(towerId).join(" and ")]}`,
-        `${getFormatedMinMaxUnitSize(
-          getAllDifferentUnitsSizesInFloor(towerId, floor)
-        )} Sq.fts`,
-        `${getAllAvailableFlatsInFloor(towerId, floor).length} Available`,
-      ],
-    });
-  });
 
   setTimeout(() => {
     let tippyInstances = [];
-    floorFeatures.forEach((floor, index) => {
+    floors.forEach((floor, index) => {
+      const floorInfo = getFloorInfo(towerId, floor);
       const tippyInstance = tippy(`#${towerId}-tower-floor-path-${index}`, {
         content: ReactDOMServer.renderToStaticMarkup(
-          <HoverInfo title={floor.title} features={floor.features} />
+          <HoverInfo title={floorInfo.title} features={floorInfo.features} />
         ),
       });
       tippyInstances.push(tippyInstance[0]);
@@ -80,16 +68,18 @@ const tippySetup = (towerId) => {
 };
 
 function Towers() {
+  const { isMobile } = useViewport();
   const [currentTower, setCurrentTower] = useState(useParams().towerId);
+  const [clickedFloor, setClickedFloor] = useState(false);
 
   useEffect(() => {
-    TOWER_NAMES_LIST.forEach((tower) => tippySetup(tower));
+    !isMobile && TOWER_NAMES_LIST.forEach((tower) => tippySetup(tower));
   }, []);
 
   return (
     <TowersPageStyle>
       <HomeButton />
-      <Collapsible>
+      <Collapsible collapsible={isMobile} open={!isMobile}>
         <CarouselPageDetails
           Header={
             <Header
@@ -125,13 +115,19 @@ function Towers() {
       </Collapsible>
       <Carousel
         titleList={TOWER_NAMES_LIST}
-        onChange={(changedItemIndex) =>
-          setCurrentTower(TOWER_NAMES_LIST[changedItemIndex])
-        }
+        onChange={(changedItemIndex) => {
+          setCurrentTower(TOWER_NAMES_LIST[changedItemIndex]);
+          setClickedFloor(false);
+        }}
         currentItemIndex={TOWER_NAMES_LIST.indexOf(currentTower)}
       >
         {TOWER_NAMES_LIST.map((tower) => (
-          <Tower towerId={tower} key={tower} />
+          <Tower
+            towerId={tower}
+            key={tower}
+            clickedFloor={clickedFloor}
+            setClickedFloor={setClickedFloor}
+          />
         ))}
       </Carousel>
     </TowersPageStyle>
