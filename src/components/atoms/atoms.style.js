@@ -156,7 +156,7 @@ export const RotateInstructionStyle = styled.section`
   @media screen and (min-width: 480px) {
     display: none;
   }
-  z-index: 100;
+  z-index: 300;
   position: absolute;
   width: 100vw;
   height: 100vh;

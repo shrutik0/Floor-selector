@@ -27,6 +27,9 @@ function App() {
   const isMobile = is_touch_enabled();
   useEffect(() => {
     if (isMobile) setShowFullScreenMsg(true);
+    window.screen.orientation.addEventListener("change", () =>
+      window.location.reload()
+    );
   }, []);
 
   return (
