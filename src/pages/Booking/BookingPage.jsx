@@ -1,23 +1,61 @@
 import React, { useState } from "react";
 import { useLoading } from "../../contexts/AppContext";
 import {
+  createOffer,
   initiateOrder,
-  loadScript,
   storeCutomer,
   validatePayment,
-} from "../../functions/helpers";
+} from "../../api";
 import { BookingPageStyle } from "./booking.style";
 import BookingDetailsSection from "./BookingDetailsSection";
 import Header from "./Header";
 import PropertyDetailsSection from "./PropertyDetailsSection";
+import { loadScript } from "../../functions/helpers";
 
 function BookingPage(props) {
-  const { loading, setLoading } = useLoading();
+  const project_id = "a1qO0000001vA00";
+  const property_id = "a1xO0000003Gese";
+  const advertisement_id = "a03O000000SFVDF";
+
+  const { setLoading } = useLoading();
   const [paymentSuccess, setPaymentSucess] = useState(false);
 
   const handleBookingDataSubmit = async (form) => {
     setLoading(true);
     console.log(form);
+
+    const offerRes = await createOffer(
+      form.first_name,
+      form.last_name,
+      form.email,
+      form.phone,
+      form.country,
+      form.city,
+      form.address,
+      form.pincode,
+      form.pan,
+      form.aadhar,
+      project_id,
+      property_id,
+      advertisement_id
+    );
+
+    console.log(offerRes);
+    if (!offerRes.ok) {
+      alert(
+        "There is an technical issue at server side, please try after some time"
+      );
+      setLoading(false);
+      return;
+    }
+    const offerRes_json = JSON.parse(await offerRes.json());
+    console.log(offerRes_json);
+    if (!offerRes_json.Success) {
+      alert(offerRes_json.errorMessage);
+      setLoading(false);
+      return;
+    }
+    const { contactId, enquiryId, offerId } = offerRes_json;
 
     const storeRes = await storeCutomer(
       form.first_name,
@@ -30,7 +68,7 @@ function BookingPage(props) {
       form.pincode,
       form.pan,
       form.aadhar,
-      { id: "demo-property-id", project: "demo-project-id" }
+      { id: property_id, project: project_id, contactId, enquiryId, offerId }
     )
       .catch((e) => e)
       .then((e) => e);
@@ -74,7 +112,7 @@ function BookingPage(props) {
     }
 
     const options = {
-      key: "rzp_test_YVOCSKdq8IDtOS",
+      key: orderResponse.api_key,
       currency: orderResponse.currency,
       amount: orderResponse.amount,
       order_id: orderResponse.id,

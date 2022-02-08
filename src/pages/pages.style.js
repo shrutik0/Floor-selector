@@ -19,12 +19,11 @@ export const TowersPageStyle = styled.section`
   .home-btn {
     position: absolute;
     z-index: 2;
-    left: 20px;
-    top: 20px;
+    margin: 15px;
     background: white;
-    width: 50px;
-    height: 50px;
-    padding: 10px;
+    width: 45px;
+    height: 45px;
+    padding: 8px;
     border-radius: 10px;
     opacity: 0.89;
     transition: all 100ms linear;
@@ -35,6 +34,15 @@ export const TowersPageStyle = styled.section`
     }
     :hover {
       opacity: 1;
+    }
+  }
+
+  @media screen and (max-height: 480px) {
+    .home-btn {
+      width: 35px;
+      height: 35px;
+      padding: 7px;
+      margin: 10px;
     }
   }
 `;

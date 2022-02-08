@@ -89,6 +89,9 @@ export const CustomCollapsibleStyle = styled.div`
       border: 1px solid var(--clr-orange);
     }
   }
+
+  @media screen and (max-height: 480px) {
+  }
 `;
 
 export const HomePageDetailsStyle = styled.div`
@@ -240,6 +243,9 @@ export const CarouselStyle = styled.section`
   }
 
   @media screen and (max-height: 480px) {
+    .carousel-trigger {
+      height: 35px;
+    }
   }
 `;
 
@@ -253,6 +259,30 @@ export const SvgStyle = styled.section`
   svg {
     width: 100%;
     height: 100%;
+  }
+
+  .Block {
+    :hover {
+      fill: var(--clr-blocked);
+      fill-opacity: 0.3;
+      stroke: black;
+    }
+  }
+
+  .Sold {
+    :hover {
+      fill: var(--clr-sold);
+      fill-opacity: 0.3;
+      stroke: black;
+    }
+  }
+
+  .Available {
+    :hover {
+      fill: var(--clr-available);
+      fill-opacity: 0.2;
+      stroke: black;
+    }
   }
 `;
 
@@ -268,9 +298,12 @@ export const CarouselItemStyle = styled.section`
   }
 `;
 
-export const TowerPageDetailsStyle = styled.div`
+export const CarouselItemDetailsStyle = styled.div`
   width: 400px;
   height: 100%;
+  max-height: 100vh;
+  overflow: auto;
+  overflow-x: hidden;
   padding: 1rem;
   padding-top: 2rem;
   display: flex;
@@ -321,6 +354,7 @@ export const TowerPageDetailsStyle = styled.div`
       font-family: "Marcellus", serif;
       margin: 0.8rem;
       display: flex;
+      align-items: center;
       font-size: 1.2rem;
       border: 2.3px solid #ec6e227a;
       border-radius: 8px;
@@ -336,6 +370,15 @@ export const TowerPageDetailsStyle = styled.div`
         border-left: 3px solid var(--clr-orange);
         padding-left: 1rem;
       }
+    }
+  }
+
+  .flat-navigator {
+    font-size: 1rem;
+    font-weight: 500;
+    .icon-wrapper {
+      width: 25px;
+      height: 25px;
     }
   }
 
@@ -373,6 +416,38 @@ export const OnClickInfoStyle = styled.div`
     .features {
       font-size: 0.9rem;
       text-align: left;
+    }
+  }
+`;
+
+export const FlatStyle = styled.section`
+  height: 100vh;
+  width: 100%;
+  .flat-number {
+    background-color: white;
+    color: var(--clr-orange);
+    width: fit-content;
+    margin: auto;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 1.5rem;
+  }
+  .img-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 95%;
+      object-fit: contain;
+    }
+  }
+  @media screen and (max-height: 480px) {
+    .flat-number {
+      font-size: 1rem;
     }
   }
 `;

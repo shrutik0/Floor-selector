@@ -1,9 +1,14 @@
 import React from "react";
-import { TowerPageDetailsStyle } from "./molecules.style";
+import { CarouselItemDetailsStyle } from "./molecules.style";
 
-function CarouselPageDetails({ Header, highlights = [], features = [] }) {
+function CarouselPageDetails({
+  Header,
+  highlights = [],
+  features = [],
+  style,
+}) {
   return (
-    <TowerPageDetailsStyle>
+    <CarouselItemDetailsStyle style={style}>
       <div className="header">{Header}</div>
       <div className="highlights">
         {highlights.map((highlight, index) => (
@@ -18,7 +23,7 @@ function CarouselPageDetails({ Header, highlights = [], features = [] }) {
           </div>
         ))}
       </div>
-    </TowerPageDetailsStyle>
+    </CarouselItemDetailsStyle>
   );
 }
 

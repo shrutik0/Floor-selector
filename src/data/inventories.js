@@ -1080,6 +1080,25 @@ let inventories = [
     "Other Charges": "785000",
     "Total Cost (excluding maintenance and GST)": "9813536.661",
   },
+
+  {
+    "Flat Number": "A-002",
+    "Property ID": "",
+    "Unit Type": "3 BHK T-2",
+    "Unit Status": "Available",
+    Direction: "West Facing",
+    "Tower Name": "A",
+    "Floor Number": "0",
+    "RERA Carpet Area (sq.ft)": "1029.24",
+    "Additional Carpet Area (Sq.ft)": "0",
+    "Balcony Carpet Area (sq.ft)": "46.822965",
+    "Total Carpet Area (sq.ft)": "1076.067083",
+    "SBU Area (sq.ft)": "1537.23869",
+    "Total Cost Including FRC and PLC": "5224",
+    "Basic Cost9Including FRC and PLC)": "8030534.917",
+    "Other Charges": "785000",
+    "Total Cost (excluding maintenance and GST)": "8815534.917",
+  },
   {
     "Flat Number": "A-005",
     "Property ID": "",
@@ -1099,23 +1118,24 @@ let inventories = [
     "Total Cost (excluding maintenance and GST)": "9341957.593",
   },
   {
-    "Flat Number": "A-002",
+    "Flat Number": "A-006",
     "Property ID": "",
-    "Unit Type": "3 BHK T-2",
+    "Unit Type": "3 BHK T-5",
     "Unit Status": "Available",
-    Direction: "West Facing",
+    Direction: "East Facing",
     "Tower Name": "A",
     "Floor Number": "0",
-    "RERA Carpet Area (sq.ft)": "1029.24",
+    "RERA Carpet Area (sq.ft)": "1019.88",
     "Additional Carpet Area (Sq.ft)": "0",
     "Balcony Carpet Area (sq.ft)": "46.822965",
-    "Total Carpet Area (sq.ft)": "1076.067083",
-    "SBU Area (sq.ft)": "1537.23869",
+    "Total Carpet Area (sq.ft)": "1066.70249",
+    "SBU Area (sq.ft)": "1523.8607",
     "Total Cost Including FRC and PLC": "5224",
-    "Basic Cost9Including FRC and PLC)": "8030534.917",
+    "Basic Cost9Including FRC and PLC)": "7960648.297",
     "Other Charges": "785000",
-    "Total Cost (excluding maintenance and GST)": "8815534.917",
+    "Total Cost (excluding maintenance and GST)": "8745648.297",
   },
+
   {
     "Flat Number": "A-105",
     "Property ID": "",
@@ -1386,24 +1406,7 @@ let inventories = [
     "Other Charges": "785000",
     "Total Cost (excluding maintenance and GST)": "9819644.098",
   },
-  {
-    "Flat Number": "A-006",
-    "Property ID": "",
-    "Unit Type": "3 BHK T-5",
-    "Unit Status": "Available",
-    Direction: "East Facing",
-    "Tower Name": "A",
-    "Floor Number": "0",
-    "RERA Carpet Area (sq.ft)": "1019.88",
-    "Additional Carpet Area (Sq.ft)": "0",
-    "Balcony Carpet Area (sq.ft)": "46.822965",
-    "Total Carpet Area (sq.ft)": "1066.70249",
-    "SBU Area (sq.ft)": "1523.8607",
-    "Total Cost Including FRC and PLC": "5224",
-    "Basic Cost9Including FRC and PLC)": "7960648.297",
-    "Other Charges": "785000",
-    "Total Cost (excluding maintenance and GST)": "8745648.297",
-  },
+
   {
     "Flat Number": "A-106",
     "Property ID": "",
@@ -6012,9 +6015,99 @@ let inventories = [
     "Other Charges": "785000",
     "Total Cost (excluding maintenance and GST)": "8356778.729",
   },
-  {
-    "Flat Number": "",
-  },
+
+  // // non exist flats
+  // //  A
+  // {
+  //   "Flat Number": "A-001",
+  //   "Tower Name": "A",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "A-003",
+  //   "Tower Name": "A",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "A-004",
+  //   "Tower Name": "A",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+
+  // //  B
+  // {
+  //   "Flat Number": "B-002",
+  //   "Tower Name": "B",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "B-003",
+  //   "Tower Name": "B",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "B-004",
+  //   "Tower Name": "B",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+
+  // // C
+  // {
+  //   "Flat Number": "C-002",
+  //   "Tower Name": "C",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "C-003",
+  //   "Tower Name": "C",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "C-004",
+  //   "Tower Name": "C",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+
+  // // D
+  // {
+  //   "Flat Number": "C-001",
+  //   "Tower Name": "C",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "C-003",
+  //   "Tower Name": "C",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
+  // {
+  //   "Flat Number": "C-006",
+  //   "Tower Name": "C",
+  //   "Floor Number": "0",
+  //   "Unit Type": "",
+  //   "Unit Status": "NA",
+  // },
 ];
 
 export const getInventories = () => inventories;

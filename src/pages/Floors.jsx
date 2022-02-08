@@ -31,6 +31,9 @@ import Navigator from "../components/atoms/Navigator";
 import { useViewport } from "../contexts/AppContext";
 import OnClickInfo from "../components/molecules/OnClickInfo";
 
+const getFlatIndex = (flatNum = "") =>
+  parseInt(flatNum[flatNum.length - 1]) - 1;
+
 const HomeButton = () => (
   <Link to={"/"}>
     <div className="home-btn center">
@@ -51,7 +54,9 @@ const tippySetup = (towerId, floorNo) => {
     let tippyInstances = [];
     flatFeatures.forEach((flat, index) => {
       const tippyInstance = tippy(
-        `#${towerId}-tower${floorNo}-floor-flat-path-${index}`,
+        `#${towerId}-tower${floorNo}-floor-flat-path-${getFlatIndex(
+          flat.title
+        )}`,
         {
           content: ReactDOMServer.renderToStaticMarkup(
             <HoverInfo title={flat.title} features={flat.features} />
@@ -79,8 +84,6 @@ function Floors() {
   const [clickedFlat, setClickedFlat] = useState(false);
   const navigate = useNavigate();
   const { isMobile } = useViewport();
-
-  console.log(clickedFlat);
 
   useEffect(() => {
     !isMobile &&

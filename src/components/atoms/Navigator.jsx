@@ -3,10 +3,17 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import { NavigatorStyle } from "./atoms.style";
 
-function Navigator({ title, options, defaultOption, icon, onChange }) {
+function Navigator({
+  title,
+  options,
+  defaultOption,
+  icon,
+  onChange,
+  className,
+}) {
   return (
-    <NavigatorStyle>
-      <div className="icon-wrapper center">
+    <NavigatorStyle className={className}>
+      <div className={"icon-wrapper center"}>
         <img src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`} />
       </div>
       <div>{title}</div>

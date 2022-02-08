@@ -3,6 +3,7 @@ import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Loading from "./components/atoms/Loading";
 import { useLoading, useViewport } from "./contexts/AppContext";
 import BookingPage from "./pages/Booking/BookingPage";
+import Flats from "./pages/Flats";
 import Floors from "./pages/Floors";
 import Home from "./pages/Home";
 import PropertiesViewer from "./pages/PropertiesViewer/PropertiesViewer";
@@ -14,6 +15,10 @@ function Router() {
       <Routes>
         <Route path="/tower/:towerId" element={<Towers />} />
         <Route path="/tower/:towerId/floor/:floorId" element={<Floors />} />
+        <Route
+          path="/tower/:towerId/floor/:floorId/flat/:flatNumber"
+          element={<Flats />}
+        />
         <Route path="/" element={<Home />} />
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/inventories/all" element={<PropertiesViewer />} />
