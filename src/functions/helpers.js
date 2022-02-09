@@ -80,7 +80,7 @@ export function is_touch_enabled() {
 
 export const getTowerInfo = (towerId) => ({
   id: towerId,
-  title: `${towerId} Block`,
+  title: `${towerId} BLOCK`,
   features: [
     `${getAllUnitTypesInTower(towerId).join(" - ")}`,
     `${getAllFloorsInTower(towerId).length} Floors`,
@@ -92,10 +92,10 @@ export const getTowerInfo = (towerId) => ({
 });
 
 export const getFloorInfo = (towerId, floor) => ({
-  title: `${getFormalNameFromNumber(floor)} floor`,
+  title: `${getFormalNameFromNumber(floor)} Floor`,
   features: [
+    `${[getAllUnitTypesInTower(towerId).join(" and ")]}s`,
     `${getAllFlatsInFloor(towerId, floor).length} Flats`,
-    `${[getAllUnitTypesInTower(towerId).join(" and ")]}`,
     `${getFormatedMinMaxUnitSize(
       getAllDifferentUnitsSizesInFloor(towerId, floor)
     )} Sq.fts`,
@@ -133,3 +133,11 @@ export function toggleFullscreen() {
     document.documentElement.requestFullscreen().catch(console.log);
   }
 }
+
+export const isFloorBooked = (towerId, floorId) => {
+  return getAllAvailableFlatsInFloor(towerId, floorId).length === 0;
+};
+
+export const rupeeIndian = Intl.NumberFormat("en-IN", {
+  currency: "INR",
+});

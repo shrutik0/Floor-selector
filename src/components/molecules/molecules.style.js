@@ -3,20 +3,37 @@ import styled from "styled-components";
 export const HoverInfoStyle = styled.div`
   display: flex;
   flex-direction: column;
-  width: 220px;
+  min-width: 200px;
   background-color: rgba(255, 255, 255, 0.9);
   /* background-color: var(--clr-orange-light); */
   color: black;
   padding: 1rem;
-  /* padding-right: 2.5rem; */
+  padding-right: 2rem;
   border-radius: 8px;
+  /* box-shadow: 0px 0px 1px var(--clr-text); */
+  color: var(--clr-text);
 
   .title {
-    padding-left: 1rem;
+    /* padding-left: 0.5rem; */
     font-size: 1.2rem;
     font-weight: 600;
-    border-left: 4px solid var(--clr-orange);
+    /* border-left: 3.5px solid var(--clr-orange-light); */
     font-family: "Marcellus", serif;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      width: auto;
+      height: 24px;
+      transform: translateY(-1px);
+      img {
+        with: 100%;
+        height: 100%;
+      }
+    }
+    .text {
+      margin: 0 0.5rem;
+    }
   }
 
   .features {
@@ -24,11 +41,13 @@ export const HoverInfoStyle = styled.div`
     font-family: "Lato", sans-serif;
     margin-top: 0.6rem;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     div {
-      padding: 0.2rem 0.5rem;
+      padding: 0.3rem;
+      padding-top: 0.5rem;
+      padding-left: 0.5rem;
     }
   }
 
@@ -50,8 +69,9 @@ export const CustomCollapsibleStyle = styled.div`
   right: 0;
   background-color: var(--clr-light);
   color: black;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
   z-index: 4;
+  box-shadow: 0px 0px 2px #827878;
 
   .trigger {
     right: 30px;
@@ -98,17 +118,19 @@ export const HomePageDetailsStyle = styled.div`
   padding: 1rem;
   padding-top: 3rem;
   width: 300px;
-  font-family: "Marcellus", serif;
+  font-family: "Lato", serif;
 
   .tag-line {
     font-size: 1.1rem;
     border-left: 4px solid var(--clr-orange);
     font-weight: 500;
+    line-height: 26px;
     padding: 0 1rem;
   }
 
   .address-wrapper {
     padding: 1.4rem;
+    padding-top: 2rem;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -264,7 +286,7 @@ export const SvgStyle = styled.section`
   .Block {
     :hover {
       fill: var(--clr-blocked);
-      fill-opacity: 0.3;
+      fill-opacity: 0.4;
       stroke: black;
     }
   }
@@ -308,17 +330,18 @@ export const CarouselItemDetailsStyle = styled.div`
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 2px var(--clr-text);
 
   .header {
     display: flex;
     align-items: center;
     font-family: "Marcellus", serif;
-    font-size: 1.3rem;
-    font-weight: 400;
+    font-size: 1.2rem;
+    font-weight: 500;
     .icon-wrapper {
-      width: 30px;
-      height: 30px;
-      margin-right: 0.7rem;
+      width: 28px;
+      height: 28px;
+      margin-right: 0.5rem;
       img {
         object-fit: contain;
         width: 100%;
@@ -339,36 +362,76 @@ export const CarouselItemDetailsStyle = styled.div`
       padding-left: 0.7rem;
       border-left: 3px solid var(--clr-orange);
       margin-right: 0.7rem;
+      line-height: 18px;
     }
     .separate {
       margin: 0 2rem;
     }
+    .Available {
+      color: #0fa215d9;
+    }
+    .Block {
+      color: var(--clr-blocked);
+    }
+    .Sold {
+      color: var(--clr-sold);
+    }
   }
 
   .features {
-    margin-top: 2rem;
+    font-family: "Lato", serif;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
 
     .feature {
-      font-family: "Marcellus", serif;
       margin: 0.8rem;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
       align-items: center;
-      font-size: 1.2rem;
-      border: 2.3px solid #ec6e227a;
+      font-size: 1.1rem;
+      border: 1.5px solid #ec6e227a;
       border-radius: 8px;
-      padding: 0.7rem 0;
+      padding: 0.5rem 0;
+      text-align: center;
       div {
         padding: 0rem 1rem;
       }
 
       .left {
         padding-right: 1rem;
+        border-right: 3px solid var(--clr-orange);
       }
       .right {
-        border-left: 3px solid var(--clr-orange);
         padding-left: 1rem;
+      }
+    }
+  }
+
+  .btns {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-family: "Lato", serif;
+    justify-content: center;
+
+    .btn {
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      background-color: var(--clr-orange);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      border-radius: 3px;
+      :lat-child {
+        margin-right: 0;
+      }
+      :hover {
+        opacity: 0.8;
       }
     }
   }

@@ -120,6 +120,7 @@ export const PhoneFieldStyle = styled.div`
 export const NavigatorStyle = styled.div`
   display: flex;
   align-items: center;
+  font-family: "Lato", sans-serif;
 
   .dropdown {
     margin: 0 0.5rem;

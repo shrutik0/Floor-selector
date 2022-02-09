@@ -94,7 +94,7 @@ function Floors() {
     <TowersPageStyle>
       <HomeButton />
 
-      <Collapsible collapsible={isMobile} open={!isMobile}>
+      <Collapsible collapsible={true} open={!isMobile}>
         <CarouselPageDetails
           title={`${getFormalNameFromNumber(currentFloor)} Floor`}
           Header={
@@ -106,18 +106,10 @@ function Floors() {
             />
           }
           highlights={[
-            <>
-              {getAllFlatsInFloor(towerId, currentFloor).length} Units{" "}
-              {
-                <span className="separate">
-                  {getAllAvailableFlatsInFloor(towerId, currentFloor).length}{" "}
-                  Available
-                </span>
-              }
-            </>,
-            `${getFormatedMinMaxUnitSize(
-              getAllDifferentUnitsSizesInFloor(towerId, currentFloor)
-            )} Sq fts`,
+            `${getAllFlatsInFloor(towerId, currentFloor).length} Units`,
+            `${
+              getAllAvailableFlatsInFloor(towerId, currentFloor).length
+            } Available`,
           ]}
           features={[
             ...getAllUnitTypesInTower(towerId).map((type) => ({
@@ -128,6 +120,12 @@ function Floors() {
                 ).length
               } units`,
             })),
+            {
+              key: "Unit Sizes",
+              value: `${getFormatedMinMaxUnitSize(
+                getAllDifferentUnitsSizesInFloor(towerId, currentFloor)
+              )} Sq fts`,
+            },
           ]}
         />
       </Collapsible>

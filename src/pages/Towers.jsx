@@ -79,27 +79,18 @@ function Towers() {
   return (
     <TowersPageStyle>
       <HomeButton />
-      <Collapsible collapsible={isMobile} open={!isMobile}>
+      <Collapsible collapsible={true} open={!isMobile}>
         <CarouselPageDetails
           Header={
             <Header
               onChange={(e) => setCurrentTower(e.label)}
-              title={`Block`}
+              title={`Tower`}
               defaultOption={currentTower}
             />
           }
           highlights={[
-            <>
-              {getAllFlatsInTower(currentTower).length} Units{" "}
-              {
-                <span className="separate">
-                  {getAllAvailableFlatsInTower(currentTower).length} Available
-                </span>
-              }
-            </>,
-            `${getFormatedMinMaxUnitSize(
-              getAllDifferentUnitsSizesInBlock(currentTower)
-            )} Sq fts`,
+            `${getAllFlatsInTower(currentTower).length} Units`,
+            `${getAllAvailableFlatsInTower(currentTower).length} Available`,
           ]}
           features={[
             ...getAllUnitTypesInTower(currentTower).map((type) => ({
@@ -110,6 +101,12 @@ function Towers() {
                 ).length
               } units`,
             })),
+            {
+              key: "Unit Sizes",
+              value: `${getFormatedMinMaxUnitSize(
+                getAllDifferentUnitsSizesInBlock(currentTower)
+              )} Sq fts`,
+            },
           ]}
         />
       </Collapsible>

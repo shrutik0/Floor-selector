@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useViewport } from "../../contexts/AppContext";
 import { TOWERS_VIEWPORTS } from "../../data";
 import { FLOOR_PATHS } from "../../data/paths";
-import { getFloorInfo } from "../../functions/helpers";
+import { getFloorInfo, isFloorBooked } from "../../functions/helpers";
 import Path from "../atoms/Path";
 import { CarouselItemStyle } from "./molecules.style";
 import OnClickInfo from "./OnClickInfo";
@@ -47,6 +47,9 @@ const Tower = ({ towerId, clickedFloor, setClickedFloor }) => {
                 d={FLOOR_PATHS[towerId][floor_no]}
                 key={floor_no}
                 id={`${towerId}-tower-floor-path-${index}`}
+                className={
+                  isFloorBooked(towerId, floor_no) ? "Sold" : "Available"
+                }
               />
             </Link>
           ))}

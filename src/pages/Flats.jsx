@@ -15,6 +15,7 @@ import {
   getFormalNameFromNumber,
   getFormalUnitType,
   getFormatedMinMaxUnitSize,
+  rupeeIndian,
 } from "../functions/helpers";
 import {
   getAllAvailableFlatsInFloor,
@@ -61,7 +62,7 @@ function Flats() {
     <TowersPageStyle>
       <HomeButton />
 
-      <Collapsible collapsible={window.innerWidth < 1000} open={showDetails}>
+      <Collapsible collapsible={true} open={showDetails}>
         <CarouselPageDetails
           style={{ width: "500px" }}
           title={flats[currentFlatIndex]["Flat Number"]}
@@ -79,8 +80,10 @@ function Flats() {
             />
           }
           highlights={[
+            <span className={flats[currentFlatIndex]["Unit Status"]}>
+              {`${flats[currentFlatIndex]["Unit Status"]}`}{" "}
+            </span>,
             `${flats[currentFlatIndex]["Unit Type"]}`,
-            `${flats[currentFlatIndex]["Unit Status"]}`,
           ]}
           features={[
             {
@@ -94,21 +97,41 @@ function Flats() {
               )} Sq.ft`,
             },
             {
-              key: "Balcony Carpet Area",
+              key: "SBU Area",
               value: `${parseInt(
-                flats[currentFlatIndex]["Balcony Carpet Area (sq.ft)"]
+                flats[currentFlatIndex]["SBU Area (sq.ft)"]
               )} Sq.ft`,
             },
             {
               key: "Total Cost",
               value: (
                 <>
-                  <div>{`₹ ${flats[currentFlatIndex]["Total Cost (excluding maintenance and GST)"]} `}</div>{" "}
-                  <div style={{ fontSize: "0.9rem" }}>
+                  <div>{` ${rupeeIndian.format(
+                    parseInt(
+                      flats[currentFlatIndex][
+                        "Total Cost (excluding maintenance and GST)"
+                      ]
+                    )
+                  )} ₹`}</div>{" "}
+                  {/* <div style={{ fontSize: "0.9rem" }}>
                     (excluding maintenance and GST)
-                  </div>
+                  </div> */}
                 </>
               ),
+            },
+            {
+              key: "Booking Amount",
+              value: "20,000 ₹",
+            },
+          ]}
+          buttons={[
+            {
+              text: "Book Now",
+              onClick: () => alert("booking.."),
+            },
+            {
+              text: "Virtual Tour",
+              onClick: () => alert("virtual tour to start.."),
             },
           ]}
         />

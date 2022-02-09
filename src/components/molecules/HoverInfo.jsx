@@ -2,7 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HoverInfoStyle } from "./molecules.style";
 
-const Title = ({ title }) => <div className="title">{title}</div>;
+const Title = ({ title }) => (
+  <div className="title">
+    <div className="icon">
+      <img
+        src={`${process.env.PUBLIC_URL}/icons/location.svg`}
+        alt="location"
+      />
+    </div>
+    <div className="text">{title}</div>
+  </div>
+);
 
 const Features = ({ features }) => (
   <div className="features">

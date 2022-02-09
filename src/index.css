@@ -5,9 +5,10 @@
   --grd-orange-white: linear-gradient(315deg, #fff, #f3702173);
   --grd-blue-white: linear-gradient(325deg, #fff, #76fcf46b);
   --clr-available: rgba(0, 255, 0, 1);
-  --clr-blocked: rgb(255, 166, 0);
-  --clr-sold: rgb(255, 230, 0);
+  --clr-blocked: rgb(250, 61, 14);
+  --clr-sold: rgb(255, 136, 0);
   --clr-non-exist: rgb(138, 143, 138);
+  --clr-text: #443f3f;
 }
 
 body {
