@@ -32,6 +32,18 @@ body {
 }
 
 /* animations class*/
+
+.fade {
+  transition: opacity 0.15s linear;
+}
+.ease-out {
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+
+.ease-in {
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease-in;
+}
+
 .up-down-animate {
   animation-name: up-down-animation;
   animation-duration: 600ms;

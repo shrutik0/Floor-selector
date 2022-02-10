@@ -3,7 +3,7 @@ import { RotateInstructionStyle } from "./atoms.style";
 
 function RotateInstruction(props) {
   return (
-    <RotateInstructionStyle>
+    <RotateInstructionStyle id="rotate-instructions">
       <div className="img-wrapper">
         <img src={`${process.env.PUBLIC_URL}/gifs/rotate.gif`} />
       </div>

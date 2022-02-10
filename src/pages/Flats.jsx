@@ -87,7 +87,7 @@ function Flats() {
           ]}
           features={[
             {
-              key: "Direction",
+              key: "DIRECTION",
               value: `${flats[currentFlatIndex]["Direction"]}`,
             },
             {
@@ -106,16 +106,13 @@ function Flats() {
               key: "Total Cost",
               value: (
                 <>
-                  <div>{` ${rupeeIndian.format(
+                  <div>{` ₹ ${rupeeIndian.format(
                     parseInt(
                       flats[currentFlatIndex][
                         "Total Cost (excluding maintenance and GST)"
                       ]
                     )
-                  )} ₹`}</div>{" "}
-                  {/* <div style={{ fontSize: "0.9rem" }}>
-                    (excluding maintenance and GST)
-                  </div> */}
+                  )}`}</div>
                 </>
               ),
             },
@@ -123,17 +120,24 @@ function Flats() {
               key: "Booking Amount",
               value: "20,000 ₹",
             },
-          ]}
-          buttons={[
-            {
-              text: "Book Now",
-              onClick: () => alert("booking.."),
-            },
-            {
-              text: "Virtual Tour",
-              onClick: () => alert("virtual tour to start.."),
-            },
-          ]}
+          ].slice(
+            0,
+            flats[currentFlatIndex]["Unit Status"] == "Available" ? 4 : 2
+          )}
+          buttons={
+            flats[currentFlatIndex]["Unit Status"] == "Available"
+              ? [
+                  {
+                    text: "Book Now",
+                    onClick: () => alert("booking.."),
+                  },
+                  {
+                    text: "Virtual Tour",
+                    onClick: () => alert("virtual tour to start.."),
+                  },
+                ]
+              : []
+          }
         />
       </Collapsible>
       <Carousel

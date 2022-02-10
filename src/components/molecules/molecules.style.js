@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HoverInfoStyle = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 200px;
+  min-width: 250px;
   background-color: rgba(255, 255, 255, 0.9);
   /* background-color: var(--clr-orange-light); */
   color: black;
@@ -389,7 +389,7 @@ export const CarouselItemDetailsStyle = styled.div`
       display: grid;
       grid-template-columns: 1fr 1.5fr;
       align-items: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       border: 1.5px solid #ec6e227a;
       border-radius: 8px;
       padding: 0.5rem 0;
@@ -487,14 +487,15 @@ export const FlatStyle = styled.section`
   height: 100vh;
   width: 100%;
   .flat-number {
-    background-color: white;
-    color: var(--clr-orange);
+    font-family: "Lato", saref;
+    background-color: #ceccca;
+    color: #4a4644;
     width: fit-content;
     margin: auto;
     padding: 0.5rem 1rem;
     font-weight: 600;
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .img-wrapper {
     height: 100%;

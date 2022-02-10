@@ -116,7 +116,6 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     placeholder="Last Name*"
                   />
                 </div>
-
                 <div className="inline-fields">
                   <FormField
                     className={
@@ -141,13 +140,11 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     placeholder="Enter Phone No."
                   ></PhoneField>
                 </div>
-
                 <CountryCityFields
                   errors={errors}
                   touched={touched}
                   setFormValues={setValues}
                 />
-
                 <div className="inline-fields">
                   <FormField
                     className={
@@ -170,7 +167,6 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     placeholder="Enter your pincode"
                   />
                 </div>
-
                 <div className="inline-fields">
                   <FormField
                     className={errors.pan && touched.pan ? "input-error" : null}
@@ -203,6 +199,9 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     className="checkbox disable-team team_values"
                   />
                   <span>I Agree to the Terms & Conditions of sale</span>
+                </div>
+                <div className="advance-amount">
+                  You will be charged now only for booking fee of 20,000 ₹
                 </div>
                 <SubmitButton
                   dirty={dirty}

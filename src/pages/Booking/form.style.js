@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const FormStyle = styled.section`
   width: 100%;
   .container {
+    padding-left: 4rem;
     .title {
       font-family: Marcellus;
       font-style: normal;
@@ -19,7 +20,7 @@ export const FormStyle = styled.section`
       }
     }
 
-    max-width: 700px;
+    max-width: 900px;
     width: 100%;
     margin: auto;
   }
@@ -32,7 +33,6 @@ export const FormStyle = styled.section`
       display: grid;
       grid-template-columns: 1fr 1fr;
       width: 100%;
-      flex-wrap: wrap;
       .form-row {
         width: 95%;
         :last-child {
@@ -45,7 +45,7 @@ export const FormStyle = styled.section`
     }
 
     .form-row {
-      max-width: 700px;
+      max-width: 900px;
       margin: 1rem 0;
       width: fit-content;
       display: flex;
@@ -54,7 +54,7 @@ export const FormStyle = styled.section`
         padding: 0.7rem 0;
         font-style: normal;
         font-weight: normal;
-        font-size: 1.1rem;
+        font-size: 1rem;
         letter-spacing: 0.05em;
         text-transform: capitalize;
         color: #7d7d7d;
@@ -117,9 +117,13 @@ export const FormStyle = styled.section`
       display: flex;
       align-items: center;
       span {
-        margin-left: 1.5rem;
-        font-weight: 500;
+        margin-left: 1rem;
       }
+    }
+
+    .advance-amount {
+      margin-top: 1rem;
+      padding: 1rem 0;
     }
 
     .submit-wrapper {
@@ -128,7 +132,6 @@ export const FormStyle = styled.section`
       justify-content: center;
       align-items: center;
       padding: 1rem 2rem;
-      margin-top: 2rem;
       background-color: #f37021;
       cursor: pointer;
       border-radius: 3px;
@@ -161,6 +164,36 @@ export const FormStyle = styled.section`
       cursor: unset;
       :hover {
         opacity: 0.5;
+      }
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .container {
+      padding-left: 0;
+    }
+    .title {
+      width: fit-content;
+      margin: auto;
+    }
+    .form {
+      .inline-fields {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        .form-row {
+          width: 100%;
+          padding: 0 1rem;
+        }
+      }
+      .desc,
+      .tnc {
+        padding: 1rem;
+      }
+      .advance-amount,
+      .submit-wrapper {
+        width: fit-content;
+        margin: auto;
+        text-align: center;
       }
     }
   }

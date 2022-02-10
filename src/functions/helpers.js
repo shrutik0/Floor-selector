@@ -82,10 +82,11 @@ export const getTowerInfo = (towerId) => ({
   id: towerId,
   title: `${towerId} BLOCK`,
   features: [
-    `${getAllUnitTypesInTower(towerId).join(" - ")}`,
-    `${getAllFloorsInTower(towerId).length} Floors`,
-    `${getAllFlatsInTower(towerId).length} Flats`,
-    `${getFormatedMinMaxUnitSize(
+    `${getAllFloorsInTower(towerId).length} Floors | ${
+      getAllFlatsInTower(towerId).length
+    } Apartments`,
+    `Typology: ${getAllUnitTypesInTower(towerId).join(" - ")}`,
+    `Area: ${getFormatedMinMaxUnitSize(
       getAllDifferentUnitsSizesInBlock(towerId)
     )} Sq. ft`,
   ],
@@ -94,12 +95,13 @@ export const getTowerInfo = (towerId) => ({
 export const getFloorInfo = (towerId, floor) => ({
   title: `${getFormalNameFromNumber(floor)} Floor`,
   features: [
-    `${[getAllUnitTypesInTower(towerId).join(" and ")]}s`,
-    `${getAllFlatsInFloor(towerId, floor).length} Flats`,
-    `${getFormatedMinMaxUnitSize(
+    `${getAllFlatsInFloor(towerId, floor).length} Apartments  | ${
+      getAllAvailableFlatsInFloor(towerId, floor).length
+    } Available`,
+    `Typology: ${[getAllUnitTypesInTower(towerId).join(" and ")]}s`,
+    `Area:  ${getFormatedMinMaxUnitSize(
       getAllDifferentUnitsSizesInFloor(towerId, floor)
     )} Sq.fts`,
-    `${getAllAvailableFlatsInFloor(towerId, floor).length} Available`,
   ],
 });
 
@@ -109,10 +111,13 @@ export const getFlatInfo = (towerId, floorNo, flatIndex) => {
   return {
     title: `${flat["Flat Number"]}`,
     features: [
-      `${flat["Unit Type"]} `,
-      `${parseInt(flat["Total Carpet Area (sq.ft)"]).toFixed(0)} Sq.fts`,
-      `${flat["Direction"]} `,
-      `${flat["Unit Status"]} `,
+      `Typology: ${flat["Unit Type"]} `,
+      `Area: ${parseInt(flat["Total Carpet Area (sq.ft)"]).toFixed(0)} Sq.fts`,
+      `Direction:  ${flat["Direction"].substring(
+        0,
+        flat["Direction"].length - "Facing".length
+      )} `,
+      `Unit Status: ${flat["Unit Status"]} `,
     ],
   };
 };

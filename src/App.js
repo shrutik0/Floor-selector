@@ -7,6 +7,7 @@ import Loading from "./components/atoms/Loading";
 import RotateInstruction from "./components/atoms/RotateInstruction";
 import FullScreenModeAlert from "./components/atoms/FullScreenModeAlert";
 import { is_touch_enabled, toggleFullscreen } from "./functions/helpers";
+import Dialog from "./pages/Booking/Dialog";
 
 const FullScreenMsg = ({ displayFullScreenMsg, setDisplayFullScreenMsg }) => {
   return (

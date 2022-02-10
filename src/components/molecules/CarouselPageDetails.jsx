@@ -19,7 +19,7 @@ function CarouselPageDetails({
       <div className="features">
         {features.map((feature, index) => (
           <div className="feature" key={index}>
-            <div className="left">{feature.key}</div>
+            <div className="left">{feature.key.toString().toUpperCase()}</div>
             <div className="right">{feature.value}</div>
           </div>
         ))}

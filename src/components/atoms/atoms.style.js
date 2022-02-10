@@ -125,7 +125,9 @@ export const NavigatorStyle = styled.div`
   .dropdown {
     margin: 0 0.5rem;
     .control {
+      cursor:pointer;
       border: none;
+
       display: flex;
       align-items: center;
       padding: 0;
