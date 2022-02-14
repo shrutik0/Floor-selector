@@ -20,7 +20,7 @@ function Router() {
           element={<Flats />}
         />
         <Route path="/" element={<Home />} />
-        <Route path="/booking" element={<BookingPage />} />
+        <Route path="/booking/:property_id" element={<BookingPage />} />
         <Route path="/inventories/all" element={<PropertiesViewer />} />
       </Routes>
     </BrowserRouter>

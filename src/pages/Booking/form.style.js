@@ -185,6 +185,10 @@ export const FormStyle = styled.section`
           padding: 0 1rem;
         }
       }
+      #country-code {
+        width: 50% !important;
+        padding: 0;
+      }
       .desc,
       .tnc {
         padding: 1rem;

@@ -1,4 +1,5 @@
-import { getInventories } from "../data/inventories";
+import { baseUrl } from "../data";
+import { getInventories, setInventories } from "../data/inventories";
 import { getFormalUnitType } from "./helpers";
 
 export const getAllFlatsInFloor = (towerName, floorNumber) => {
@@ -10,19 +11,19 @@ export const getAllFlatsInFloor = (towerName, floorNumber) => {
   }
 
   return inventories
-    .filter((inventory) => inventory["Tower Name"] === towerName)
-    .filter((inventory) => inventory["Floor Number"] === floorNumber)
+    .filter((inventory) => inventory["Tower"] === towerName)
+    .filter((inventory) => inventory["Floor"] === parseInt(floorNumber))
     .sort(
       (a, b) =>
-        a["Flat Number"].substring(2, a["Flat Number"].length) -
-        b["Flat Number"].substring(2, b["Flat Number"].length)
+        a["FlatNumber"].substring(2, a["FlatNumber"].length) -
+        b["FlatNumber"].substring(2, b["FlatNumber"].length)
     );
 };
 
 export const getAllDifferentUnitsSizesInFloor = (towerName, floorNumber) => {
   let areas = [];
-  getAllFlatsInFloor(towerName, floorNumber).forEach((inventory) => {
-    const area = parseInt(inventory["SBU Area (sq.ft)"]);
+  getAllFlatsInFloor(towerName, parseInt(floorNumber)).forEach((inventory) => {
+    const area = parseInt(inventory["Area"]);
     if (areas.findIndex((storedareas) => storedareas == area) === -1)
       areas.push(area);
   });
@@ -31,13 +32,13 @@ export const getAllDifferentUnitsSizesInFloor = (towerName, floorNumber) => {
 };
 
 export const getAllAvailableFlatsInFloor = (towerName, floorNumber) =>
-  getAllFlatsInFloor(towerName, floorNumber).filter(
-    (flat) => flat["Unit Status"] === "Available"
+  getAllFlatsInFloor(towerName, parseInt(floorNumber)).filter(
+    (flat) => flat["UnitStatus"] === "Available"
   );
 
 export const getAllAvailableFlatsInTower = (towerName) =>
   getAllFlatsInTower(towerName).filter(
-    (flat) => flat["Unit Status"] === "Available"
+    (flat) => flat["UnitStatus"] === "Available"
   );
 
 export const getAllFlatsInTower = (towerName) => {
@@ -46,15 +47,13 @@ export const getAllFlatsInTower = (towerName) => {
     console.log("inventories are empty");
     return;
   }
-  return inventories.filter(
-    (inventory) => inventory["Tower Name"] === towerName
-  );
+  return inventories.filter((inventory) => inventory["Tower"] === towerName);
 };
 
 export const getAllFloorsInTower = (towerName) => [
   ...new Set(
     getAllFlatsInTower(towerName)
-      .map((flat) => flat["Floor Number"])
+      .map((flat) => flat["Floor"])
       .sort((a, b) => parseInt(a) - parseInt(b))
   ),
 ];
@@ -62,7 +61,7 @@ export const getAllFloorsInTower = (towerName) => [
 export const getAllUnitTypesInTower = (towerName) => {
   let flatTypes = [];
   getAllFlatsInTower(towerName).forEach((inventory) => {
-    const flatType = inventory["Unit Type"];
+    const flatType = inventory["UnitType"];
     if (
       flatTypes.findIndex((storedFlatTypes) => storedFlatTypes == flatType) ===
       -1
@@ -76,10 +75,38 @@ export const getAllUnitTypesInTower = (towerName) => {
 export const getAllDifferentUnitsSizesInBlock = (towerName) => {
   let areas = [];
   getAllFlatsInTower(towerName).forEach((inventory) => {
-    const area = parseInt(inventory["SBU Area (sq.ft)"]);
+    const area = parseInt(inventory["Area"]);
     if (areas.findIndex((storedareas) => storedareas == area) === -1)
       areas.push(area);
   });
 
   return areas;
+};
+
+export const getFlatFromPropertyId = (id) => {
+  console.log(id);
+  return getInventories().find((inventory) => inventory["PropertyId"] === id);
+};
+
+export const fetchAllInventories = async () => {
+  const url = baseUrl + "/api/v1/allinventory";
+
+  let response;
+  try {
+    response = await fetch(url);
+  } catch (e) {
+    setTimeout(() => {
+      alert("Failed to connect to database");
+    }, 500);
+    return;
+  }
+
+  if (response.ok) {
+    let inventories = [];
+    inventories = await response.json();
+    console.log(inventories);
+    setInventories(inventories);
+  } else {
+    alert("HTTP-Error: " + response.status);
+  }
 };

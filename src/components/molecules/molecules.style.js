@@ -498,6 +498,7 @@ export const FlatStyle = styled.section`
     font-size: 1.3rem;
   }
   .img-wrapper {
+    transition: all 500ms;
     height: 100%;
     display: flex;
     flex-direction: column;

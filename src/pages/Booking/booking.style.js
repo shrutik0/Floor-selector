@@ -25,16 +25,15 @@ export const PropertyDetailsSectionStyle = styled.div`
   flex-direction: column;
   height: 100%;
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 900px) {
     max-width: 100%;
   }
 `;
 
 export const BookingDetailsSectionStyle = styled.div`
-  max-width: 900px;
-  width: 100%;
+  max-width: 60%;
   height: 100%;
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 900px) {
     max-width: 100%;
   }
 `;

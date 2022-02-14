@@ -109,15 +109,12 @@ export const getFlatInfo = (towerId, floorNo, flatIndex) => {
   const flats = getAllFlatsInFloor(towerId, floorNo);
   const flat = flats[flatIndex];
   return {
-    title: `${flat["Flat Number"]}`,
+    title: `${flat["FlatNumber"]}`,
     features: [
-      `Typology: ${flat["Unit Type"]} `,
-      `Area: ${parseInt(flat["Total Carpet Area (sq.ft)"]).toFixed(0)} Sq.fts`,
-      `Direction:  ${flat["Direction"].substring(
-        0,
-        flat["Direction"].length - "Facing".length
-      )} `,
-      `Unit Status: ${flat["Unit Status"]} `,
+      `Typology: ${flat["UnitType"]} `,
+      `Area: ${parseInt(flat["CarpetArea"]).toFixed(0)} Sq.fts`,
+      `Direction:  ${flat["Direction"].replace("Facing", "")} `,
+      `Unit Status: ${flat["UnitStatus"]} `,
     ],
   };
 };

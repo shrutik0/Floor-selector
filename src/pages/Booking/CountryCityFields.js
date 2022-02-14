@@ -5,7 +5,7 @@ import COUNTRY_CITY from "../../data/countries.json";
 function CountryCityFields({ errors, touched, setFormValues }) {
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState("India");
 
   const loadContries = () => {
     setCountries(
@@ -18,6 +18,7 @@ function CountryCityFields({ errors, touched, setFormValues }) {
 
   useEffect(() => {
     loadContries();
+    setFormValues((values) => ({ ...values, country: "India" }));
   }, []);
 
   useEffect(() => {
@@ -36,13 +37,13 @@ function CountryCityFields({ errors, touched, setFormValues }) {
         <SelectInput
           placeholder="Select your country"
           title="Country*"
-          className={errors.country && touched.country ? "input-error" : null}
           options={countries}
           onChange={(e) => {
             // setFormErrors(errors=>())
             setSelectedCountry(e.label);
             setFormValues((values) => ({ ...values, country: e.label }));
           }}
+          defaultValue={countries.find((country) => country.label == "India")}
         />
       )}
       <SelectInput

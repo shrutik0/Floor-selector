@@ -20,15 +20,19 @@ export const SelectInput = ({
   name = "country",
   options,
   onChange,
+  style,
+  defaultValue,
+  id,
 }) => (
-  <SelectStyle className="form-row">
-    <label htmlFor={name}>{title}</label>
+  <SelectStyle className="form-row" style={style} id={id}>
+    {title && <label htmlFor={name}>{title}</label>}
     <Select
       options={options}
       placeholder={placeholder}
       styles={{ width: "100%" }}
       hideSelectedOptions
       onChange={onChange}
+      defaultValue={defaultValue}
     />
     <ErrorMessage name={name} component="span" className="error" />
   </SelectStyle>

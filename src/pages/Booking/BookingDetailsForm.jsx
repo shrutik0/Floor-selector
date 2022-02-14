@@ -12,6 +12,7 @@ const initialValues = {
   email: "",
   phone: "",
   country: "",
+  country_code: "+91",
   city: "",
   address: "",
   pincode: "",
@@ -138,6 +139,7 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     title="Phone No.*"
                     type="text"
                     placeholder="Enter Phone No."
+                    setFormValues={setValues}
                   ></PhoneField>
                 </div>
                 <CountryCityFields

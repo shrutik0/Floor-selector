@@ -17,16 +17,7 @@ import {
   getFormatedMinMaxUnitSize,
   rupeeIndian,
 } from "../functions/helpers";
-import {
-  getAllAvailableFlatsInFloor,
-  getAllAvailableFlatsInTower,
-  getAllDifferentUnitsSizesInBlock,
-  getAllDifferentUnitsSizesInFloor,
-  getAllFlatsInFloor,
-  getAllFlatsInTower,
-  getAllFloorsInTower,
-  getAllUnitTypesInTower,
-} from "../functions/inventory";
+import { getAllFlatsInFloor } from "../functions/inventory";
 import { TowersPageStyle } from "./pages.style";
 import Navigator from "../components/atoms/Navigator";
 import { useShowDetails, useViewport } from "../contexts/AppContext";
@@ -48,13 +39,13 @@ function Flats() {
   const { isMobile } = useViewport();
   const flats = getAllFlatsInFloor(towerId, floorId);
   const FLAT_NAMES = flats.map((flat) =>
-    parseInt(flat["Flat Number"][flat["Flat Number"].length - 1])
+    parseInt(flat["FlatNumber"][flat["FlatNumber"].length - 1])
   );
 
   console.log(FLAT_NAMES);
 
   const [currentFlatIndex, setCurrentFlatIndex] = useState(
-    flats.findIndex((flat) => flat["Flat Number"] == flatNumber)
+    flats.findIndex((flat) => flat["FlatNumber"] == flatNumber)
   );
   console.log(currentFlatIndex);
 
@@ -65,10 +56,10 @@ function Flats() {
       <Collapsible collapsible={true} open={showDetails}>
         <CarouselPageDetails
           style={{ width: "500px" }}
-          title={flats[currentFlatIndex]["Flat Number"]}
+          title={flats[currentFlatIndex]["FlatNumber"]}
           Header={
             <Header
-              FLAT_NAMES={flats.map((flat) => flat["Flat Number"])}
+              FLAT_NAMES={flats.map((flat) => flat["FlatNumber"])}
               onFlatChange={(flat) => setCurrentFlatIndex(flat.value)}
               currentFlatIndex={currentFlatIndex}
               currentFloor={floorId}
@@ -80,10 +71,10 @@ function Flats() {
             />
           }
           highlights={[
-            <span className={flats[currentFlatIndex]["Unit Status"]}>
-              {`${flats[currentFlatIndex]["Unit Status"]}`}{" "}
+            <span className={flats[currentFlatIndex]["UnitStatus"]}>
+              {`${flats[currentFlatIndex]["UnitStatus"]}`}{" "}
             </span>,
-            `${flats[currentFlatIndex]["Unit Type"]}`,
+            `${flats[currentFlatIndex]["UnitType"]}`,
           ]}
           features={[
             {
@@ -92,26 +83,18 @@ function Flats() {
             },
             {
               key: "Total Carpet Area",
-              value: `${parseInt(
-                flats[currentFlatIndex]["Total Carpet Area (sq.ft)"]
-              )} Sq.ft`,
+              value: `${parseInt(flats[currentFlatIndex]["CarpetArea"])} Sq.ft`,
             },
             {
               key: "SBU Area",
-              value: `${parseInt(
-                flats[currentFlatIndex]["SBU Area (sq.ft)"]
-              )} Sq.ft`,
+              value: `${parseInt(flats[currentFlatIndex]["Area"])} Sq.ft`,
             },
             {
               key: "Total Cost",
               value: (
                 <>
                   <div>{` ₹ ${rupeeIndian.format(
-                    parseInt(
-                      flats[currentFlatIndex][
-                        "Total Cost (excluding maintenance and GST)"
-                      ]
-                    )
+                    parseInt(flats[currentFlatIndex]["TotalCost"])
                   )}`}</div>
                 </>
               ),
@@ -122,14 +105,17 @@ function Flats() {
             },
           ].slice(
             0,
-            flats[currentFlatIndex]["Unit Status"] == "Available" ? 4 : 2
+            flats[currentFlatIndex]["UnitStatus"] == "Available" ? 4 : 2
           )}
           buttons={
-            flats[currentFlatIndex]["Unit Status"] == "Available"
+            flats[currentFlatIndex]["UnitStatus"] == "Available"
               ? [
                   {
                     text: "Book Now",
-                    onClick: () => alert("booking.."),
+                    onClick: () =>
+                      navigate(
+                        `/booking/${flats[currentFlatIndex]["PropertyId"]}`
+                      ),
                   },
                   {
                     text: "Virtual Tour",
@@ -149,7 +135,7 @@ function Flats() {
       >
         {flats.map((flat, index) => (
           <Flat
-            flatNumber={flat["Flat Number"]}
+            flatNumber={flat["FlatNumber"]}
             flatIndex={index}
             towerId={towerId}
           />

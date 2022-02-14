@@ -67,7 +67,7 @@ const Floor = ({
                   d={FLAT_PATHS[towerId][flat_no]}
                   key={flat_no}
                   id={`${towerId}-tower${floorId}-floor-flat-path-${index}`}
-                  className={flats[index] && flats[index]["Unit Status"]}
+                  className={flats[index] && flats[index]["UnitStatus"]}
                 />
               </Link>
             );

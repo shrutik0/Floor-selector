@@ -97,7 +97,7 @@ function Towers() {
               key: `${type} Apartments`,
               value: `${
                 getAllFlatsInTower(currentTower).filter(
-                  (flat) => getFormalUnitType(flat["Unit Type"]) === type
+                  (flat) => getFormalUnitType(flat["UnitType"]) === type
                 ).length
               } units`,
             })),

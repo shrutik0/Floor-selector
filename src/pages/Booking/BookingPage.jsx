@@ -13,10 +13,13 @@ import PropertyDetailsSection from "./PropertyDetailsSection";
 import { loadScript } from "../../functions/helpers";
 import { useEffect } from "react";
 import Dialog from "./Dialog";
+import { useLocation, useParams } from "react-router-dom";
+import { getFlatFromPropertyId } from "../../functions/inventory";
 
 function BookingPage(props) {
-  const project_id = "a1q2u000000boHd";
-  const property_id = "PR# 03-2020-07234";
+  const project_id = "a1qO0000001vA00";
+  // const property_id = "PR" + useLocation().hash.replace("%20", " ");
+  const property_id = "a1xO0000003Gese";
   const advertisement_id = "a03O000000SFVDF";
 
   const { setLoading } = useLoading();
@@ -25,7 +28,6 @@ function BookingPage(props) {
   const handleBookingDataSubmit = async (form) => {
     setLoading(true);
     console.log(form);
-
     // const offerRes = await createOffer(
     //   form.first_name,
     //   form.last_name,
@@ -124,6 +126,13 @@ function BookingPage(props) {
       theme: {
         color: "#f37021",
       },
+
+      notes: {
+        contactId: "testContactId",
+        enquiryId: "testEnquiryID",
+        offerId: "testOfferID",
+      },
+
       handler: async function (response) {
         console.log(response, orderResponse.id);
         const res = await validatePayment(
@@ -146,9 +155,6 @@ function BookingPage(props) {
         name: form.first_name + " " + form.last_name,
         email: form.email,
         contact: form.phone,
-      },
-      notes: {
-        property_id: "random property",
       },
     };
     const paymentObject = new window.Razorpay(options);
