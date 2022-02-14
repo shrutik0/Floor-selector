@@ -20,12 +20,12 @@ const Floor = ({
   clickedFlat,
   currentFloor,
 }) => {
-  const flats = getAllFlatsInFloor(towerId, currentFloor.toString());
+  const flats = getAllFlatsInFloor(towerId, floorId.toString());
   const { isMobile } = useViewport();
   const navigate = useNavigate();
   return (
     <CarouselItemStyle>
-      {clickedFlat && (
+      {clickedFlat !== false && (
         <OnClickInfo
           title={getFlatInfo(towerId, currentFloor, clickedFlat).title}
           features={getFlatInfo(towerId, currentFloor, clickedFlat).features}
@@ -47,31 +47,33 @@ const Floor = ({
         onClick={() => setClickedFlat(false)}
       >
         <g className="flats-svg">
-          {Object.keys(FLAT_PATHS[towerId]).map((flat_no, index) => {
-            return (
-              <Link
-                className="no-dec no-select"
-                onClick={(e) => {
-                  console.log(flat_no);
-                  setClickedFlat(flat_no);
-                  e.stopPropagation();
-                }}
-                to={
-                  !isMobile &&
-                  `/tower/${towerId}/floor/${floorId}/flat/${
-                    towerId + "-" + floorId + "0" + (index + 1)
-                  }`
-                }
-              >
-                <Path
-                  d={FLAT_PATHS[towerId][flat_no]}
-                  key={flat_no}
-                  id={`${towerId}-tower${floorId}-floor-flat-path-${index}`}
-                  className={flats[index] && flats[index]["UnitStatus"]}
-                />
-              </Link>
-            );
-          })}
+          {flats
+            .map((flat) => flat.FlatNumber)
+            .map((flatNum, index) => {
+              const flat_no = getFlatIndex(flatNum);
+              return (
+                <Link
+                  className="no-dec no-select"
+                  onClick={(e) => {
+                    setClickedFlat(index);
+                    e.stopPropagation();
+                  }}
+                  to={
+                    !isMobile &&
+                    `/tower/${towerId}/floor/${floorId}/flat/${
+                      towerId + "-" + floorId + "0" + (flat_no + 1)
+                    }`
+                  }
+                >
+                  <Path
+                    d={FLAT_PATHS[towerId][flat_no]}
+                    key={flat_no}
+                    id={`${towerId}-tower${floorId}-floor-flat-path-${flat_no}`}
+                    className={flats[index] && flats[index]["UnitStatus"]}
+                  />
+                </Link>
+              );
+            })}
         </g>
       </Svg>
     </CarouselItemStyle>

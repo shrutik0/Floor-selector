@@ -79,7 +79,10 @@ function Flats() {
           features={[
             {
               key: "DIRECTION",
-              value: `${flats[currentFlatIndex]["Direction"]}`,
+              value: `${flats[currentFlatIndex]["Direction"].replace(
+                "Facing",
+                ""
+              )}`,
             },
             {
               key: "Total Carpet Area",
