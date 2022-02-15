@@ -63,12 +63,15 @@ export const getAllUnitTypesInTower = (towerName) => {
   getAllFlatsInTower(towerName).forEach((inventory) => {
     const flatType = inventory["UnitType"];
     if (
+      (flatType.includes("2 BHK") ||
+        flatType.includes("3 BHK") ||
+        flatType.includes("2.5 BHK")) &&
       flatTypes.findIndex((storedFlatTypes) => storedFlatTypes == flatType) ===
-      -1
+        -1
     )
       flatTypes.push(getFormalUnitType(flatType));
   });
-
+  console.log(...new Set(flatTypes));
   return [...new Set(flatTypes)];
 };
 

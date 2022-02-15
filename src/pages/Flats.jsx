@@ -10,17 +10,23 @@ import HoverInfo from "../components/molecules/HoverInfo";
 import Tower from "../components/molecules/Tower";
 import CarouselPageDetails from "../components/molecules/CarouselPageDetails";
 import { FLOORS, TOWER_NAMES_LIST } from "../data";
+import Dialog from "./Booking/Dialog";
 import {
   getFlatInfo,
   getFormalNameFromNumber,
   getFormalUnitType,
   getFormatedMinMaxUnitSize,
+  getVRtourLink,
   rupeeIndian,
 } from "../functions/helpers";
 import { getAllFlatsInFloor } from "../functions/inventory";
 import { TowersPageStyle } from "./pages.style";
 import Navigator from "../components/atoms/Navigator";
-import { useShowDetails, useViewport } from "../contexts/AppContext";
+import {
+  useLoading,
+  useShowDetails,
+  useViewport,
+} from "../contexts/AppContext";
 import OnClickInfo from "../components/molecules/OnClickInfo";
 import Flat from "../components/molecules/Flat";
 
@@ -35,9 +41,11 @@ const HomeButton = () => (
 function Flats() {
   const { showDetails } = useShowDetails();
   const { floorId, towerId, flatNumber } = useParams();
+  const [showVRTour, setShowVRTour] = useState(false);
   const navigate = useNavigate();
   const { isMobile } = useViewport();
   const flats = getAllFlatsInFloor(towerId, floorId);
+  const { loading, setLoading } = useLoading();
   const FLAT_NAMES = flats.map((flat) =>
     parseInt(flat["FlatNumber"][flat["FlatNumber"].length - 1])
   );
@@ -49,10 +57,39 @@ function Flats() {
   );
   console.log(currentFlatIndex);
 
+  useEffect(() => {
+    setLoading(true);
+  }, []);
+
   return (
     <TowersPageStyle>
       <HomeButton />
-
+      <Dialog
+        showDialog={showVRTour}
+        setShowDialog={setShowVRTour}
+        header="Virtual Tour"
+        className="vr-tour"
+        body={
+          <iframe
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+              maxWidth: "100%",
+              margin: "0px",
+              paddingBottom: "40px",
+              visibility: loading ? "hidden" : "unset",
+            }}
+            title={flats[currentFlatIndex].FlatNumber}
+            frameBorder="0"
+            allowFullScreen
+            allow="xr-spatial-tracking; gyroscope; accelerometer"
+            scrolling="no"
+            onLoad={() => setLoading(false)}
+            src={getVRtourLink(flats[currentFlatIndex].UnitType)}
+          />
+        }
+      />
       <Collapsible collapsible={true} open={showDetails}>
         <CarouselPageDetails
           style={{ width: "500px" }}
@@ -122,7 +159,7 @@ function Flats() {
                   },
                   {
                     text: "Virtual Tour",
-                    onClick: () => alert("virtual tour to start.."),
+                    onClick: () => setShowVRTour(true),
                   },
                 ]
               : []

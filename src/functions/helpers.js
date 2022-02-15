@@ -85,7 +85,7 @@ export const getTowerInfo = (towerId) => ({
     `${getAllFloorsInTower(towerId).length} Floors | ${
       getAllFlatsInTower(towerId).length
     } Apartments`,
-    `Typology: ${getAllUnitTypesInTower(towerId).join(" - ")}`,
+    `Typology: ${getAllUnitTypesInTower(towerId).join(" and ")}s`,
     `Area: ${getFormatedMinMaxUnitSize(
       getAllDifferentUnitsSizesInBlock(towerId)
     )} Sq. ft`,
@@ -143,3 +143,14 @@ export const isFloorBooked = (towerId, floorId) => {
 export const rupeeIndian = Intl.NumberFormat("en-IN", {
   currency: "INR",
 });
+
+export const getVRtourLink = (flatType = "") => {
+  if (flatType.includes("2 BHK"))
+    return "https://btvrprojects.s3.ap-south-1.amazonaws.com/Belair_2BHk-tour/index.htm";
+
+  if (flatType.includes("2.5 BHK"))
+    return "https://btvrprojects.s3.ap-south-1.amazonaws.com/Bel_Air2.5BHK_Tour/index.htm";
+
+  if (flatType.includes("3 BHK"))
+    return "https://btvrprojects.s3.ap-south-1.amazonaws.com/Bel_Air3BHK_Tour/index.htm";
+};

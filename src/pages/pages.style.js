@@ -37,6 +37,25 @@ export const TowersPageStyle = styled.section`
     }
   }
 
+  .vr-tour {
+    .model {
+      padding: 0.2rem !important;
+      padding-bottom: 0.4rem !important;
+      .header {
+        padding: 0.5rem !important;
+      }
+      max-width: unset;
+      max-height: unset;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding-bottom: 0rem;
+      .model-body {
+        margin: 0;
+      }
+    }
+  }
+
   @media screen and (max-height: 480px) {
     .home-btn {
       width: 35px;

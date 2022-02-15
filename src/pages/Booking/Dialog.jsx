@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { DialogStyle } from "./booking.style";
 
-function Dialog({ header, body, showDialog, setShowDialog }) {
+function Dialog({ header, body, showDialog, setShowDialog, className }) {
   const [came, setCame] = useState(false);
   const [out, setOut] = useState(!showDialog);
 
@@ -26,7 +26,7 @@ function Dialog({ header, body, showDialog, setShowDialog }) {
       style={{
         opacity: came ? "1" : "0",
       }}
-      className="fade"
+      className={"fade " + className}
     >
       <div
         className="model ease-in"
