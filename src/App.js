@@ -35,7 +35,8 @@ function App() {
   };
 
   useEffect(() => {
-    if (isMobile) setShowFullScreenMsg(true);
+    // if (isMobile)
+    setShowFullScreenMsg(true);
     window.screen.orientation.addEventListener("change", () =>
       window.location.reload()
     );
@@ -46,12 +47,13 @@ function App() {
   return loaded ? (
     <AppContextProvider>
       <RotateInstruction />
-      {isMobile && (
-        <FullScreenMsg
-          displayFullScreenMsg={showFullScreenMsg}
-          setDisplayFullScreenMsg={setShowFullScreenMsg}
-        />
-      )}
+      {isMobile ||
+        (true && (
+          <FullScreenMsg
+            displayFullScreenMsg={showFullScreenMsg}
+            setDisplayFullScreenMsg={setShowFullScreenMsg}
+          />
+        ))}
       <AppStyle>
         <Loading />
         <Router />
