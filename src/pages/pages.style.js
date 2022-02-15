@@ -38,6 +38,7 @@ export const TowersPageStyle = styled.section`
   }
 
   .vr-tour {
+    z-index: 50;
     .model {
       padding: 0.2rem !important;
       padding-bottom: 0.4rem !important;

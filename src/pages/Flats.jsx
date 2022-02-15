@@ -50,16 +50,9 @@ function Flats() {
     parseInt(flat["FlatNumber"][flat["FlatNumber"].length - 1])
   );
 
-  console.log(FLAT_NAMES);
-
   const [currentFlatIndex, setCurrentFlatIndex] = useState(
     flats.findIndex((flat) => flat["FlatNumber"] == flatNumber)
   );
-  console.log(currentFlatIndex);
-
-  useEffect(() => {
-    setLoading(true);
-  }, []);
 
   return (
     <TowersPageStyle>
@@ -67,7 +60,7 @@ function Flats() {
       <Dialog
         showDialog={showVRTour}
         setShowDialog={setShowVRTour}
-        header="Virtual Tour"
+        header={"Virtual Tour - " + flats[currentFlatIndex]["FlatNumber"]}
         className="vr-tour"
         body={
           <iframe
@@ -159,7 +152,10 @@ function Flats() {
                   },
                   {
                     text: "Virtual Tour",
-                    onClick: () => setShowVRTour(true),
+                    onClick: () => {
+                      setLoading(true);
+                      setShowVRTour(true);
+                    },
                   },
                 ]
               : []
