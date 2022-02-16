@@ -28,38 +28,38 @@ function BookingPage(props) {
   const handleBookingDataSubmit = async (form) => {
     setLoading(true);
     console.log(form);
-    // const offerRes = await createOffer(
-    //   form.first_name,
-    //   form.last_name,
-    //   form.email,
-    //   form.phone,
-    //   form.country,
-    //   form.city,
-    //   form.address,
-    //   form.pincode,
-    //   form.pan,
-    //   form.aadhar,
-    //   project_id,
-    //   property_id,
-    //   advertisement_id
-    // );
+    const offerRes = await createOffer(
+      form.first_name,
+      form.last_name,
+      form.email,
+      form.phone,
+      form.country,
+      form.city,
+      form.address,
+      form.pincode,
+      form.pan,
+      form.aadhar,
+      project_id,
+      property_id,
+      advertisement_id
+    );
 
-    // console.log(offerRes);
-    // if (!offerRes.ok) {
-    //   alert(
-    //     "There is an technical issue at server side, please try after some time"
-    //   );
-    //   setLoading(false);
-    //   return;
-    // }
-    // const offerRes_json = JSON.parse(await offerRes.json());
-    // console.log(offerRes_json);
-    // if (!offerRes_json.Success) {
-    //   alert(offerRes_json.errorMessage);
-    //   setLoading(false);
-    //   return;
-    // }
-    // const { contactId, enquiryId, offerId } = offerRes_json;
+    console.log(offerRes);
+    if (!offerRes.ok) {
+      alert(
+        "There is an technical issue at server side, please try after some time"
+      );
+      setLoading(false);
+      return;
+    }
+    const offerRes_json = JSON.parse(await offerRes.json());
+    console.log(offerRes_json);
+    if (!offerRes_json.Success) {
+      alert(offerRes_json.errorMessage);
+      setLoading(false);
+      return;
+    }
+    const { contactId, enquiryId, offerId } = offerRes_json;
 
     const storeRes = await storeCutomer(
       form.first_name,
@@ -72,7 +72,7 @@ function BookingPage(props) {
       form.pincode,
       form.pan,
       form.aadhar,
-      { id: "test" }
+      { enquiryId, offerId, contactId }
     )
       .catch((e) => e)
       .then((e) => e);
@@ -128,9 +128,9 @@ function BookingPage(props) {
       },
 
       notes: {
-        contactId: "testContactId",
-        enquiryId: "testEnquiryID",
-        offerId: "testOfferID",
+        contactId,
+        enquiryId,
+        offerId,
       },
 
       handler: async function (response) {
