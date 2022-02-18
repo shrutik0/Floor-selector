@@ -81,7 +81,7 @@ export const validatePayment = async (
   };
 
   return await fetch(
-    baseUrl + "/api/v1/razorpay/payment-signature-verification",
+    baseUrl + "/api/v1/razorpay/payment-verification",
     requestOptions
   );
 };
