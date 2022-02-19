@@ -13,8 +13,6 @@ import PropertyDetailsSection from "./PropertyDetailsSection";
 import { loadScript } from "../../functions/helpers";
 import { useEffect } from "react";
 import Dialog from "./Dialog";
-import { useLocation, useParams } from "react-router-dom";
-import { getFlatFromPropertyId } from "../../functions/inventory";
 
 function BookingPage(props) {
   const project_id = "a1qO0000001vA00";
@@ -27,7 +25,6 @@ function BookingPage(props) {
 
   const handleBookingDataSubmit = async (form) => {
     setLoading(true);
-    console.log(form);
     const offerRes = await createOffer(
       form.first_name,
       form.last_name,
@@ -44,7 +41,6 @@ function BookingPage(props) {
       advertisement_id
     );
 
-    console.log(offerRes);
     if (!offerRes.ok) {
       alert(
         "There is an technical issue at server side, please try after some time"
@@ -53,7 +49,14 @@ function BookingPage(props) {
       return;
     }
     const offerRes_json = JSON.parse(await offerRes.json());
-    console.log(offerRes_json);
+
+    // const offerRes_json = {
+    //   contactId: "test",
+    //   enquiryId: "test",
+    //   offerId: "test",
+    //   Success: true,
+    // };
+
     if (!offerRes_json.Success) {
       alert(offerRes_json.errorMessage);
       setLoading(false);
@@ -106,7 +109,6 @@ function BookingPage(props) {
       setLoading(false);
       return;
     }
-    console.log(orderResponse);
 
     // in case any other errors like property is already booked
     if (orderResponse.msg) {
