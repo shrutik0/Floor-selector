@@ -177,6 +177,7 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     title="PAN Card*"
                     type="text"
                     placeholder="Enter your PAN no."
+                    style={{ textTransform: "uppercase" }}
                   />
                   <FormField
                     className={

@@ -71,7 +71,6 @@ export const getAllUnitTypesInTower = (towerName) => {
     )
       flatTypes.push(getFormalUnitType(flatType));
   });
-  console.log(...new Set(flatTypes));
   return [...new Set(flatTypes)];
 };
 
@@ -104,11 +103,18 @@ export const fetchAllInventories = async () => {
     return;
   }
 
+  console.log(response);
+
   if (response.ok) {
-    let inventories = [];
-    inventories = await response.json();
-    console.log(inventories);
-    setInventories(inventories);
+    try {
+      let inventories = [];
+      inventories = await response.json();
+      console.log(inventories);
+      setInventories(inventories);
+    } catch (e) {
+      console.log(e);
+      alert("Failed to connect to database");
+    }
   } else {
     alert("HTTP-Error: " + response.status);
   }

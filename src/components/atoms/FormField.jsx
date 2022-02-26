@@ -6,6 +6,7 @@ export const FormField = ({
   className,
   type = "text",
   placeholder,
+  style,
 }) => (
   <div className="form-row ft-lt">
     <label htmlFor={name}>{title}</label>
@@ -15,6 +16,7 @@ export const FormField = ({
       id={name}
       className={className}
       placeholder={placeholder}
+      style={style}
     />
     <ErrorMessage name={name} component="span" className="error" />
   </div>
