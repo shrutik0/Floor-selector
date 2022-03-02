@@ -71,7 +71,8 @@ export const getAllUnitTypesInTower = (towerName) => {
     )
       flatTypes.push(getFormalUnitType(flatType));
   });
-  return [...new Set(flatTypes)];
+
+  return [...new Set(flatTypes.sort((a, b) => parseInt(a) - parseInt(b)))];
 };
 
 export const getAllDifferentUnitsSizesInBlock = (towerName) => {
@@ -86,7 +87,6 @@ export const getAllDifferentUnitsSizesInBlock = (towerName) => {
 };
 
 export const getFlatFromPropertyId = (id) => {
-  console.log(id);
   return getInventories().find((inventory) => inventory["PropertyId"] === id);
 };
 

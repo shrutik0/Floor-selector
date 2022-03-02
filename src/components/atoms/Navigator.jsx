@@ -16,7 +16,7 @@ function Navigator({
       <div className={"icon-wrapper center"}>
         <img src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`} />
       </div>
-      <div>{title}</div>
+      <div className="title">{title.toUpperCase()}</div>
       <Dropdown
         options={options}
         value={defaultOption}

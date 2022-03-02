@@ -10,26 +10,19 @@ import CarouselPageDetails from "../components/molecules/CarouselPageDetails";
 import { TOWER_NAMES_LIST } from "../data";
 import {
   getFloorInfo,
-  getFormalNameFromNumber,
   getFormalUnitType,
   getFormatedMinMaxUnitSize,
-  getTowerInfo,
 } from "../functions/helpers";
 import {
-  getAllAvailableFlatsInFloor,
   getAllAvailableFlatsInTower,
   getAllDifferentUnitsSizesInBlock,
-  getAllDifferentUnitsSizesInFloor,
-  getAllFlatsInFloor,
   getAllFlatsInTower,
   getAllFloorsInTower,
   getAllUnitTypesInTower,
 } from "../functions/inventory";
 import { TowersPageStyle } from "./pages.style";
-import Dropdown from "../components/atoms/Navigator";
 import Navigator from "../components/atoms/Navigator";
 import { useViewport } from "../contexts/AppContext";
-import OnClickInfo from "../components/molecules/OnClickInfo";
 
 const HomeButton = () => (
   <Link to={"/"}>
@@ -94,7 +87,7 @@ function Towers() {
           ]}
           features={[
             ...getAllUnitTypesInTower(currentTower).map((type) => ({
-              key: `${type} Apartments`,
+              key: `${type}`,
               value: `${
                 getAllFlatsInTower(currentTower).filter(
                   (flat) => getFormalUnitType(flat["UnitType"]) === type
@@ -105,7 +98,7 @@ function Towers() {
               key: "Unit Sizes",
               value: `${getFormatedMinMaxUnitSize(
                 getAllDifferentUnitsSizesInBlock(currentTower)
-              )} Sq fts`,
+              )} Sq. ft`,
             },
           ]}
         />

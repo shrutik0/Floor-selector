@@ -113,7 +113,7 @@ function Floors() {
           ]}
           features={[
             ...getAllUnitTypesInTower(towerId).map((type) => ({
-              key: `${type} Apartments`,
+              key: `${type}`,
               value: `${
                 getAllFlatsInFloor(towerId, currentFloor).filter(
                   (flat) => getFormalUnitType(flat["UnitType"]) === type
@@ -124,7 +124,7 @@ function Floors() {
               key: "Unit Sizes",
               value: `${getFormatedMinMaxUnitSize(
                 getAllDifferentUnitsSizesInFloor(towerId, currentFloor)
-              )} Sq fts`,
+              )} Sq. ft`,
             },
           ]}
         />

@@ -16,8 +16,9 @@ const ImageText = ({ src, text }) => (
   </div>
 );
 
-function DetailsSection() {
-  const property_id = "PR" + useLocation().hash.replace("%20", " ");
+function DetailsSection({ propertyId = false }) {
+  const id_from_url = "PR" + useLocation().hash.replace("%20", " ");
+  const property_id = propertyId || id_from_url;
   const flat = getFlatFromPropertyId(property_id);
   const [showPaymentplan, setShowPaymentplan] = useState(false);
   const [showFloorplan, setShowFloorplan] = useState(false);
@@ -53,28 +54,34 @@ function DetailsSection() {
         <table className="ft-lt">
           <tr>
             <td>
-              <ImageText text="Bed" src="bed" />
+              <ImageText text="Unit" src="floor" />
             </td>
-            <td className="value">1</td>
+            <td className="value">{flat.FlatNumber}</td>
           </tr>
           <tr>
             <td>
-              <ImageText text="Floor" src="floor" />
+              <ImageText text="Type" src="floor" />
             </td>
-            <td className="value">1</td>
+            <td className="value">{flat.UnitType}</td>
           </tr>
           <tr>
             <td>
-              <ImageText text="Area" src="area" />
+              <ImageText text="SBU Area" src="area" />
             </td>
-            <td className="value">650 SQ.FT / 60.36 SQ.M</td>
+            <td className="value">{parseInt(flat.Area)} Sq.ft</td>
+          </tr>
+          <tr>
+            <td>
+              <ImageText text="Carpet Area" src="area" />
+            </td>
+            <td className="value">{parseInt(flat.CarpetArea)} Sq.ft</td>
           </tr>
           <tr>
             <td>
               <ImageText text="Price" src="rupee" />
             </td>
             <td className="value">
-              {rupeeIndian.format(parseInt(flat["TotalCost"]))}
+              {` ₹ ` + rupeeIndian.format(parseInt(flat["TotalCost"]))}
             </td>
           </tr>
           <tr>
@@ -112,12 +119,22 @@ const Paymentplan = ({ first_installment_amount, on_handover_amount }) => (
       <tr>
         <td>1st Installment</td>
         <td>20</td>
-        <td>{rupeeIndian.format(parseInt(first_installment_amount))} ₹</td>
+        <td>₹ {rupeeIndian.format(parseInt(first_installment_amount))}</td>
       </tr>
       <tr className="border">
         <td>On Handover</td>
         <td>80</td>
-        <td>{rupeeIndian.format(parseInt(on_handover_amount))} ₹</td>
+        <td>₹ {rupeeIndian.format(parseInt(on_handover_amount))}</td>
+      </tr>
+      <tr className="border">
+        <td>Total</td>
+        <td>100</td>
+        <td>
+          ₹{" "}
+          {rupeeIndian.format(
+            parseInt(first_installment_amount + on_handover_amount)
+          )}
+        </td>
       </tr>
     </tbody>
   </table>

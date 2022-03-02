@@ -72,7 +72,7 @@ const SubmitButton = ({ dirty, isValid, coutryCityError }) => (
     }
     disabled={!(dirty && isValid) || coutryCityError}
   >
-    <span>Continue to payment</span>
+    <span>PAY NOW</span>
     <img alt="right" src={`${process.env.PUBLIC_URL}/icons/right.svg`} />
   </button>
 );

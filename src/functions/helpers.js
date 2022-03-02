@@ -85,7 +85,7 @@ export const getTowerInfo = (towerId) => ({
     `${getAllFloorsInTower(towerId).length} Floors | ${
       getAllFlatsInTower(towerId).length
     } Apartments`,
-    `Typology: ${getAllUnitTypesInTower(towerId).join(" and ")}s`,
+    `Typology: ${getAllUnitTypesInTower(towerId).join(" and ")}`,
     `Area: ${getFormatedMinMaxUnitSize(
       getAllDifferentUnitsSizesInBlock(towerId)
     )} Sq. ft`,
@@ -98,10 +98,10 @@ export const getFloorInfo = (towerId, floor) => ({
     `${getAllFlatsInFloor(towerId, floor).length} Apartments  | ${
       getAllAvailableFlatsInFloor(towerId, floor).length
     } Available`,
-    `Typology: ${[getAllUnitTypesInTower(towerId).join(" and ")]}s`,
+    `Typology: ${[getAllUnitTypesInTower(towerId).join(" and ")]}`,
     `Area:  ${getFormatedMinMaxUnitSize(
       getAllDifferentUnitsSizesInFloor(towerId, floor)
-    )} Sq.fts`,
+    )} Sq. ft`,
   ],
 });
 
@@ -112,7 +112,7 @@ export const getFlatInfo = (towerId, floorNo, flatIndex) => {
     title: `${flat["FlatNumber"]}`,
     features: [
       `Typology: ${flat["UnitType"]} `,
-      `Area: ${parseInt(flat["CarpetArea"]).toFixed(0)} Sq.fts`,
+      `Area: ${parseInt(flat["CarpetArea"]).toFixed(0)} Sq. ft`,
       `Direction:  ${flat["Direction"].replace("Facing", "")} `,
       `Unit Status: ${flat["UnitStatus"]} `,
     ],

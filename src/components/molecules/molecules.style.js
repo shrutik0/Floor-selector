@@ -16,9 +16,9 @@ export const HoverInfoStyle = styled.div`
   .title {
     /* padding-left: 0.5rem; */
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 500;
     /* border-left: 3.5px solid var(--clr-orange-light); */
-    font-family: "Marcellus", serif;
+    font-family: "Lato", serif;
     display: flex;
     align-items: center;
 
@@ -117,7 +117,7 @@ export const CustomCollapsibleStyle = styled.div`
 export const HomePageDetailsStyle = styled.div`
   padding: 1rem;
   padding-top: 3rem;
-  width: 300px;
+  width: 350px;
   font-family: "Lato", serif;
 
   .tag-line {
@@ -130,7 +130,6 @@ export const HomePageDetailsStyle = styled.div`
 
   .address-wrapper {
     padding: 1.4rem;
-    padding-top: 2rem;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -152,12 +151,12 @@ export const HomePageDetailsStyle = styled.div`
   .specs {
     display: flex;
     flex-direction: column;
-
-    .specs-title {
-      border-left: 4px solid var(--clr-orange);
-      font-size: 1.1rem;
+    .title {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
       font-weight: 600;
-      padding: 0 1rem;
     }
     .items {
       font-family: "Lato", serif;
@@ -354,7 +353,7 @@ export const CarouselItemDetailsStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
     font-family: "Lato", serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     margin-left: 5px;
     div {
@@ -387,7 +386,7 @@ export const CarouselItemDetailsStyle = styled.div`
     .feature {
       margin: 0.8rem;
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       font-size: 1rem;
       border: 1.5px solid #ec6e227a;

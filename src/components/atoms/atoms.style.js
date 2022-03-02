@@ -121,13 +121,20 @@ export const NavigatorStyle = styled.div`
   display: flex;
   align-items: center;
   font-family: "Lato", sans-serif;
+  .icon-wrapper {
+    width: 20px !important;
+  }
+  .title {
+    font-size: 0.9rem;
+  }
 
   .dropdown {
     margin: 0 0.5rem;
     .control {
-      cursor:pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
       border: none;
-
       display: flex;
       align-items: center;
       padding: 0;
@@ -144,7 +151,7 @@ export const NavigatorStyle = styled.div`
       min-width: 100%;
       div {
         padding: 0.2rem;
-        font-size: 1rem;
+        font-size: 0.9rem;
         text-align: center;
       }
     }

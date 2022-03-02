@@ -46,7 +46,7 @@ export const ImageSectionStyle = styled.div`
   .address {
     display: flex;
     align-items: center;
-    padding-top: 1rem;
+    padding: 0.5rem 0;
 
     img {
       height: 17px;
@@ -69,8 +69,8 @@ export const ImageSectionStyle = styled.div`
     font-style: normal;
     font-weight: normal;
     font-size: 1.5rem;
+    padding-top: 1rem;
     text-transform: uppercase;
-    padding: 0.5rem 0;
   }
 
   .desc {
@@ -211,5 +211,66 @@ export const DialogStyle = styled.div`
     width: 100%;
     height: 70vh;
     object-fit: contain;
+  }
+`;
+
+export const SuccessPageStyle = styled.div`
+  .container {
+    font-family: lato;
+    .title {
+      font-family: Marcellus;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      width: fit-content;
+      margin: auto;
+      ::after {
+        content: "";
+        display: block;
+        background-color: #f37021;
+        border-bottom: 2px solid #f37021;
+        width: 100px;
+      }
+    }
+
+    .details-wrapper {
+      width: 100%;
+      padding: 4rem;
+
+      .payment-id-wrapper {
+        display: flex;
+        margin: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .sub {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .flex {
+        display: flex;
+        .right {
+          margin-right: 3rem;
+        }
+      }
+    }
+  }
+`;
+
+export const BookingDetailsStyle = styled.div`
+  width: 100%;
+  margin: 0 1rem;
+
+  .inline-fields {
+    font-size: 1.2rem;
+    display: grid !important;
+    grid-template-columns: 2fr 3fr !important;
+    max-width: 500px;
+    margin: 0.5rem 0;
   }
 `;

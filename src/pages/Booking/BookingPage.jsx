@@ -13,6 +13,7 @@ import PropertyDetailsSection from "./PropertyDetailsSection";
 import { loadScript } from "../../functions/helpers";
 import { useEffect } from "react";
 import Dialog from "./Dialog";
+import { useNavigate } from "react-router-dom";
 
 function BookingPage(props) {
   const project_id = "a1qO0000001vA00";
@@ -21,7 +22,8 @@ function BookingPage(props) {
   const advertisement_id = "a03O000000SFVDF";
 
   const { setLoading } = useLoading();
-  const [paymentSuccess, setPaymentSucess] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleBookingDataSubmit = async (form) => {
     setLoading(true);
@@ -147,7 +149,13 @@ function BookingPage(props) {
 
         if (res.ok) {
           alert("payment successful !");
-          setPaymentSucess(true);
+          navigate("/booking/success", {
+            state: {
+              form,
+              property_id,
+              payment_id: response.razorpay_payment_id,
+            },
+          });
         } else {
           alert("payment failed");
         }

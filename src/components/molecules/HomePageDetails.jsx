@@ -5,13 +5,13 @@ import { HomePageDetailsStyle } from "./molecules.style";
 function HomePageDetails(props) {
   return (
     <HomePageDetailsStyle>
-      <div className="tag-line">2, 2.5 and 3 BHK Premium Apartments</div>
+      <div className="tag-line">Welcome to Arvind Bel Air</div>
       <div className="address-wrapper">
-        <div className="address">your, address, goes here</div>
-        <div className="btn">View Map</div>
+        <div className="address">New Town Road, Yelahanka, Bengaluru</div>
       </div>
       <div className="specs">
-        <div className="specs-title">We brings you</div>
+        <div className="tag-line">Project Details</div>
+        <div className="title">2, 2.5 & 3 BHK Premium Apartments</div>
         <div className="items">
           <div className="item">
             <div className="key">4</div>

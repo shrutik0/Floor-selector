@@ -127,7 +127,9 @@ export const FormStyle = styled.section`
     }
 
     .submit-wrapper {
-      width: fit-content;
+      /* margin: auto; */
+      background: red;
+      width: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -149,7 +151,7 @@ export const FormStyle = styled.section`
         font-size: 1.2rem;
         color: white;
         background: transparent;
-        width: 100%;
+        /* width: 100%; */
         box-shadow: none;
         pointer-events: none;
         :hover {

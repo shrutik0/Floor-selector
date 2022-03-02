@@ -3,6 +3,7 @@ import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Loading from "./components/atoms/Loading";
 import { useLoading, useViewport } from "./contexts/AppContext";
 import BookingPage from "./pages/Booking/BookingPage";
+import SuccessPage from "./pages/Booking/SuccessPage";
 import Flats from "./pages/Flats";
 import Floors from "./pages/Floors";
 import Home from "./pages/Home";
@@ -21,6 +22,7 @@ function Router() {
         />
         <Route path="/" element={<Home />} />
         <Route path="/booking/:property_id" element={<BookingPage />} />
+        <Route path="/booking/success" element={<SuccessPage />} />
         <Route path="/inventories/all" element={<PropertiesViewer />} />
       </Routes>
     </BrowserRouter>
