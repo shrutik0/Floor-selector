@@ -11,7 +11,6 @@ function HomePageDetails(props) {
       </div>
       <div className="specs">
         <div className="tag-line">Project Details</div>
-        <div className="title">2, 2.5 & 3 BHK Premium Apartments</div>
         <div className="items">
           <div className="item">
             <div className="key">4</div>
@@ -26,6 +25,7 @@ function HomePageDetails(props) {
             <div className="value">Floors</div>
           </div>
         </div>
+        <div className="title">2, 2.5 & 3 BHK Premium Apartments</div>
       </div>
     </HomePageDetailsStyle>
   );

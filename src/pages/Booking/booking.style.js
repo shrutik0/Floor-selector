@@ -215,9 +215,22 @@ export const DialogStyle = styled.div`
 `;
 
 export const SuccessPageStyle = styled.div`
+  background-color: white;
+  padding-top: 2rem;
+  min-height: 100vh;
+  height: 100%;
+  place-items: center;
+
   .container {
+    width: 100%;
     font-family: lato;
-    .title {
+
+    .sub {
+      margin: 1rem auto !important;
+      font-size: 1.4rem !important;
+    }
+
+    .title-underline {
       font-family: Marcellus;
       font-size: 1.8rem;
       text-transform: uppercase;
@@ -233,8 +246,8 @@ export const SuccessPageStyle = styled.div`
     }
 
     .details-wrapper {
-      width: 100%;
-      padding: 4rem;
+      width: 100vw;
+      padding: 0 4rem;
 
       .payment-id-wrapper {
         display: flex;
@@ -242,20 +255,36 @@ export const SuccessPageStyle = styled.div`
         font-size: 1.1rem;
       }
 
-      .sub {
-        margin: 0;
-        font-size: 1.3rem;
-      }
+      #property-details-section {
+        padding-top: 2rem;
+        flex-direction: row;
+        max-width: 100%;
 
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        #image-section {
+          margin-right: 4rem;
+          width: 100%;
+          max-width: 500px;
+        }
       }
 
       .flex {
         display: flex;
+        flex-direction: column;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        @media screen and (max-width: 900px) {
+          grid-template-columns: unset;
+          grid-template-rows: auto auto;
+          .details-wrapper {
+            padding: 0 1rem;
+          }
+        }
         .right {
-          margin-right: 3rem;
+          /* margin-right: 3rem; */
+          width: 100%;
         }
       }
     }
@@ -264,13 +293,30 @@ export const SuccessPageStyle = styled.div`
 
 export const BookingDetailsStyle = styled.div`
   width: 100%;
-  margin: 0 1rem;
-
+  margin: 0rem;
+  padding-top: 2rem;
+  @media screen and (max-width: 900px) {
+    padding-top: 0rem;
+    .inline-fields {
+      display: flex !important;
+      justify-content: flex-start !important;
+      .field {
+        margin-right: 1rem;
+      }
+    }
+  }
   .inline-fields {
-    font-size: 1.2rem;
-    display: grid !important;
-    grid-template-columns: 2fr 3fr !important;
-    max-width: 500px;
+    font-size: 1rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+    font-weight: 400;
+
+    /* display: grid !important;
+    grid-template-columns: 2fr 3fr !important; */
+    .field {
+      padding-bottom: 0.5rem;
+    }
+    display: flex;
+    width: fit-content;
     margin: 0.5rem 0;
   }
 `;

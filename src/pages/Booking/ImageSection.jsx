@@ -3,7 +3,7 @@ import { ImageSectionStyle } from "./booking.style";
 
 function ImageSection(props) {
   return (
-    <ImageSectionStyle>
+    <ImageSectionStyle id="image-section">
       <img
         src={`${process.env.PUBLIC_URL}/images/booking-thumb.jpg`}
         className="img"

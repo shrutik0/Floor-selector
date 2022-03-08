@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
-import Loading from "./components/atoms/Loading";
-import { useLoading, useViewport } from "./contexts/AppContext";
 import BookingPage from "./pages/Booking/BookingPage";
 import SuccessPage from "./pages/Booking/SuccessPage";
 import Flats from "./pages/Flats";

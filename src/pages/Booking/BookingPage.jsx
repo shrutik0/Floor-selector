@@ -43,6 +43,14 @@ function BookingPage(props) {
       advertisement_id
     );
 
+    // navigate("/booking/success", {
+    //   state: {
+    //     form,
+    //     property_id: "PR# 03-2020-07562",
+    //     payment_id: "12345",
+    //   },
+    // });
+
     if (!offerRes.ok) {
       alert(
         "There is an technical issue at server side, please try after some time"
@@ -152,7 +160,7 @@ function BookingPage(props) {
           navigate("/booking/success", {
             state: {
               form,
-              property_id,
+              property_id: "PR# 03-2020-07562",
               payment_id: response.razorpay_payment_id,
             },
           });

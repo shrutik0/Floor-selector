@@ -3,11 +3,11 @@ import { PropertyDetailsSectionStyle } from "./booking.style";
 import DetailsSection from "./DetailsSection";
 import ImageSection from "./ImageSection";
 
-function PropertyDetailsSection() {
+function PropertyDetailsSection({ propertyId = false }) {
   return (
-    <PropertyDetailsSectionStyle>
+    <PropertyDetailsSectionStyle id="property-details-section">
       <ImageSection />
-      <DetailsSection />
+      <DetailsSection propertyId={propertyId} />
     </PropertyDetailsSectionStyle>
   );
 }

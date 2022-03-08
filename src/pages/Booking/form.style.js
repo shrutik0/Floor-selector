@@ -105,7 +105,8 @@ export const FormStyle = styled.section`
     }
 
     .desc {
-      padding: 2rem 0;
+      margin-top: 1rem;
+      padding: 1rem 0;
       font-size: 0.9rem;
       line-height: 22px;
       letter-spacing: 0.05em;
@@ -113,6 +114,7 @@ export const FormStyle = styled.section`
     }
 
     .tnc {
+      margin-top: 1rem;
       padding-left: 0.5rem;
       display: flex;
       align-items: center;
@@ -128,6 +130,7 @@ export const FormStyle = styled.section`
 
     .submit-wrapper {
       /* margin: auto; */
+      /* margin-top: 1.5rem; */
       background: red;
       width: 50%;
       display: flex;

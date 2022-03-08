@@ -190,10 +190,9 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     placeholder="Enter your Aadhar no."
                   />
                 </div>
-                <div className="desc ft-lt">
-                  Our checkout is safe and secure. Your personal information is
-                  securely transmitted via 128-bit encryption. We do not save
-                  any payment card information on our systems.
+                <div className="advance-amount">
+                  You will be charged now only for booking fee of{" "}
+                  <b style={{ fontWeight: 500 }}> ₹ 20,000</b>
                 </div>
                 <div className="tnc">
                   <Field
@@ -203,8 +202,11 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                   />
                   <span>I Agree to the Terms & Conditions of sale</span>
                 </div>
-                <div className="advance-amount">
-                  You will be charged now only for booking fee of 20,000 ₹
+
+                <div className="desc ft-lt">
+                  Our checkout is safe and secure. Your personal information is
+                  securely transmitted via 128-bit encryption. We do not save
+                  any payment card information on our systems.
                 </div>
                 <SubmitButton
                   dirty={dirty}

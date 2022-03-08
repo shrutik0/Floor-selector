@@ -7,7 +7,6 @@ function BookingDetails({ form }) {
   return (
     <BookingDetailsStyle>
       <FormStyle>
-        <div className="title sub">Booking Details</div>
         <div className="form">
           <div className="inline-fields">
             <div className="field">Payment Id</div>
