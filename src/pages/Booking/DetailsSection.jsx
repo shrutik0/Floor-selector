@@ -22,8 +22,7 @@ function DetailsSection({ propertyId = false }) {
   const flat = getFlatFromPropertyId(property_id);
   const [showPaymentplan, setShowPaymentplan] = useState(false);
   const [showFloorplan, setShowFloorplan] = useState(false);
-  const first_installment_amount = flat.TotalCost * (20 / 100);
-  const on_handover_amount = flat.TotalCost - first_installment_amount;
+  const ten_percent = flat.TotalCost * (10 / 100);
   return (
     <>
       <Dialog
@@ -32,8 +31,11 @@ function DetailsSection({ propertyId = false }) {
         header="Payment Plan"
         body={
           <Paymentplan
-            first_installment_amount={first_installment_amount}
-            on_handover_amount={on_handover_amount}
+            blocking_amount={20000}
+            on_booking_amount={ten_percent}
+            on_ats_amount={ten_percent}
+            on_completion_amount={ten_percent * 7}
+            on_possession_amount={ten_percent}
           />
         }
       />
@@ -66,16 +68,23 @@ function DetailsSection({ propertyId = false }) {
           </tr>
           <tr>
             <td>
+              <ImageText text="RERA Carpet Area" src="area" />
+            </td>
+            <td className="value">{parseInt(flat.RERACarpetArea)} Sq.ft</td>
+          </tr>
+          <tr>
+            <td>
+              <ImageText text="Total Carpet Area" src="area" />
+            </td>
+            <td className="value">{parseInt(flat.CarpetArea)} Sq.ft</td>
+          </tr>
+          <tr>
+            <td>
               <ImageText text="SBU Area" src="area" />
             </td>
             <td className="value">{parseInt(flat.Area)} Sq.ft</td>
           </tr>
-          <tr>
-            <td>
-              <ImageText text="Carpet Area" src="area" />
-            </td>
-            <td className="value">{parseInt(flat.CarpetArea)} Sq.ft</td>
-          </tr>
+
           <tr>
             <td>
               <ImageText text="Price" src="rupee" />
@@ -108,7 +117,13 @@ function DetailsSection({ propertyId = false }) {
 
 export default DetailsSection;
 
-const Paymentplan = ({ first_installment_amount, on_handover_amount }) => (
+const Paymentplan = ({
+  blocking_amount,
+  on_booking_amount,
+  on_ats_amount,
+  on_completion_amount,
+  on_possession_amount,
+}) => (
   <table>
     <tbody>
       <tr className="header">
@@ -117,14 +132,29 @@ const Paymentplan = ({ first_installment_amount, on_handover_amount }) => (
         <td>Amount</td>
       </tr>
       <tr>
-        <td>1st Installment</td>
-        <td>20</td>
-        <td>₹ {rupeeIndian.format(parseInt(first_installment_amount))}</td>
+        <td>Blocking Amount</td>
+        <td>-</td>
+        <td>₹ {rupeeIndian.format(parseInt(blocking_amount))}</td>
       </tr>
       <tr className="border">
-        <td>On Handover</td>
-        <td>80</td>
-        <td>₹ {rupeeIndian.format(parseInt(on_handover_amount))}</td>
+        <td>On Booking</td>
+        <td>10</td>
+        <td>₹ {rupeeIndian.format(parseInt(on_booking_amount))}</td>
+      </tr>
+      <tr className="border">
+        <td>On ATS withing 30 days</td>
+        <td>10</td>
+        <td>₹ {rupeeIndian.format(parseInt(on_ats_amount))}</td>
+      </tr>
+      <tr className="border">
+        <td>On Completion of 15th Floor Slab</td>
+        <td>70</td>
+        <td>₹ {rupeeIndian.format(parseInt(on_completion_amount))}</td>
+      </tr>
+      <tr className="border">
+        <td>On Possession (Receipt of OC)</td>
+        <td>10</td>
+        <td>₹ {rupeeIndian.format(parseInt(on_possession_amount))}</td>
       </tr>
       <tr className="border">
         <td>Total</td>
@@ -132,7 +162,12 @@ const Paymentplan = ({ first_installment_amount, on_handover_amount }) => (
         <td>
           ₹{" "}
           {rupeeIndian.format(
-            parseInt(first_installment_amount + on_handover_amount)
+            parseInt(
+              on_booking_amount +
+                on_ats_amount +
+                on_completion_amount +
+                on_possession_amount
+            )
           )}
         </td>
       </tr>

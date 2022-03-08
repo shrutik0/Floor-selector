@@ -107,19 +107,32 @@ function Flats() {
             `${flats[currentFlatIndex]["UnitType"]}`,
           ]}
           features={[
+            // {
+            //   key: "DIRECTION",
+            //   value: `${flats[currentFlatIndex]["Direction"].replace(
+            //     "Facing",
+            //     ""
+            //   )}`,
+            // },
             {
-              key: "DIRECTION",
-              value: `${flats[currentFlatIndex]["Direction"].replace(
-                "Facing",
-                ""
-              )}`,
+              key: "RERA CARPET AREA",
+              value: `${parseInt(
+                flats[currentFlatIndex]["RERACarpetArea"]
+              )} Sq.ft`,
             },
             {
-              key: "Total Carpet Area",
+              key: "EXCLUSIVE AREA",
+              value: `${
+                parseInt(flats[currentFlatIndex]["AdditionalCarpetArea"]) +
+                parseInt(flats[currentFlatIndex]["BalconyCarpetArea"])
+              } Sq.ft`,
+            },
+            {
+              key: "TOTAL CARPET AREA",
               value: `${parseInt(flats[currentFlatIndex]["CarpetArea"])} Sq.ft`,
             },
             {
-              key: "SBU Area",
+              key: "SBU AREA",
               value: `${parseInt(flats[currentFlatIndex]["Area"])} Sq.ft`,
             },
             {
@@ -138,7 +151,7 @@ function Flats() {
             },
           ].slice(
             0,
-            flats[currentFlatIndex]["UnitStatus"] == "Available" ? 4 : 2
+            flats[currentFlatIndex]["UnitStatus"] == "Available" ? 5 : 4
           )}
           buttons={
             flats[currentFlatIndex]["UnitStatus"] == "Available"

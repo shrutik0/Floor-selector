@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormStyle } from "./form.style";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { FormField } from "../../components/atoms/FormField";
 import { PhoneField } from "../../components/atoms/PhoneField";
 import CountryCityFields from "./CountryCityFields";
+import Dialog from "./Dialog";
 
 const initialValues = {
   first_name: "",
@@ -45,10 +46,10 @@ const BookingFormSchema = Yup.object().shape({
 
   pan: Yup.string()
     .required("Please enter your pan card no.")
-    .matches(/[A-Z]{3}[ABCFGHLJPTK]{1}[A-Z]{1}[0-9]{4}[A-Z]{1}/, {
-      message: "Please enter valid pan card no.",
-      excludeEmptyString: false,
-    })
+    // .matches(/[a-z]{3}[abcfghljptk]{1}[a-z]{1}[0-9]{4}[a-z]{1}/, {
+    //   message: "Please enter valid pan card no.",
+    //   excludeEmptyString: false,
+    // })
     .max(12, "Please enter valid pan card no."),
 
   aadhar: Yup.string().matches(/^\d{4}\d{4}\d{4}$/, {
@@ -78,8 +79,16 @@ const SubmitButton = ({ dirty, isValid, coutryCityError }) => (
 );
 
 export const BookingDetailsForm = ({ onSubmit }) => {
+  const [showTnc, setShowTnc] = useState(false);
   return (
     <FormStyle>
+      <Dialog
+        body={<TnC />}
+        header={"Terms & Conditions of sale"}
+        showDialog={showTnc}
+        setShowDialog={setShowTnc}
+        className={"tnc-dialog"}
+      />
       <Formik
         initialValues={initialValues}
         validationSchema={BookingFormSchema}
@@ -200,7 +209,13 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     name="terms_and_condition"
                     className="checkbox disable-team team_values"
                   />
-                  <span>I Agree to the Terms & Conditions of sale</span>
+                  <span>
+                    I Agree to the
+                    <div className="tnc-btn" onClick={() => setShowTnc(true)}>
+                      Terms & Conditions
+                    </div>
+                    of sale
+                  </span>
                 </div>
 
                 <div className="desc ft-lt">
@@ -223,3 +238,97 @@ export const BookingDetailsForm = ({ onSubmit }) => {
     </FormStyle>
   );
 };
+
+const TnC = () => (
+  <p className="tnc-para">
+    <ol>
+      <li>
+        Till such time the booking is confirmed, above prices/payment plans/unit
+        availability are subject to revision/withdrawal at any time without
+        notice at the sole discretion of the Developer.
+      </li>
+      <li>
+        Following additional charges are not included in the above cost sheet
+        and shall be charged extra:
+        <ol className="sub-para ">
+          <li>
+            Cauvery water/other source of water provided by BWSSB or,any other
+            authorities, when available, on a proportionate/actual basis.
+          </li>
+          <li>
+            Any other charges/deposits/connection charges/fees etc for
+            utility/services like electricity/gas/ water and sanitation / sewage
+            etc on actual/proportionate basis.
+          </li>
+          <li>
+            Khata transfer, execution of ATS, execution of sale deed etc on
+            actuals including incidental expenses if any.
+          </li>
+          <li>
+            All govt.taxes/levies/charges/surcharges including but not limited
+            to stamp duty, registration charges etc.
+          </li>
+        </ol>
+      </li>
+
+      <li>
+        Cheque to be drawn in favour of "ARVIND HEBBAL HOMES PVT LTD BELAIR
+        PROJECT MASTER COLLECTION A/C".
+      </li>
+
+      <li>
+        GST levied herein is based on applicable laws and best practices
+        existing as of date. Any additional tax to be paid on account of deficit
+        in GST rate differences as may be claimed by the Govt. Authorities in
+        future will be borne by the Buyer(s).
+      </li>
+
+      <li>
+        Carpet areas/dimensions are calculated based on architecture masonry
+        dimensions only and includes plaster and tiles thickness etc.
+      </li>
+
+      <li>
+        Electrical cable/ hookup/ transformer charges/ proportionate charges/
+        deposits pertaining to electricity board to be paid to the relevant
+        Government authorities based on actuals and on proportionate basis.
+      </li>
+      <li>
+        Khata bifurcation/transfer charges are payable at actuals as
+        communicated by the promoter / developer. Khata bifurcation/transfer
+        charges are over and above the cost sheet mentioned above.
+      </li>
+      <li>
+        This cost sheet is a system generated cost sheet and shall be accepted
+        subject to final confirmation after the application is accepted.
+      </li>
+    </ol>
+    <br />
+    <span className="title">TDS related details:</span>
+    <br />
+    <ol>
+      <li>Tax Applicable: (0021) INCOME-TAX (OTHER THAN COMPANIES)</li>
+      <li>
+        Address of transferor: ARVIND HEBBAL HOMES PRIVATE LIMITED 24,
+        Government Servant Society, Near Municipal Market, CG Road, 1st
+        Applicant Ahmedabad - 380009 Gujarat E-mail: mehul.shah@arvind.in Phone:
+        079 6826 7000
+      </li>
+      <li>
+        Address of property: “Unit No.”, Arvind BelAir, Doddabettahalli Village,
+        Yelahanka Hobli, Bangalore North Taluka, Karnataka 560064 Email:
+        belair.care@arvind.in
+      </li>
+      <li>PAN card of transferor: AAQCS1295J</li>
+      <li>
+        Date of Agreement/Booking *: Please mention Booking date / Agreement
+        registration date
+      </li>
+      <li>
+        Total Value of Consideration (Property Value)*: Please refer your
+        agreement or Unit consideration Value of cost sheet shared with you at
+        the time of booking
+      </li>
+    </ol>
+  </p>
+);

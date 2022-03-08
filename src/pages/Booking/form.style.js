@@ -2,6 +2,31 @@ import styled from "styled-components";
 
 export const FormStyle = styled.section`
   width: 100%;
+
+  .tnc-dialog {
+    .model {
+      max-width: 90vw;
+      .tnc-para {
+        height: 100%;
+        max-height: 70vh;
+        overflow: auto !important;
+        .title {
+          font-weight: 600;
+        }
+        line-height: 23px;
+        ol {
+          margin: 1rem;
+        }
+        li {
+          padding: 0.4rem;
+        }
+        .sub-para {
+          list-style-type: lower-alpha;
+          padding-left: 1rem;
+        }
+      }
+    }
+  }
   .container {
     padding-left: 4rem;
     .title {
@@ -70,6 +95,7 @@ export const FormStyle = styled.section`
 
         ::placeholder {
           color: rgba(125, 125, 125, 0.4);
+          text-transform: capitalize;
         }
 
         :-ms-input-placeholder {
@@ -120,6 +146,14 @@ export const FormStyle = styled.section`
       align-items: center;
       span {
         margin-left: 1rem;
+      }
+      .tnc-btn {
+        font-weight: 500;
+        display: inline;
+        margin: 0 0.6rem;
+        color: var(--clr-orange);
+        cursor: pointer;
+        border-bottom: 1px solid var(--clr-orange);
       }
     }
 
