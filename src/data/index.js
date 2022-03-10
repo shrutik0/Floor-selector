@@ -18,3 +18,10 @@ export const baseUrl = "https://anshulpadyal.pythonanywhere.com";
 
 export const TOWER_NAMES_LIST = ["A", "B", "C", "D"];
 export const FLOORS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+export const FLOORS_COMPASS_ANGLES = {
+  A: 10,
+  B: 190,
+  C: -130,
+  D: 110,
+};

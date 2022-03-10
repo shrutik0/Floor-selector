@@ -113,7 +113,7 @@ export const getFlatInfo = (towerId, floorNo, flatIndex) => {
     features: [
       `Typology: ${flat["UnitType"]} `,
       `Area: ${parseInt(flat["CarpetArea"]).toFixed(0)} Sq. ft`,
-      `Direction:  ${flat["Direction"].replace("Facing", "")} `,
+      // `Direction:  ${flat["Direction"].replace("Facing", "")} `,
       `Unit Status: ${flat["UnitStatus"]} `,
     ],
   };

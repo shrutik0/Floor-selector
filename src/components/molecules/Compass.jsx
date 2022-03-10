@@ -1,7 +1,13 @@
 import React from "react";
+import { CompassStyle } from "./molecules.style";
 
-function Compass(props) {
-  return <div></div>;
+function Compass({ angle = 0, right = 0, bottom = 0 }) {
+  console.log(angle);
+  return (
+    <CompassStyle style={{ transform: `rotateZ(${angle}deg)`, right, bottom }}>
+      <img src={`${process.env.PUBLIC_URL}/icons/compass.png`} alt="compass" />
+    </CompassStyle>
+  );
 }
 
 export default Compass;

@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from "react";
-import ReactDOMServer from "react-dom/server";
+import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import tippy, { createSingleton } from "tippy.js";
-import { string } from "yup";
 import Carousel from "../components/molecules/Carousel";
 import { Collapsible } from "../components/molecules/CustomCollapsible";
-import Floor from "../components/molecules/Floor";
-import HoverInfo from "../components/molecules/HoverInfo";
-import Tower from "../components/molecules/Tower";
 import CarouselPageDetails from "../components/molecules/CarouselPageDetails";
 import { FLOORS, TOWER_NAMES_LIST } from "../data";
 import Dialog from "./Booking/Dialog";
 import {
-  getFlatInfo,
   getFormalNameFromNumber,
-  getFormalUnitType,
-  getFormatedMinMaxUnitSize,
   getVRtourLink,
   rupeeIndian,
 } from "../functions/helpers";
@@ -27,8 +18,8 @@ import {
   useShowDetails,
   useViewport,
 } from "../contexts/AppContext";
-import OnClickInfo from "../components/molecules/OnClickInfo";
 import Flat from "../components/molecules/Flat";
+import Compass from "../components/molecules/Compass";
 
 const HomeButton = () => (
   <Link to={"/"}>
@@ -122,10 +113,10 @@ function Flats() {
             },
             {
               key: "EXCLUSIVE AREA",
-              value: `${
-                parseInt(flats[currentFlatIndex]["AdditionalCarpetArea"]) +
-                parseInt(flats[currentFlatIndex]["BalconyCarpetArea"])
-              } Sq.ft`,
+              value: `${parseInt(
+                flats[currentFlatIndex]["AdditionalCarpetArea"] +
+                  flats[currentFlatIndex]["BalconyCarpetArea"]
+              )} Sq.ft`,
             },
             {
               key: "TOTAL CARPET AREA",
@@ -190,6 +181,7 @@ function Flats() {
           />
         ))}
       </Carousel>
+      <Compass right="5rem" bottom="2rem" />
     </TowersPageStyle>
   );
 }

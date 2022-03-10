@@ -207,10 +207,13 @@ export const DialogStyle = styled.div`
     }
   }
 
-  .floorplan-img {
-    width: 100%;
+  .floorplan-img-wrapper {
     height: 70vh;
-    object-fit: contain;
+    .floorplan-img {
+      width: 80%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 `;
 

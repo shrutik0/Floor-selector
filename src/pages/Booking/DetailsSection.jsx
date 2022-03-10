@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { rupeeIndian } from "../../functions/helpers";
+import Compass from "../../components/molecules/Compass";
 import {
   getAllFlatsInFloor,
   getFlatFromPropertyId,
@@ -44,12 +45,16 @@ function DetailsSection({ propertyId = false }) {
         setShowDialog={setShowFloorplan}
         header="Floor Plan"
         body={
-          <img
-            src={`${process.env.PUBLIC_URL}/images/flats/${flat["Tower"]}/${
-              getAllFlatsInFloor(flat["Tower"], flat["Floor"]).indexOf(flat) + 1
-            }.png`}
-            className="floorplan-img"
-          />
+          <div className="floorplan-img-wrapper">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/flats/${flat["Tower"]}/${
+                getAllFlatsInFloor(flat["Tower"], flat["Floor"]).indexOf(flat) +
+                1
+              }.png`}
+              className="floorplan-img"
+            />
+            <Compass bottom="3rem" right="1rem" />
+          </div>
         }
       />
       <DetailsSectionStyle>

@@ -4,6 +4,7 @@ import {
   useShowDetails,
   useViewport,
 } from "../../contexts/AppContext";
+import Compass from "./Compass";
 import { CarouselItemStyle, FlatStyle } from "./molecules.style";
 
 function Flat({ towerId, flatIndex, flatNumber }) {

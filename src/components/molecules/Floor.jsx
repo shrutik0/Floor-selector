@@ -1,11 +1,16 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useViewport } from "../../contexts/AppContext";
-import { FLOORS_VIEWPORTS, TOWERS_VIEWPORTS } from "../../data";
+import {
+  FLOORS_COMPASS_ANGLES,
+  FLOORS_VIEWPORTS,
+  TOWERS_VIEWPORTS,
+} from "../../data";
 import { FLAT_PATHS, FLOOR_PATHS } from "../../data/paths";
 import { getFlatInfo } from "../../functions/helpers";
 import { getAllFlatsInFloor } from "../../functions/inventory";
 import Path from "../atoms/Path";
+import Compass from "./Compass";
 import { CarouselItemStyle } from "./molecules.style";
 import OnClickInfo from "./OnClickInfo";
 import Svg from "./Svg";
@@ -76,6 +81,11 @@ const Floor = ({
             })}
         </g>
       </Svg>
+      <Compass
+        bottom="80px"
+        right="80px"
+        angle={FLOORS_COMPASS_ANGLES[towerId]}
+      />
     </CarouselItemStyle>
   );
 };

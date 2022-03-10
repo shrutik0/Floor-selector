@@ -384,7 +384,7 @@ export const CarouselItemDetailsStyle = styled.div`
     flex-direction: column;
 
     .feature {
-      margin: 0.8rem;
+      margin: 0.5rem 0.8rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
@@ -495,8 +495,11 @@ export const FlatStyle = styled.section`
     font-weight: 600;
     border-radius: 4px;
     font-size: 1.3rem;
+    position: absolute;
+    top: 0;
   }
   .img-wrapper {
+    padding-top: 2rem;
     transition: all 500ms;
     height: 100%;
     display: flex;
@@ -516,4 +519,18 @@ export const FlatStyle = styled.section`
   }
 `;
 
-export const CompassStyle = styled.div``;
+export const CompassStyle = styled.div`
+  width: 160px;
+  height: 160px;
+  background-color: white;
+  padding: 0.5rem;
+  object-fit: contain;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
