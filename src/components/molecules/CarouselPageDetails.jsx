@@ -7,6 +7,7 @@ function CarouselPageDetails({
   features = [],
   style,
   buttons = [],
+  tnc = false,
 }) {
   return (
     <CarouselItemDetailsStyle style={style}>
@@ -21,7 +22,7 @@ function CarouselPageDetails({
           <div className="feature" key={index}>
             <div className="left">{feature.key.toString().toUpperCase()}</div>
             <div className="right">
-              {feature.key === "Total Cost"
+              {feature.key === "Total Cost*"
                 ? feature.value
                 : feature.value.toString().toUpperCase()}
             </div>
@@ -37,6 +38,7 @@ function CarouselPageDetails({
           ))}
         </div>
       )}
+      {tnc && <div className="tnc">{tnc}</div>}
     </CarouselItemDetailsStyle>
   );
 }

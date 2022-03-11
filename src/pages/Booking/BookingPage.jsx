@@ -156,7 +156,6 @@ function BookingPage(props) {
           .catch((e) => e);
 
         if (res.ok) {
-          alert("payment successful !");
           navigate("/booking/success", {
             state: {
               form,

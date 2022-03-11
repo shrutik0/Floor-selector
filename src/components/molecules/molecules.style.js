@@ -435,6 +435,11 @@ export const CarouselItemDetailsStyle = styled.div`
     }
   }
 
+  .tnc {
+    padding: 0.5rem 0;
+    padding-left: 1rem;
+  }
+
   .flat-navigator {
     font-size: 1rem;
     font-weight: 500;

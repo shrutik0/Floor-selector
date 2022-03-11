@@ -33,7 +33,7 @@ function DetailsSection({ propertyId = false }) {
         body={
           <Paymentplan
             blocking_amount={20000}
-            on_booking_amount={ten_percent}
+            on_booking_amount={ten_percent - 20000}
             on_ats_amount={ten_percent}
             on_completion_amount={ten_percent * 7}
             on_possession_amount={ten_percent}

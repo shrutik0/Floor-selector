@@ -127,7 +127,7 @@ function Flats() {
               value: `${parseInt(flats[currentFlatIndex]["Area"])} Sq.ft`,
             },
             {
-              key: "Total Cost",
+              key: "Total Cost*",
               value: (
                 <>
                   <div>{` ₹ ${rupeeIndian.format(
@@ -164,6 +164,8 @@ function Flats() {
                 ]
               : []
           }
+          tnc="
+          *Total Cost excluding maintenance & GST"
         />
       </Collapsible>
       <Carousel

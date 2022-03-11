@@ -19,8 +19,8 @@ function ImageSection(props) {
         <span className="ft-lt">Yelahanka, Bengaluru</span>
       </div>
       <div className="desc ft-lt">
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout.
+        Vaastu-compliant 2 & 3 BHK apartments with unobstructed views and
+        excellent connectivity.
       </div>
     </ImageSectionStyle>
   );
