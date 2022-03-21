@@ -15,7 +15,7 @@ export const FormStyle = styled.section`
         }
         line-height: 23px;
         ol {
-          margin: 1rem;
+          margin: 1rem 1.6rem;
         }
         li {
           padding: 0.4rem;
@@ -23,6 +23,9 @@ export const FormStyle = styled.section`
         .sub-para {
           list-style-type: lower-alpha;
           padding-left: 1rem;
+        }
+        .roman {
+          list-style-type: lower-roman;
         }
       }
     }

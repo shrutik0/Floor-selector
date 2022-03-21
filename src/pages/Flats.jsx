@@ -164,8 +164,11 @@ function Flats() {
                 ]
               : []
           }
-          tnc="
-          *Total Cost excluding maintenance & GST"
+          tnc={
+            flats[currentFlatIndex]["UnitStatus"] == "Available"
+              ? "Total Cost does not include GST, Maintenance Charges, and Maintenance Deposit."
+              : ""
+          }
         />
       </Collapsible>
       <Carousel
@@ -183,7 +186,7 @@ function Flats() {
           />
         ))}
       </Carousel>
-      <Compass right="5rem" bottom="2rem" />
+      <Compass right="7rem" bottom="1rem" />
     </TowersPageStyle>
   );
 }

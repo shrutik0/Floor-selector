@@ -85,7 +85,7 @@ export const ImageSectionStyle = styled.div`
 
 export const DetailsSectionStyle = styled.div`
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   table {
     width: 100%;
     font-size: 1rem;

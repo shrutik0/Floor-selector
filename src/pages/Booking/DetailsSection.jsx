@@ -129,53 +129,68 @@ const Paymentplan = ({
   on_completion_amount,
   on_possession_amount,
 }) => (
-  <table>
-    <tbody>
-      <tr className="header">
-        <td>Milestones</td>
-        <td>%</td>
-        <td>Amount</td>
-      </tr>
-      <tr>
-        <td>Blocking Amount</td>
-        <td>-</td>
-        <td>₹ {rupeeIndian.format(parseInt(blocking_amount))}</td>
-      </tr>
-      <tr className="border">
-        <td>On Booking</td>
-        <td>10</td>
-        <td>₹ {rupeeIndian.format(parseInt(on_booking_amount))}</td>
-      </tr>
-      <tr className="border">
-        <td>On ATS withing 30 days</td>
-        <td>10</td>
-        <td>₹ {rupeeIndian.format(parseInt(on_ats_amount))}</td>
-      </tr>
-      <tr className="border">
-        <td>On Completion of 15th Floor Slab</td>
-        <td>70</td>
-        <td>₹ {rupeeIndian.format(parseInt(on_completion_amount))}</td>
-      </tr>
-      <tr className="border">
-        <td>On Possession (Receipt of OC)</td>
-        <td>10</td>
-        <td>₹ {rupeeIndian.format(parseInt(on_possession_amount))}</td>
-      </tr>
-      <tr className="border">
-        <td>Total</td>
-        <td>100</td>
-        <td>
-          ₹{" "}
-          {rupeeIndian.format(
-            parseInt(
-              on_booking_amount +
-                on_ats_amount +
-                on_completion_amount +
-                on_possession_amount
-            )
-          )}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <>
+    <table>
+      <tbody>
+        <tr className="header">
+          <td>Milestones</td>
+          <td>%</td>
+          <td>Amount</td>
+        </tr>
+        <tr>
+          <td>Blocking Amount</td>
+          <td>-</td>
+          <td>₹ {rupeeIndian.format(parseInt(blocking_amount))}</td>
+        </tr>
+        <tr className="border">
+          <td>On Booking</td>
+          <td>10</td>
+          <td>₹ {rupeeIndian.format(parseInt(on_booking_amount))}</td>
+        </tr>
+        <tr className="border">
+          <td>On ATS withing 30 days</td>
+          <td>10</td>
+          <td>₹ {rupeeIndian.format(parseInt(on_ats_amount))}</td>
+        </tr>
+        <tr className="border">
+          <td>On Completion of 15th Floor Slab</td>
+          <td>70</td>
+          <td>₹ {rupeeIndian.format(parseInt(on_completion_amount))}</td>
+        </tr>
+        <tr className="border">
+          <td>On Possession (Receipt of OC)</td>
+          <td>10</td>
+          <td>₹ {rupeeIndian.format(parseInt(on_possession_amount))}</td>
+        </tr>
+        <tr className="border">
+          <td>Total*</td>
+          <td>100</td>
+          <td>
+            ₹{" "}
+            {rupeeIndian.format(
+              parseInt(
+                on_booking_amount +
+                  on_ats_amount +
+                  on_completion_amount +
+                  on_possession_amount
+              )
+            )}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      className="tnc"
+      style={{
+        color: "#3b3a3a",
+        backgroundColor: "#f8f9fb",
+        fontSize: "0.8rem",
+        padding: "0.5rem",
+        fontWeight: "600",
+      }}
+    >
+      *Total Cost does not include GST, Maintenance Charges, and Maintenance
+      Deposit.
+    </div>
+  </>
 );

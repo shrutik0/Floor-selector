@@ -302,6 +302,51 @@ const TnC = () => (
         This cost sheet is a system generated cost sheet and shall be accepted
         subject to final confirmation after the application is accepted.
       </li>
+      <li>
+        The Buyer(s)/Allottee(s) acknowledge that in case of cancellation of the
+        Unit, and if the same is approved by the Developer, then the Developer
+        is entitled to forfeit/ recover minimum of 10% of the agreed total
+        consideration amount or such other amount as per the applicable
+        policies/law as well as any interest on delayed payments as may be
+        applicable to the payments received from the Buyer(s)/Allottee(s). In
+        addition to the said forfeiture, the Developer shall be entitled to
+        forfeit the following amounts from and out of any payments made by the
+        Buyer(s)/Allottee(s) or recover the same from the Buyer(s)/Allottee(s)
+        in the event the payments made by the Buyer(s)/Allottee(s) are
+        insufficient to cover such amounts:
+        <ol className="roman">
+          <li>
+            any applicable taxes, duties, cesses and statutory levies of
+            whatsoever nature including but not limited to the Goods and Service
+            Tax (GST), sales tax, revenue tax or any other applicable taxes,
+            water charges, electricity charges and duties, in respect of the
+            said Unit applicable and payable by the Buyer(s)/Allottee(s) prior
+            to such cancellation; and
+          </li>
+          <li>
+            any brokerage charges / referral payouts if the said Unit is
+            purchased through a broker / channel partner of the Developer or
+            through any referral scheme of the Developer.
+          </li>
+          After cancellation, Developer is entitled to re-allot and resell the
+          Unit to any other person and on such terms and conditions as Developer
+          deems fit and repay to the Buyer(s) the balance amount, if any, within
+          60 (sixty) days from the date of cancellation.
+        </ol>
+      </li>
+      <li>
+        Upon payment of the blocking amount, the selected unit will be blocked
+        for the Buyer for a period of 15 days within which time the Buyer will
+        need to pay the entire booking amount equalling to 10% of the total
+        consideration of the Unit. Failure of the Buyer to pay the booking
+        amount within 15 days from the date of paying the blocking amount will
+        result in unblocking of the Unit and the Developer will be free to
+        allot/block/sell the said Unit to any other customer at its discretion
+        without recourse to the Buyer. In the event of non-payment of the
+        booking amount and the unblocking of the Unit, the Developer shall be
+        entitled to forfeit the blocking amount of Rs. 20,000/- paid by the
+        Buyer.
+      </li>
     </ol>
     <br />
     <span className="title">TDS related details:</span>

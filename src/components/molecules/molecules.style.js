@@ -436,8 +436,19 @@ export const CarouselItemDetailsStyle = styled.div`
   }
 
   .tnc {
-    padding: 0.5rem 0;
-    padding-left: 1rem;
+    padding: 1rem 0;
+    padding-left: 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    position: relative;
+    ::before {
+      content: "*";
+      font-size: 1.6rem;
+      display: inline-block;
+      position: absolute;
+      left: 0.7rem;
+      top: 0.6rem;
+    }
   }
 
   .flat-navigator {
@@ -528,6 +539,7 @@ export const CompassStyle = styled.div`
   width: 160px;
   height: 160px;
   background-color: white;
+  box-shadow: 0px 0px 4px rgba(0, 130, 250, 0.2);
   padding: 0.5rem;
   object-fit: contain;
   border-radius: 50%;
