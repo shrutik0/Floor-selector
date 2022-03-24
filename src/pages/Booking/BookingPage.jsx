@@ -13,13 +13,15 @@ import PropertyDetailsSection from "./PropertyDetailsSection";
 import { loadScript } from "../../functions/helpers";
 import { useEffect } from "react";
 import Dialog from "./Dialog";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getFlatFromPropertyId } from "../../functions/inventory";
 
 function BookingPage(props) {
-  const project_id = "a1qO0000001vA00";
-  // const property_id = "PR" + useLocation().hash.replace("%20", " ");
-  const property_id = "a1xO0000003Gese";
-  const advertisement_id = "a03O000000SFVDF";
+  const property_id = "PR" + useLocation().hash.replace("%20", " ");
+  const project_id = getFlatFromPropertyId(property_id).ProjectId;
+  // const property_id = "a1xO0000003Gese";
+
+  const advertisement_id = "a032u00000DIbK0";
 
   const { setLoading } = useLoading();
 
