@@ -17,9 +17,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getFlatFromPropertyId } from "../../functions/inventory";
 
 function BookingPage(props) {
-  const property_id = "PR" + useLocation().hash.replace("%20", " ");
+  // const property_id = "PR" + useLocation().hash.replace("%20", " ");
+
+  const property_id = useLocation().pathname.replace("/booking/", "");
   const project_id = getFlatFromPropertyId(property_id).ProjectId;
-  // const property_id = "a1xO0000003Gese";
+  // const property_id = "a1x2u000000L0gQ";
+  // const project_id = "a1q2u000000boHd";
 
   const advertisement_id = "a032u00000DIbK0";
 
@@ -28,12 +31,13 @@ function BookingPage(props) {
   const navigate = useNavigate();
 
   const handleBookingDataSubmit = async (form) => {
+    // console.log(form);
     setLoading(true);
     const offerRes = await createOffer(
       form.first_name,
       form.last_name,
       form.email,
-      form.phone,
+      form.country_code + form.phone,
       form.country,
       form.city,
       form.address,
@@ -161,7 +165,7 @@ function BookingPage(props) {
           navigate("/booking/success", {
             state: {
               form,
-              property_id: "PR# 03-2020-07562",
+              property_id,
               payment_id: response.razorpay_payment_id,
             },
           });

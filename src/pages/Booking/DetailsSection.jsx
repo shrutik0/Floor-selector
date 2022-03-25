@@ -18,9 +18,11 @@ const ImageText = ({ src, text }) => (
 );
 
 function DetailsSection({ propertyId = false }) {
-  const id_from_url = "PR" + useLocation().hash.replace("%20", " ");
+  // const id_from_url = "PR" + useLocation().hash.replace("%20", " ");
+  const id_from_url = useLocation().pathname.replace("/booking/", "");
   const property_id = propertyId || id_from_url;
   const flat = getFlatFromPropertyId(property_id);
+  console.log(flat);
   const [showPaymentplan, setShowPaymentplan] = useState(false);
   const [showFloorplan, setShowFloorplan] = useState(false);
   const ten_percent = flat.TotalCost * (10 / 100);
