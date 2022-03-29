@@ -52,10 +52,12 @@ const BookingFormSchema = Yup.object().shape({
     // })
     .max(12, "Please enter valid pan card no."),
 
-  aadhar: Yup.string().matches(/^\d{4}\d{4}\d{4}$/, {
-    message: "Please enter valid aadhar card no.",
-    excludeEmptyString: false,
-  }),
+  aadhar: Yup.string()
+    .required("Please enter your Aadhar card no.")
+    .matches(/^\d{4}\d{4}\d{4}$/, {
+      message: "Please enter valid aadhar card no.",
+      excludeEmptyString: false,
+    }),
 
   terms_and_condition: Yup.boolean().oneOf(
     [true],

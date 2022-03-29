@@ -74,7 +74,13 @@ const Floor = ({
                     d={FLAT_PATHS[towerId][flat_no]}
                     key={flat_no}
                     id={`${towerId}-tower${floorId}-floor-flat-path-${flat_no}`}
-                    className={flats[index] && flats[index]["UnitStatus"]}
+                    className={
+                      (flats[index] &&
+                        flats[index]["UnitStatus"] == "Available") ||
+                      flats[index]["UnitStatus"] == "available"
+                        ? "Available"
+                        : "Sold"
+                    }
                   />
                 </Link>
               );
