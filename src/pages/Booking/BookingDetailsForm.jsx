@@ -196,7 +196,7 @@ export const BookingDetailsForm = ({ onSubmit }) => {
                     }
                     key="aadhar"
                     name="aadhar"
-                    title="Aadhar Card"
+                    title="Aadhar Card*"
                     type="text"
                     placeholder="Enter your Aadhar no."
                   />
