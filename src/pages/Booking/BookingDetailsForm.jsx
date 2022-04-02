@@ -349,6 +349,13 @@ const TnC = () => (
         entitled to forfeit the blocking amount of Rs. 20,000/- paid by the
         Buyer.
       </li>
+      <li>
+        The online application made by the Buyer is subject to acceptance by the
+        Developer. The Developer reserves the rights to not accept the said
+        booking. In the event of the Developer not accepting the said booking,
+        the blocking amount paid by the Buyer will be refunded by the Developer
+        within a period of 45 working days from the date of such non-acceptance.
+      </li>
     </ol>
     <br />
     <span className="title">TDS related details:</span>
