@@ -72,6 +72,9 @@ export const getAllUnitTypesInTower = (towerName) => {
       flatTypes.push(getFormalUnitType(flatType));
   });
 
+  console.log(towerName, [
+    ...new Set(flatTypes.sort((a, b) => parseInt(a) - parseInt(b))),
+  ]);
   return [...new Set(flatTypes.sort((a, b) => parseInt(a) - parseInt(b)))];
 };
 

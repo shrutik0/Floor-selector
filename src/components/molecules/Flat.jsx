@@ -11,7 +11,6 @@ function Flat({ towerId, flatIndex, flatNumber }) {
   const { showDetails } = useShowDetails();
   const { isMobile } = useViewport();
   const { loading, setLoading } = useLoading();
-  console.log(towerId, flatIndex);
   useEffect(() => {
     setLoading(true);
   }, []);

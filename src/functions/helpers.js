@@ -22,8 +22,11 @@ export const getFormalNameFromNumber = (num) => {
   else return `${num} th`;
 };
 
-export const getFormalUnitType = (unitType) =>
-  unitType.substr(0, unitType.length - 4);
+export const getFormalUnitType = (flatType) => {
+  if (flatType.includes("2 BHK")) return "2 BHK";
+  if (flatType.includes("3 BHK")) return "3 BHK";
+  if (flatType.includes("2.5 BHK")) return "2.5 BHK";
+};
 
 export function loadScript(src) {
   return new Promise((resolve) => {
