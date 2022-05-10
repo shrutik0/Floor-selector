@@ -186,7 +186,7 @@ function Flats() {
           />
         ))}
       </Carousel>
-      <Compass right="7rem" bottom="1rem" />
+      <Compass right="8vw" bottom="1rem" />
     </TowersPageStyle>
   );
 }

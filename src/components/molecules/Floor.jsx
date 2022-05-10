@@ -91,6 +91,7 @@ const Floor = ({
         bottom="80px"
         right="80px"
         angle={FLOORS_COMPASS_ANGLES[towerId]}
+        zIndex="-1"
       />
     </CarouselItemStyle>
   );

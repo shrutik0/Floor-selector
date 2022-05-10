@@ -546,8 +546,14 @@ export const CompassStyle = styled.div`
   display: grid;
   place-items: center;
   position: absolute;
+  /* z-index: -1; */
   img {
     width: 100%;
     height: auto;
+  }
+
+  @media screen and (max-height: 480px) {
+    width: 100px;
+    height: 100px;
   }
 `;
