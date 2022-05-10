@@ -37,10 +37,14 @@ function App() {
   useEffect(() => {
     // if (isMobile)
     setShowFullScreenMsg(true);
-    if (window.screen.orientation)
-      window.screen.orientation.addEventListener("change", () =>
-        window.location.reload()
-      );
+    // if (window.screen.orientation)
+    //   window.screen.orientation.addEventListener("change", () =>
+    //     window.location.reload()
+    //   );
+
+    window.onorientationchange = () => {
+      window.location.reload();
+    };
 
     fetchAndSetInventories();
   }, []);

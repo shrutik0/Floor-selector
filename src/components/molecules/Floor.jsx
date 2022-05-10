@@ -44,7 +44,7 @@ const Floor = ({
         Bgsrc={`floors/floor-${towerId}.png`}
         svgWidth="auto"
         viewBox={FLOORS_VIEWPORTS[towerId]}
-        style={{ padding: "1rem" }}
+        style={{ padding: isMobile ? "1rem" : "3rem" }}
         onClick={() => setClickedFlat(false)}
       >
         <g className="flats-svg">
