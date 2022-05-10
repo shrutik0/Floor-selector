@@ -89,7 +89,7 @@ const Floor = ({
       </Svg>
       <Compass
         bottom="80px"
-        right="80px"
+        right={isMobile ? "85%" : "20px"}
         angle={FLOORS_COMPASS_ANGLES[towerId]}
         zIndex="-1"
       />

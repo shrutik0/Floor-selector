@@ -1,3 +1,9 @@
+// export const TOWERS_VIEWPORTS = {
+//   A: "0 0 1960 900",
+//   B: "0 0 1417 1200",
+//   C: "0 0 1417 1200",
+//   D: "0 0 1000 1000",
+// };
 export const TOWERS_VIEWPORTS = {
   A: "0 0 960 1200",
   B: "0 0 1417 1200",
