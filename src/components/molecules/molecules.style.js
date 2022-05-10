@@ -462,15 +462,27 @@ export const CarouselItemDetailsStyle = styled.div`
 
   @media screen and (max-height: 480px) {
     height: 100vh;
+    /* max-width: 85vw; */
+    width: fit-content;
     .header {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
     .highlights {
       font-size: 1rem;
+      div {
+        margin-top: 1.5rem;
+      }
     }
 
     .features {
+      margin-top: 1rem;
       .feature {
+        font-size: 0.8rem;
+      }
+    }
+
+    .btns {
+      .btn {
         font-size: 1rem;
       }
     }
