@@ -1,12 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useViewport } from "../../contexts/AppContext";
-import {
-  FLOORS_COMPASS_ANGLES,
-  FLOORS_VIEWPORTS,
-  TOWERS_VIEWPORTS,
-} from "../../data";
-import { FLAT_PATHS, FLOOR_PATHS } from "../../data/paths";
+import { FLOORS_COMPASS_ANGLES, FLOORS_VIEWPORTS } from "../../data";
+import { FLAT_PATHS } from "../../data/paths";
 import { getFlatInfo } from "../../functions/helpers";
 import { getAllFlatsInFloor } from "../../functions/inventory";
 import Path from "../atoms/Path";
@@ -46,7 +42,7 @@ const Floor = ({
       )}
       <Svg
         Bgsrc={`floors/floor-${towerId}.png`}
-        svgWidth="fit-content"
+        svgWidth="auto"
         viewBox={FLOORS_VIEWPORTS[towerId]}
         style={{ padding: "1rem" }}
         onClick={() => setClickedFlat(false)}

@@ -11,6 +11,7 @@ import Svg from "./Svg";
 
 const Tower = ({ towerId, clickedFloor, setClickedFloor }) => {
   const { isMobile } = useViewport();
+
   const navigate = useNavigate();
   return (
     <CarouselItemStyle>
@@ -26,11 +27,8 @@ const Tower = ({ towerId, clickedFloor, setClickedFloor }) => {
 
       <Svg
         Bgsrc={`towers/tower-${towerId}.png`}
-        svgWidth="fit-content"
+        svgWidth={"auto"}
         viewBox={TOWERS_VIEWPORTS[towerId]}
-        style={{
-          paddingLeft: towerId == "D" && "10vw",
-        }}
         onClick={() => setClickedFloor(false)}
       >
         <g className="floors-svg">
