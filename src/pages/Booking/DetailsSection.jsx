@@ -150,7 +150,7 @@ const Paymentplan = ({
           <td>₹ {rupeeIndian.format(parseInt(on_booking_amount))}</td>
         </tr>
         <tr className="border">
-          <td>On ATS withing 30 days</td>
+          <td>On ATS within 30 days</td>
           <td>10</td>
           <td>₹ {rupeeIndian.format(parseInt(on_ats_amount))}</td>
         </tr>
