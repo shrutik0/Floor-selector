@@ -116,7 +116,7 @@ function BookingPage(props) {
       return;
     }
 
-    const orderResponse = await initiateOrder(customer_id)
+    const orderResponse = await initiateOrder(customer_id, property_id)
       .then((e) => e.json())
       .catch((e) => e);
 

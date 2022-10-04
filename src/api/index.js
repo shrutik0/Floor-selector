@@ -1,11 +1,11 @@
 import { baseUrl } from "../data";
 
-export const initiateOrder = async (customer_id) => {
+export const initiateOrder = async (customer_id, property_id) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    property_id: "PR# 03-2020-07234",
+    property_id: property_id,
     project_id: "a1q2u000000boHd",
     cutomer_details: customer_id,
   });
