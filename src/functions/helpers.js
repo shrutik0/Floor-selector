@@ -155,5 +155,5 @@ export const getVRtourLink = (flatType = "") => {
     return "https://btvrprojects.s3.ap-south-1.amazonaws.com/Bel_Air2.5BHK_Tour/index.htm";
 
   if (flatType.includes("3 BHK"))
-    return "https://btvrprojects.s3.ap-south-1.amazonaws.com/Bel_Air3BHK_Tour/index.htm";
+    return "https://btvrprojects.s3.ap-south-1.amazonaws.com/Bel+Air_3BHK-Tour/index.htm";
 };
