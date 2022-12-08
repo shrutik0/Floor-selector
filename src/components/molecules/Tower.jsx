@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useViewport } from "../../contexts/AppContext";
-import { TOWERS_VIEWPORTS } from "../../data";
 import { FLOOR_PATHS } from "../../data/paths";
 import { getFloorInfo, isFloorBooked } from "../../functions/helpers";
 import Path from "../atoms/Path";
@@ -26,9 +25,9 @@ const Tower = ({ towerId, clickedFloor, setClickedFloor }) => {
       )}
 
       <Svg
-        Bgsrc={`towers/tower-${towerId}.png`}
-        svgWidth={"auto"}
-        viewBox={TOWERS_VIEWPORTS[towerId]}
+        Bgsrc={`towers/tower.png`}
+        svgWidth={"100%"}
+        viewBox={"0 0 1920 1080"}
         onClick={() => setClickedFloor(false)}
       >
         <g className="floors-svg">

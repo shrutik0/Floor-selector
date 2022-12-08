@@ -24,6 +24,7 @@ const Floor = ({
   const flats = getAllFlatsInFloor(towerId, floorId.toString());
   const { isMobile } = useViewport();
   const navigate = useNavigate();
+  const getSrcByTowerId =(towerId)=>["A","B","C","D"].includes(towerId)?"A":"E"
   return (
     <CarouselItemStyle>
       {clickedFlat !== false && (
@@ -41,10 +42,9 @@ const Floor = ({
         />
       )}
       <Svg
-        Bgsrc={`floors/floor-${towerId}.png`}
+        Bgsrc={`floors/floor-${getSrcByTowerId(towerId)}.png`}
         svgWidth="auto"
-        viewBox={FLOORS_VIEWPORTS[towerId]}
-        style={{ padding: isMobile ? "1rem" : "3rem" }}
+        style={{ padding: isMobile ? "1rem" : "0rem" }}
         onClick={() => setClickedFlat(false)}
       >
         <g className="flats-svg">

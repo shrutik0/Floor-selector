@@ -277,9 +277,10 @@ export const SvgStyle = styled.section`
   justify-content: center;
   align-items: flex-end;
   margin: auto;
+  
   svg {
     width: 100%;
-    height: 100%;
+    height: 100vh;
   }
 
   .Block {
@@ -309,7 +310,7 @@ export const SvgStyle = styled.section`
 
 export const CarouselItemStyle = styled.section`
   height: 100%;
-  max-width: 85vw;
+  max-width: 100vw;
   width: 100%;
   display: flex;
   justify-content: center;

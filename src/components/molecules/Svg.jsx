@@ -12,7 +12,7 @@ const BGImage = ({ Bgsrc, onLoad, show }) => (
   />
 );
 
-function Svg({ Bgsrc, children, svgWidth = "100%", viewBox, style, onClick }) {
+function Svg({ Bgsrc, children, svgWidth = "100%", style, onClick }) {
   const { loading, setLoading } = useLoading();
   useEffect(() => {
     setLoading(true);
@@ -23,7 +23,8 @@ function Svg({ Bgsrc, children, svgWidth = "100%", viewBox, style, onClick }) {
         style={{ width: svgWidth, ...style }}
         id="svg"
         preserveAspectRatio="xMidYMid slice"
-        viewBox={viewBox}
+        viewBox={'0 0 1920 1080'}
+        
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

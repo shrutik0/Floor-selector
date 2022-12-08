@@ -5,7 +5,7 @@ import { HomePageDetailsStyle } from "./molecules.style";
 function HomePageDetails(props) {
   return (
     <HomePageDetailsStyle>
-      <div className="tag-line">Welcome to Arvind Bel Air</div>
+      <div className="tag-line">Welcome to Life balance</div>
       <div className="address-wrapper">
         <div className="address">New Town Road, Yelahanka, Bengaluru</div>
       </div>

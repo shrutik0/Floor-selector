@@ -75,7 +75,7 @@ function Home() {
 
       <Svg
         Bgsrc={"master-plan.jpg"}
-        viewBox={"0 0 1512 982"}
+        viewBox={"0 0 1920 1080"}
         onClick={() => setClickedTower(false)}
       >
         {TOWER_NAMES_LIST.map((tower, index) => (

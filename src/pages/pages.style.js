@@ -12,6 +12,7 @@ export const TowersPageStyle = styled.section`
   width: 100vw;
   height: 100vh;
 
+
   .carousel-trigger {
     top: 90% !important;
   }
