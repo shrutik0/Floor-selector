@@ -558,7 +558,7 @@ export const CompassStyle = styled.div`
   border-radius: 50%;
   display: grid;
   place-items: center;
-  position: absolute;
+  position:absolute;
   /* z-index: -1; */
   img {
     width: 100%;
