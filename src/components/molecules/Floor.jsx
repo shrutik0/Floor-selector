@@ -43,7 +43,7 @@ const Floor = ({
       )}
       <Svg
         Bgsrc={`floors/floor-${getSrcByTowerId(towerId)}.png`}
-        svgWidth="auto"
+        svgWidth="100%"
         style={{ padding: isMobile ? "1rem" : "0rem" }}
         onClick={() => setClickedFlat(false)}
       >
